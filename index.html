@@ -1,856 +1,1253 @@
 <!DOCTYPE html>
-<html lang="hu" class="scroll-smooth scroll-pt-28">
+<html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equilor Wealth Office - Operatív vagyonoptimalizálás</title>
-    
-    <!-- External Libraries -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeanBrothers – Digitális Lean & Automatizáció</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    <!-- CSS Setup -->
-    <style type="text/tailwindcss">
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f7f5;
-            color: #334155;
-        }
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-        }
-        
-        /* Custom Chart Container */
-        .chart-wrapper {
-            position: relative;
-            width: 100%;
-            height: 300px;
-        }
-        @media (min-width: 768px) {
-            .chart-wrapper {
-                height: 400px;
-            }
-        }
+  <style>
+    /* ==========================================
+       CSS VÁLTOZÓK – egy helyen módosítható
+       ========================================== */
+    :root {
+      --primary:       #1F4E79;
+      --primary-dark:  #163857;
+      --primary-light: #2E6DA4;
+      --accent:        #D6E4F0;
+      --accent-mid:    #A8CBEA;
+      --white:         #FFFFFF;
+      --gray-light:    #F7F9FC;
+      --gray-mid:      #E2EAF4;
+      --gray-text:     #4A5568;
+      --dark:          #1A202C;
+      --font:          'Inter', sans-serif;
+      --radius:        12px;
+      --shadow:        0 4px 24px rgba(31,78,121,0.10);
+      --shadow-lg:     0 8px 40px rgba(31,78,121,0.16);
+      --transition:    0.3s ease;
+      --max-w:         1140px;
+      --nav-h:         68px;
+    }
 
-        /* Interactive Elements Styling */
-        .nav-link {
-            @apply text-sm font-medium text-slate-300 hover:text-amber-400 transition-colors cursor-pointer;
-        }
-        
-        /* RPA Tab Buttons (Light Mode) */
-        .tab-btn-rpa {
-            @apply px-4 py-3 text-sm font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all duration-300 flex-grow md:flex-grow-0;
-        }
-        .tab-btn-rpa.active {
-            @apply border-amber-500 text-slate-900 bg-white;
-        }
+    /* ==========================================
+       RESET & ALAP
+       ========================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* Lean Integrated Tabs (New Style) */
-        .lean-tab-btn {
-            @apply flex-1 py-4 text-sm font-bold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-slate-700/50 transition-all duration-300 border-b-4 border-transparent;
-        }
-        .lean-tab-btn.active {
-            @apply text-amber-500 border-amber-500 bg-slate-700/30;
-        }
+    /* Desktop: teljes oldalas görgetés */
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+    body {
+      font-family: var(--font);
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
 
-        .case-card {
-            @apply hidden animate-fade-in h-full;
-        }
-        .case-card.active {
-            @apply block;
-        }
+    /* ==========================================
+       FULL-PAGE SCROLL WRAPPER
+       Navbar: fixed az oldal tetején
+       Wrapper: pontosan alatta kezdődik, tölti a maradék viewport-ot
+       ========================================== */
+    #scroll-wrapper {
+      position: fixed;
+      top: var(--nav-h);   /* pontosan a navbar alatt */
+      left: 0; right: 0; bottom: 0;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+    #scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-            animation: fadeIn 0.5s ease-out forwards;
-        }
+    /* Minden szekció = scroll-wrapper teljes látható magassága */
+    .page-section {
+      scroll-snap-align: start;
+      height: 100%;          /* = 100vh - var(--nav-h) */
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
 
-        /* Chat Bubble Styling */
-        .chat-bubble {
-            @apply p-4 rounded-2xl max-w-[85%] mb-4 relative shadow-sm;
-        }
-        .chat-user {
-            @apply bg-slate-200 text-slate-800 self-start rounded-bl-none;
-        }
-        .chat-ai {
-            @apply bg-slate-800 text-amber-50 self-end rounded-br-none ml-auto;
-        }
-        
-        /* Full Screen Section Helper */
-        .fullscreen-section {
-            @apply min-h-screen flex flex-col justify-center pt-28 pb-24 overflow-hidden;
-        }
-    </style>
+    /* ==========================================
+       SEGÉDOSZTÁLYOK
+       ========================================== */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 32px;
+      width: 100%;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      background: var(--accent);
+      padding: 4px 14px;
+      border-radius: 99px;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(1.35rem, 2.4vw, 2.1rem);
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .section-sub {
+      font-size: clamp(0.86rem, 1.1vw, 0.98rem);
+      color: var(--gray-text);
+      max-width: 580px;
+    }
+    .section-head { margin-bottom: 32px; }
+    .section-head.center { text-align: center; }
+    .section-head.center .section-sub { margin: 0 auto; }
+
+    /* ==========================================
+       GOMBOK
+       ========================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font);
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 11px 22px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(31,78,121,0.30);
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-outline:hover { background: var(--accent); transform: translateY(-2px); }
+    .btn-white {
+      background: var(--white);
+      color: var(--primary);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .btn-white:hover { background: var(--accent); transform: translateY(-2px); }
+    .btn-full { width: 100%; }
+
+    /* ==========================================
+       SCROLL-FADE ANIMÁCIÓ
+       ========================================== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ==========================================
+       NAVBAR
+       ========================================== */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-mid);
+      transition: box-shadow var(--transition);
+      height: var(--nav-h);
+    }
+    #navbar.scrolled { box-shadow: var(--shadow); }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-h);
+      gap: 16px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .logo-svg { width: 34px; height: 34px; flex-shrink: 0; }
+    .logo-text {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+    .logo-text span { color: var(--primary-light); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-links a {
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--gray-text);
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: var(--transition);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+      background: var(--accent);
+    }
+    .nav-cta { flex-shrink: 0; }
+
+    /* Hamburger gomb */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      flex-shrink: 0;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* Mobil legördülő menü */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+      padding: 10px 20px 14px;
+      border-top: 1px solid var(--gray-mid);
+      background: var(--white);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--gray-text);
+      padding: 9px 12px;
+      border-radius: 6px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .mobile-menu a:hover { background: var(--accent); color: var(--primary); }
+    .mobile-menu .btn { margin-top: 6px; }
+
+    /* Oldalsó pontnavigátor (desktop) */
+    .section-nav {
+      position: fixed;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 500;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .section-nav button {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      border: 2px solid rgba(31,78,121,0.5);
+      background: transparent;
+      cursor: pointer;
+      transition: var(--transition);
+      padding: 0;
+    }
+    .section-nav button.active {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* ==========================================
+       1. HERO
+       ========================================== */
+    #hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 60%, #0E2A45 100%);
+      color: var(--white);
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 99px;
+      padding: 5px 14px;
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .hero-title {
+      font-size: clamp(1.7rem, 3vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.12;
+      margin-bottom: 14px;
+      color: var(--white);
+    }
+    .hero-title em { font-style: normal; color: var(--accent-mid); }
+    .hero-sub {
+      font-size: clamp(0.88rem, 1.1vw, 1rem);
+      color: rgba(255,255,255,0.8);
+      max-width: 440px;
+      margin-bottom: 24px;
+    }
+    .hero-cta-group { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .hero-note { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 12px; }
+
+    /* Hero illusztráció – kártya oszlop, nincs átfedés */
+    .hero-visual { display: flex; justify-content: center; align-items: center; }
+    .hero-card-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 280px;
+    }
+    .h-card {
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 14px;
+      padding: 16px 20px;
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .h-card:hover { background: rgba(255,255,255,0.14); transform: translateX(4px); }
+    .h-card-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .h-card-label { font-size: 0.67rem; font-weight: 600; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
+    .h-card-value { font-size: 0.88rem; font-weight: 700; color: var(--white); }
+
+    /* ==========================================
+       2. PROBLÉMA
+       ========================================== */
+    #problema { background: var(--white); }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .problem-card {
+      background: var(--gray-light);
+      border: 1px solid var(--gray-mid);
+      border-radius: var(--radius);
+      padding: 26px 22px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      border-radius: 3px 3px 0 0;
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+    .problem-card:hover { border-color: var(--accent-mid); box-shadow: var(--shadow); transform: translateY(-3px); }
+    .problem-card:hover::before { transform: scaleX(1); }
+    .problem-icon {
+      width: 44px; height: 44px;
+      background: var(--accent);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 14px;
+    }
+    .problem-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 7px; }
+    .problem-card p { font-size: 0.83rem; color: var(--gray-text); }
+
+    /* ==========================================
+       3. MÓDSZER
+       ========================================== */
+    #modszer { background: var(--gray-light); }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 34px;
+      left: calc(100% / 6);
+      right: calc(100% / 6);
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-mid), var(--primary-light), var(--accent-mid));
+      z-index: 0;
+    }
+    .step-item { text-align: center; padding: 0 18px; position: relative; z-index: 1; }
+    .step-num {
+      width: 68px; height: 68px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; font-weight: 800; color: var(--white);
+      margin: 0 auto 18px;
+      box-shadow: 0 4px 18px rgba(31,78,121,0.3);
+      border: 4px solid var(--gray-light);
+    }
+    .step-item h3 { font-size: 0.96rem; font-weight: 700; color: var(--primary); margin-bottom: 7px; }
+    .step-item p { font-size: 0.83rem; color: var(--gray-text); }
+    .step-tag {
+      display: inline-block;
+      font-size: 0.67rem; font-weight: 700;
+      color: var(--primary-light); background: var(--accent);
+      padding: 2px 9px; border-radius: 99px;
+      margin-bottom: 7px; letter-spacing: 0.06em;
+    }
+
+    /* ==========================================
+       4. SZOLGÁLTATÁSOK
+       ========================================== */
+    #szolgaltatasok { background: var(--white); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .pricing-card {
+      border: 2px solid var(--gray-mid);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      transition: var(--transition);
+      position: relative;
+    }
+    .pricing-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .pricing-card.featured {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: var(--white);
+      transform: scale(1.03);
+      box-shadow: var(--shadow-lg);
+    }
+    .pricing-card.featured:hover { transform: scale(1.03) translateY(-3px); }
+    .featured-badge {
+      position: absolute;
+      top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--accent-mid); color: var(--primary-dark);
+      font-size: 0.65rem; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 12px; border-radius: 99px; white-space: nowrap;
+    }
+    .pricing-level { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 5px; }
+    .pricing-card:not(.featured) .pricing-level { color: var(--primary-light); }
+    .pricing-card.featured .pricing-level { color: var(--accent-mid); }
+    .pricing-name { font-size: 1.05rem; font-weight: 800; margin-bottom: 4px; }
+    .pricing-card:not(.featured) .pricing-name { color: var(--primary); }
+    .pricing-duration {
+      font-size: 0.78rem; margin-bottom: 12px;
+      padding-bottom: 12px; border-bottom: 1px solid var(--gray-mid);
+    }
+    .pricing-card:not(.featured) .pricing-duration { color: var(--gray-text); }
+    .pricing-card.featured .pricing-duration { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.15); }
+    .pricing-price { font-size: 1.5rem; font-weight: 800; margin-bottom: 2px; }
+    .pricing-card:not(.featured) .pricing-price { color: var(--primary); }
+    .pricing-vat { font-size: 0.72rem; margin-bottom: 12px; }
+    .pricing-card:not(.featured) .pricing-vat { color: var(--gray-text); }
+    .pricing-card.featured .pricing-vat { color: rgba(255,255,255,0.5); }
+    .pricing-desc { font-size: 0.83rem; margin-bottom: 18px; min-height: 36px; }
+    .pricing-card:not(.featured) .pricing-desc { color: var(--gray-text); }
+    .pricing-card.featured .pricing-desc { color: rgba(255,255,255,0.75); }
+    .pricing-note {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--accent-mid);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .pricing-card:not(.featured) .pricing-note { color: var(--primary-light); }
+
+    /* ==========================================
+       5. MIÉRT MI
+       ========================================== */
+    #miert-mi {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+    }
+    #miert-mi .section-title { color: var(--white); }
+
+    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .why-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      display: flex; gap: 15px; align-items: flex-start;
+      transition: var(--transition);
+    }
+    .why-card:hover { background: rgba(255,255,255,0.11); }
+    .why-icon {
+      width: 42px; height: 42px; flex-shrink: 0;
+      background: rgba(255,255,255,0.12);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .why-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .why-card p { font-size: 0.81rem; color: rgba(255,255,255,0.6); }
+
+    /* ==========================================
+       6. ESETTANULMÁNYOK (rejtett)
+       ========================================== */
+    #esettanulmanyok { display: none !important; }
+
+    /* ==========================================
+       7. CSAPAT
+       ========================================== */
+    #rolunk { background: var(--gray-light); }
+
+    .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .team-card {
+      background: var(--white);
+      border: 1px solid var(--gray-mid);
+      border-radius: var(--radius);
+      padding: 26px 24px;
+      display: flex; gap: 18px; align-items: flex-start;
+      transition: var(--transition);
+    }
+    .team-card:hover { box-shadow: var(--shadow); border-color: var(--accent-mid); }
+    .team-avatar {
+      width: 62px; height: 62px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; font-weight: 800; color: var(--white);
+    }
+    .team-info h3 { font-size: 0.98rem; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
+    .team-role {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 700;
+      color: var(--primary-light); background: var(--accent);
+      padding: 2px 9px; border-radius: 99px; margin-bottom: 8px;
+    }
+    .team-info p { font-size: 0.83rem; color: var(--gray-text); }
+
+    /* ==========================================
+       8. ZÁRÓ CTA
+       ========================================== */
+    #cta { background: var(--white); }
+
+    .cta-box {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 20px;
+      padding: 52px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      top: -80px; right: -80px; pointer-events: none;
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-box .section-title { color: var(--white); font-size: clamp(1.3rem, 2.2vw, 1.9rem); }
+    .cta-box .section-sub { color: rgba(255,255,255,0.72); margin: 0 auto 24px; }
+    .cta-guarantee { margin-top: 16px; font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+
+    /* ==========================================
+       9. FOOTER / KAPCSOLAT
+       ========================================== */
+    #kapcsolat {
+      background: var(--dark);
+      color: rgba(255,255,255,0.7);
+    }
+    .footer-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .footer-logo .logo-text { color: var(--white); }
+    .footer-logo .logo-text span { color: var(--accent-mid); }
+    .footer-tagline { font-size: 0.8rem; margin-top: 9px; max-width: 250px; line-height: 1.5; }
+    .footer-contact h4 {
+      color: var(--white);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 11px;
+    }
+    .footer-contact a {
+      display: block; font-size: 0.83rem;
+      color: rgba(255,255,255,0.55); margin-bottom: 6px;
+      transition: var(--transition);
+    }
+    .footer-contact a:hover { color: var(--accent-mid); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 18px;
+      font-size: 0.76rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* ==========================================
+       RESZPONZÍV – Tablet 900-1024px
+       ========================================== */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .section-nav { display: none; }
+    }
+
+    /* ==========================================
+       RESZPONZÍV – Mobil max 768px
+       Normál görgetés: fixed → static wrapper, sticky navbar
+       ========================================== */
+    @media (max-width: 768px) {
+      :root { --nav-h: 58px; }
+
+      html, body { height: auto; overflow: auto; }
+
+      /* Navbar: fixed helyett sticky mobilon */
+      #navbar { position: sticky; }
+
+      /* Wrapper visszaáll normál flow-ba */
+      #scroll-wrapper {
+        position: static;
+        height: auto;
+        overflow: visible;
+        scroll-snap-type: none;
+        scroll-behavior: auto;
+      }
+
+      /* Szekciók normál magasság */
+      .page-section {
+        height: auto;
+        min-height: calc(100svh - var(--nav-h));
+        overflow: visible;
+        padding: 44px 0;
+        justify-content: center;
+      }
+
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .container { padding: 0 18px; }
+
+      .hero-inner,
+      .problem-grid,
+      .steps-grid,
+      .pricing-grid,
+      .why-grid,
+      .team-grid { grid-template-columns: 1fr; gap: 14px; }
+
+      .steps-grid::before { display: none; }
+      .pricing-card.featured { transform: none; }
+      .pricing-card.featured:hover { transform: translateY(-3px); }
+      .hero-cta-group { flex-direction: column; align-items: stretch; }
+      .hero-cta-group .btn { width: 100%; text-align: center; }
+      .section-head { margin-bottom: 22px; }
+      .cta-box { padding: 32px 20px; border-radius: 14px; }
+      .footer-inner { flex-direction: column; gap: 20px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .team-card { flex-direction: column; gap: 14px; }
+      .team-avatar { width: 54px; height: 54px; }
+      .why-card { flex-direction: column; gap: 10px; }
+      .section-nav { display: none; }
+    }
+
+    /* ==========================================
+       RESZPONZÍV – Kis mobil max 400px
+       ========================================== */
+    @media (max-width: 400px) {
+      .hero-title { font-size: 1.5rem; }
+      .pricing-price { font-size: 1.3rem; }
+      .step-num { width: 56px; height: 56px; font-size: 1rem; }
+      .container { padding: 0 14px; }
+    }
+  </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-slate-900/95 backdrop-blur shadow-md border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <span class="text-xl font-bold text-white tracking-wider"><span class="text-amber-500">Equilor</span> Strategic Partner</span>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden xl:block">
-                    <div class="ml-10 flex items-center space-x-6">
-                        <a href="#strategia" class="nav-link">Stratégia</a>
-                        <a href="#modszertan" class="nav-link">Módszertan</a>
-                        <a href="#technologia" class="nav-link">3 pillér</a>
-                        <a href="#lean-cases" class="nav-link text-amber-400">Lean esetek</a>
-                        <a href="#rpa-cases" class="nav-link">RPA esetek</a>
-                        <a href="#jovo" class="nav-link">Jövőkép</a>
-                        <a href="#roi" class="nav-link">ROI</a>
-                        <!-- CTA Button in Nav -->
-                        <a href="#kapcsolat" class="ml-4 px-5 py-2 bg-amber-500 hover:bg-amber-600 text-slate-900 text-sm font-bold rounded-full transition-all shadow-lg shadow-amber-500/20">
-                            Kapcsolatfelvétel
-                        </a>
-                    </div>
-                </div>
+  <div id="scroll-wrapper">
 
-                <!-- Mobile Menu Button -->
-                <div class="-mr-2 flex xl:hidden">
-                    <button type="button" onclick="toggleMobileMenu()" class="bg-slate-800 inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-white">
-                        <span class="sr-only">Menü megnyitása</span>
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
+    <!-- ==========================================
+         NAVBAR
+         ========================================== -->
+    <nav id="navbar">
+      <div class="container">
+        <div class="nav-inner">
+
+          <!-- Logó -->
+          <div class="nav-logo" onclick="goToSection(0)">
+            <svg class="logo-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="36" rx="8" fill="#1F4E79"/>
+              <!-- L betű -->
+              <rect x="6" y="10" width="3.5" height="16" rx="1.5" fill="white"/>
+              <rect x="6" y="22.5" width="10" height="3.5" rx="1.5" fill="white"/>
+              <!-- B betű – szár (x=19..22.5) -->
+              <rect x="19" y="10" width="3.5" height="16" rx="1.5" fill="#A8CBEA"/>
+              <!-- B felső ív – 1px réssel a szártól (x=23.5-től) -->
+              <path d="M23.5 10 H26 Q30 10 30 14 Q30 18 26 18 H23.5 Z" fill="#A8CBEA"/>
+              <!-- B alsó ív – 1px réssel a szártól (x=23.5-től) -->
+              <path d="M23.5 18 H26.5 Q31 18 31 22 Q31 26 26.5 26 H23.5 Z" fill="#A8CBEA"/>
+            </svg>
+            <span class="logo-text">Lean<span>Brothers</span></span>
+          </div>
+
+          <!-- Desktop linkek -->
+          <ul class="nav-links">
+            <li><a data-idx="1" onclick="goToSection(1)">A probléma</a></li>
+            <li><a data-idx="2" onclick="goToSection(2)">Módszerünk</a></li>
+            <li><a data-idx="3" onclick="goToSection(3)">Szolgáltatások</a></li>
+            <li><a data-idx="4" onclick="goToSection(4)">Miért mi</a></li>
+            <li><a data-idx="5" onclick="goToSection(5)">Csapat</a></li>
+          </ul>
+
+          <div class="nav-cta">
+            <button class="btn btn-primary" onclick="goToSection(7)">Vegyük fel a kapcsolatot</button>
+          </div>
+
+          <button class="hamburger" id="hamburger" aria-label="Menü">
+            <span></span><span></span><span></span>
+          </button>
         </div>
-        <!-- Mobile Menu -->
-        <div class="hidden xl:hidden bg-slate-900 border-b border-slate-800" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#strategia" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-white hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium">Stratégia</a>
-                <a href="#modszertan" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-white hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium">Módszertan</a>
-                <a href="#technologia" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-white hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium">3 pillér</a>
-                <a href="#lean-cases" onclick="toggleMobileMenu()" class="text-amber-400 hover:text-amber-300 hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium">Lean esetek</a>
-                <a href="#rpa-cases" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-white hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium">RPA esetek</a>
-                <a href="#jovo" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-white hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium">Jövőkép</a>
-                <a href="#roi" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-white hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium">ROI</a>
-                <a href="#kapcsolat" onclick="toggleMobileMenu()" class="bg-amber-500 text-slate-900 block px-3 py-2 rounded-md text-base font-bold mt-4 text-center">Kapcsolatfelvétel</a>
-            </div>
-        </div>
+      </div>
+
+      <!-- Mobil menü -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a onclick="goToSection(1);closeMobile()">A probléma</a>
+        <a onclick="goToSection(2);closeMobile()">Módszerünk</a>
+        <a onclick="goToSection(3);closeMobile()">Szolgáltatások</a>
+        <a onclick="goToSection(4);closeMobile()">Miért mi</a>
+        <a onclick="goToSection(5);closeMobile()">Csapat</a>
+        <button class="btn btn-primary" onclick="goToSection(7);closeMobile()">Vegyük fel a kapcsolatot</button>
+      </div>
     </nav>
 
-    <!-- 1. HERO SECTION -->
-    <section id="strategia" class="fullscreen-section bg-slate-900 relative pt-32">
-        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-amber-500 to-amber-700"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <div class="inline-block px-4 py-1 mb-6 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-sm font-semibold tracking-wide uppercase">
-                Új dimenzió a vagyonkezelésben
-            </div>
-            <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight break-words">
-                Operatív <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">vagyonoptimalizálás</span>
+    <!-- ==========================================
+         1. HERO
+         ========================================== -->
+    <section id="hero" class="page-section">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="fade-in">
+            <div class="hero-badge">✦ Digitális Lean &amp; Automatizáció</div>
+            <h1 class="hero-title">
+              Tudja, hogy kell az <em>AI</em>.<br>
+              De tudja, hol <em>kezdje?</em>
             </h1>
-            <p class="mt-4 max-w-3xl mx-auto text-xl text-slate-300 leading-relaxed">
-                Nem csupán a vagyont kezeljük, hanem segítünk azt <strong>hatékonyan megtermelni</strong>.
-                A "Corporate Concierge" szolgáltatás, amely Lean, RPA és AI technológiákkal növeli a portfólió cégek értékét.
+            <p class="hero-sub">
+              Nem technológiát adunk el. Rendet teszünk a folyamatokban – aztán a megfelelő megoldást hozzuk be.
             </p>
-            
-            <!-- Motto -->
-            <div class="mt-8 mb-12">
-                <p class="text-amber-400 font-serif italic text-lg md:text-xl">
-                    "Az Equilor Wealth Office nemcsak a vagyont kezeli, hanem segít azt hatékonyan megtermelni is."
-                </p>
+            <div class="hero-cta-group">
+              <button class="btn btn-white" onclick="goToSection(7)">Vegyük fel a kapcsolatot</button>
+              <button class="btn btn-outline" onclick="goToSection(2)"
+                style="color:rgba(255,255,255,0.85);border-color:rgba(255,255,255,0.38);">
+                Hogyan dolgozunk →
+              </button>
             </div>
+            <p class="hero-note">✓ Ingyenes első konzultáció &nbsp;·&nbsp; ✓ Független, vendor-semleges tanácsadás</p>
+          </div>
 
-            <!-- Hero Cards -->
-            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-amber-500/50 transition-colors">
-                    <i class="fa-solid fa-chart-line text-2xl text-amber-500 mb-3"></i>
-                    <h3 class="text-lg font-bold text-white mb-2">Portfóliókezelés</h3>
-                    <p class="text-sm text-slate-400">Hozam-maximalizálás a forrásnál.</p>
+          <div class="hero-visual fade-in" style="transition-delay:0.18s">
+            <div class="hero-card-stack">
+              <div class="h-card">
+                <div class="h-card-icon">⚙️</div>
+                <div>
+                  <div class="h-card-label">Lean Diagnózis</div>
+                  <div class="h-card-value">Folyamatveszteség azonosítva</div>
                 </div>
-                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-amber-500/50 transition-colors">
-                    <i class="fa-solid fa-bell-concierge text-2xl text-amber-500 mb-3"></i>
-                    <h3 class="text-lg font-bold text-white mb-2">Corporate Concierge</h3>
-                    <p class="text-sm text-slate-400">Operatív terhek levétele a cégvezetésről.</p>
+              </div>
+              <div class="h-card">
+                <div class="h-card-icon">📊</div>
+                <div>
+                  <div class="h-card-label">ROI Kalkuláció</div>
+                  <div class="h-card-value">Megtérülés dokumentálva</div>
                 </div>
-                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-amber-500/50 transition-colors">
-                    <i class="fa-solid fa-shield-halved text-2xl text-amber-500 mb-3"></i>
-                    <h3 class="text-lg font-bold text-white mb-2">Kockázatkezelés</h3>
-                    <p class="text-sm text-slate-400">Valós idejű operatív monitoring.</p>
+              </div>
+              <div class="h-card">
+                <div class="h-card-icon">🤖</div>
+                <div>
+                  <div class="h-card-label">AI Bevezetés</div>
+                  <div class="h-card-value">A megfelelő vendor kiválasztva</div>
                 </div>
+              </div>
             </div>
-            
-            <!-- Hero CTA Button -->
-            <div class="mt-12">
-                <a href="#kapcsolat" class="inline-block px-8 py-4 bg-transparent border-2 border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-slate-900 font-bold rounded-full transition-all text-lg">
-                    Pilot program indítása <i class="fa-solid fa-arrow-right ml-2"></i>
-                </a>
-            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- 2. METHODOLOGY -->
-    <section id="modszertan" class="fullscreen-section bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">A 7 lépéses módszertan</h2>
-                <p class="text-lg text-slate-600">Nemzetközi BPM szabványokra épülő, kockázatmentes folyamat.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-lg border border-slate-100 text-center hover:-translate-y-2 transition-transform">
-                    <div class="w-16 h-16 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-4"><i class="fa-solid fa-magnifying-glass text-2xl text-slate-600"></i></div>
-                    <h3 class="text-lg font-bold text-slate-900">Diagnózis</h3>
-                    <p class="text-sm text-slate-500 mt-2">Célmeghatározás és átvilágítás <br>(0-1. fázis)</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg border border-slate-100 text-center hover:-translate-y-2 transition-transform">
-                    <div class="w-16 h-16 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-4"><i class="fa-solid fa-compass-drafting text-2xl text-slate-600"></i></div>
-                    <h3 class="text-lg font-bold text-slate-900">Tervezés</h3>
-                    <p class="text-sm text-slate-500 mt-2">Gyökérokok és megoldások <br>(2-3. fázis)</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg border border-slate-100 text-center hover:-translate-y-2 transition-transform">
-                    <div class="w-16 h-16 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-4"><i class="fa-solid fa-code text-2xl text-slate-600"></i></div>
-                    <h3 class="text-lg font-bold text-slate-900">Kivitelezés</h3>
-                    <p class="text-sm text-slate-500 mt-2">Folyamatoptimalizálás és hatékonyságnövelés<br>(4-5. fázis)</p>
-                </div>
-                <div class="bg-slate-900 p-6 rounded-lg shadow-xl border border-slate-800 text-center hover:-translate-y-2 transition-transform relative">
-                    <div class="absolute top-0 right-0 bg-amber-500 text-white text-xs font-bold px-2 py-1">RETAINER</div>
-                    <div class="w-16 h-16 mx-auto bg-slate-800 rounded-full flex items-center justify-center mb-4"><i class="fa-solid fa-infinity text-2xl text-amber-500"></i></div>
-                    <h3 class="text-lg font-bold text-white">Fenntartás</h3>
-                    <p class="text-sm text-slate-400 mt-2">Időszakos visszamérés<br> (6. fázis)</p>
-                </div>
-            </div>
+    <!-- ==========================================
+         2. PROBLÉMA
+         ========================================== -->
+    <section id="problema" class="page-section">
+      <div class="container">
+        <div class="section-head center fade-in">
+          <span class="section-label">Az igazság</span>
+          <h2 class="section-title">Amit a legtöbb AI-tanácsadó nem mond el</h2>
+          <p class="section-sub">Mielőtt technológiát vezetnénk be, meg kell érteni, mi az igazi probléma.</p>
         </div>
+        <div class="problem-grid">
+          <article class="problem-card fade-in" style="transition-delay:0.06s">
+            <div class="problem-icon">💸</div>
+            <h3>A rossz alap kétszeres ár</h3>
+            <p>Rossz folyamatra épített automatizáció kétszer annyiba kerül – egyszer a bevezetésnél, egyszer a kidobásnál.</p>
+          </article>
+          <article class="problem-card fade-in" style="transition-delay:0.13s">
+            <div class="problem-icon">🎯</div>
+            <h3>A vendor mindig megoldást lát</h3>
+            <p>A vendorok megoldást akarnak eladni – nem a ti problémátokat megoldani. Ebből érdekeik vannak.</p>
+          </article>
+          <article class="problem-card fade-in" style="transition-delay:0.20s">
+            <div class="problem-icon">📈</div>
+            <h3>Valós megtérülés = rendezett folyamat</h3>
+            <p>A megtérülés csak akkor valós, ha a folyamat előbb rendben van. Az automatizáció nem tud csodát tenni.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- 3. TECHNOLOGY -->
-    <section id="technologia" class="fullscreen-section bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="text-center mb-12">
-                <span class="text-amber-600 font-bold tracking-wide uppercase">Technológiai stratégia</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">A stabilitás három pillére</h2>
-                <p class="text-lg text-slate-600 mt-4">Nem automatizálunk rossz folyamatot. A három szint egymásra épülve alkot stabil rendszert.</p>
-            </div>
-
-            <div class="flex flex-col md:flex-row gap-8 justify-center">
-                <!-- 1. Lean Card -->
-                <div class="w-full md:w-1/3 bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-500 transform transition hover:-translate-y-1 hover:shadow-lg flex flex-col h-full">
-                    <div class="flex justify-center mb-6">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-                            <i class="fa-solid fa-filter text-3xl text-blue-600"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-800 text-center mb-2">1. Lean</h3>
-                    <p class="text-center text-sm font-bold text-slate-500 uppercase tracking-wide mb-6">"Az alap"</p>
-                    <p class="text-slate-600 text-center mb-6 flex-grow">
-                        Mielőtt automatizálnánk, rendet teszünk. A folyamatok egyszerűsítése és a veszteség megszüntetése.
-                    </p>
-                    <ul class="space-y-3 text-sm mt-auto">
-                        <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-2"></i> Folyamattisztítás</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-2"></i> Standardizálás</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-2"></i> Veszteségcsökkentés</li>
-                    </ul>
-                </div>
-
-                <!-- Arrow 1 -->
-                <div class="hidden md:flex items-center justify-center text-slate-300">
-                    <i class="fa-solid fa-arrow-right text-4xl"></i>
-                </div>
-                <div class="flex md:hidden items-center justify-center text-slate-300">
-                    <i class="fa-solid fa-arrow-down text-3xl"></i>
-                </div>
-
-                <!-- 2. RPA Card -->
-                <div class="w-full md:w-1/3 bg-white p-8 rounded-xl shadow-md border-t-4 border-green-500 transform transition hover:-translate-y-1 hover:shadow-lg flex flex-col h-full">
-                    <div class="flex justify-center mb-6">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-                            <i class="fa-solid fa-robot text-3xl text-green-600"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-800 text-center mb-2">2. RPA</h3>
-                    <p class="text-center text-sm font-bold text-slate-500 uppercase tracking-wide mb-6">"A kéz"</p>
-                    <p class="text-slate-600 text-center mb-6 flex-grow">
-                        A már tiszta, standard folyamatot átadjuk a robotnak. Gyors, pontos és fáradhatatlan végrehajtás.
-                    </p>
-                    <ul class="space-y-3 text-sm mt-auto">
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Szabályalapú működés</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Nagy volumen kezelése</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> 100% pontosság</li>
-                    </ul>
-                </div>
-
-                <!-- Arrow 2 -->
-                <div class="hidden md:flex items-center justify-center text-slate-300">
-                    <i class="fa-solid fa-arrow-right text-4xl"></i>
-                </div>
-                <div class="flex md:hidden items-center justify-center text-slate-300">
-                    <i class="fa-solid fa-arrow-down text-3xl"></i>
-                </div>
-
-                <!-- 3. AI Card -->
-                <div class="w-full md:w-1/3 bg-slate-900 p-8 rounded-xl shadow-xl border-t-4 border-amber-500 transform transition hover:-translate-y-1 hover:shadow-2xl flex flex-col h-full">
-                    <div class="flex justify-center mb-6">
-                        <div class="w-16 h-16 bg-amber-900/50 rounded-full flex items-center justify-center">
-                            <i class="fa-solid fa-brain text-3xl text-amber-500"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white text-center mb-2">3. AI</h3>
-                    <p class="text-center text-sm font-bold text-amber-500 uppercase tracking-wide mb-6">"Az értelem"</p>
-                    <p class="text-slate-300 text-center mb-6 flex-grow">
-                        Ahol a szabály véget ér, ott kezdődik az intelligencia. Döntéstámogatás és nem-strukturált adat kezelése.
-                    </p>
-                    <ul class="space-y-3 text-sm text-slate-300 mt-auto">
-                        <li class="flex items-start"><i class="fa-solid fa-check text-amber-500 mt-1 mr-2"></i> Kognitív képességek</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-amber-500 mt-1 mr-2"></i> Dokumentumértelmezés</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-amber-500 mt-1 mr-2"></i> Adaptív válaszadás</li>
-                    </ul>
-                </div>
-            </div>
+    <!-- ==========================================
+         3. MÓDSZER
+         ========================================== -->
+    <section id="modszer" class="page-section">
+      <div class="container">
+        <div class="section-head center fade-in">
+          <span class="section-label">A mi megközelítésünk</span>
+          <h2 class="section-title">A mi módszerünk: Lean → Dokumentáció → Vendor</h2>
+          <p class="section-sub">Három lépéses, bizonyított keretrendszer – amellyel tényleg megtérül a befektetés.</p>
         </div>
+        <div class="steps-grid">
+          <div class="step-item fade-in" style="transition-delay:0.06s">
+            <div class="step-num">1</div>
+            <span class="step-tag">Lean Diagnózis</span>
+            <h3>Feltárjuk a valódi veszteségeket</h3>
+            <p>Helyszíni felmérés, adatgyűjtés, interjúk. Megmutatjuk, hol foly el az idő és a pénz.</p>
+          </div>
+          <div class="step-item fade-in" style="transition-delay:0.13s">
+            <div class="step-num">2</div>
+            <span class="step-tag">Dokumentáció</span>
+            <h3>Dokumentálunk és priorizálunk</h3>
+            <p>Folyamattérkép, ROI kalkuláció, technológiai javaslat – minden feketén-fehéren.</p>
+          </div>
+          <div class="step-item fade-in" style="transition-delay:0.20s">
+            <div class="step-num">3</div>
+            <span class="step-tag">Vendor Kiválasztás</span>
+            <h3>A megfelelő partnert hozzuk be</h3>
+            <p>Független vendor ajánlás, megvalósítás felügyelet. Mi az ön érdekét képviseljük.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- 4. SECTION A: LEAN CASES (UNIFIED CARD LAYOUT) -->
-    <section id="lean-cases" class="fullscreen-section bg-slate-900 relative p-0">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col justify-center">
-            
-            <!-- Title -->
-            <div class="text-center mb-6">
-                <span class="text-amber-500 font-bold tracking-wide uppercase text-sm">Stratégiai alapok</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mt-2 mb-2">A szolgáltatás gerince: Lean módszertan</h2>
-                <p class="text-slate-400 text-sm leading-relaxed max-w-3xl mx-auto">
-                    Nem automatizálunk rossz folyamatot. A Lean eszközök biztosítják, hogy a hatékonyságnövelés fenntartható legyen.
-                </p>
-            </div>
-
-            <!-- UNIFIED CARD CONTAINER -->
-            <div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden flex flex-col">
-                
-                <!-- CARD HEADER: TABS -->
-                <div class="flex flex-wrap md:flex-nowrap border-b border-slate-700 bg-slate-900/50">
-                    <button class="lean-tab-btn active" onclick="showLeanCase('finance-diag')">
-                        1. Pénzügyi diagnózis
-                    </button>
-                    <button class="lean-tab-btn" onclick="showLeanCase('logistics')">
-                        2. Logisztikai optimalizálás
-                    </button>
-                    <button class="lean-tab-btn" onclick="showLeanCase('ai-rpa')">
-                        3. AI + RPA pilot
-                    </button>
-                </div>
-
-                <!-- CARD BODY: DYNAMIC CONTENT -->
-                <div class="border-2 border-amber-500 p-6 flex-grow">
-                    
-                    <!-- Case 1: Finance Diagnosis -->
-                    <div id="lean-finance-diag" class="case-card active">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-2xl font-bold text-white">Pénzügyi központ diagnózisa</h3>
-                            <i class="fa-solid fa-magnifying-glass-chart text-2xl text-slate-600"></i>
-                        </div>
-
-                        <!-- 3-Column Grid for Problem, Bottleneck, Loss -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                            <div class="bg-red-900/20 border-l-4 border-red-500 p-3 rounded-r-lg">
-                                <p class="text-xs font-bold text-red-400 uppercase mb-1"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Probléma</p>
-                                <p class="text-slate-300 text-xs">Új tárgyi eszköz beszerzése, költséges üzemeltetés</p>
-                            </div>
-                            <div class="bg-amber-900/20 border-l-4 border-amber-500 p-3 rounded-r-lg">
-                                <p class="text-xs font-bold text-amber-400 uppercase mb-1"><i class="fa-solid fa-filter-circle-xmark mr-2"></i>Szűk keresztmetszet</p>
-                                <p class="text-slate-300 text-xs">Átfedések a folyamatok között, redundáns munkavégzés több részlegnél</p>
-                            </div>
-                            <div class="bg-slate-900/50 border-l-4 border-slate-500 p-3 rounded-r-lg">
-                                <p class="text-xs font-bold text-slate-400 uppercase mb-1"><i class="fa-solid fa-money-bill-wave mr-2"></i>Veszteség</p>
-                                <p class="text-slate-300 text-xs">Felesleges mozgás, várakozás </p>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                            <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-700">
-                                <p class="text-xs text-slate-500 uppercase font-bold mb-1">Eszközök</p>
-                                <p class="text-white text-sm">GEMBA -> Folyamat ábra L1–L4 -> SIPOC + VSM</p>
-                            </div>
-                            <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-700">
-                                <p class="text-xs text-slate-500 uppercase font-bold mb-1">Beavatkozás</p>
-                                <p class="text-white text-sm">Duplikációk feltárása, standardizált anyagáramlás.</p>
-                            </div>
-                        </div>
-
-                        <div class="pt-4 border-t border-slate-700/50">
-                            <h4 class="text-white font-bold mb-3 text-sm">Eredmények</h4>
-                            <div class="grid grid-cols-3 gap-4 text-center">
-                                <div>
-                                    <div class="text-xl font-bold text-amber-400">12 FTE</div>
-                                    <div class="text-xs text-slate-500">felszabadult</div>
-                                </div>
-                                <div>
-                                    <div class="text-xl font-bold text-amber-400">18%</div>
-                                    <div class="text-xs text-slate-500">időcsökkenés</div>
-                                </div>
-                                <div>
-                                    <div class="text-xl font-bold text-amber-400">20%</div>
-                                    <div class="text-xs text-slate-500">redundancia off</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Case 2: Logistics -->
-                    <div id="lean-logistics" class="case-card hidden">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-2xl font-bold text-white">Logisztikai optimalizálás</h3>
-                            <i class="fa-solid fa-truck-fast text-2xl text-slate-600"></i>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                            <div class="bg-red-900/20 border-l-4 border-red-500 p-3 rounded-r-lg">
-                                <p class="text-xs font-bold text-red-400 uppercase mb-1">Probléma</p>
-                                <p class="text-slate-300 text-xs">Eszközhiány, magas fuvarköltség</p>
-                            </div>
-                            <div class="bg-amber-900/20 border-l-4 border-amber-500 p-3 rounded-r-lg">
-                                <p class="text-xs font-bold text-amber-400 uppercase mb-1">Szűk keresztmetszet</p>
-                                <p class="text-slate-300 text-xs">AD-HOC jellegű eszközellátás és nyomon követés, indokolatlan beszerzési igények és fuvarköltségek, rossz rutinok.</p>
-                            </div>
-                            <div class="bg-slate-900/50 border-l-4 border-slate-500 p-3 rounded-r-lg">
-                                <p class="text-xs font-bold text-slate-400 uppercase mb-1">Veszteség</p>
-                                <p class="text-slate-300 text-xs">Túlzott és felesleges mozgás, készlet</p>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                            <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-700">
-                                <p class="text-xs text-slate-500 uppercase font-bold mb-1">Eszközök</p>
-                                <p class="text-white text-sm">Operatív VSM, Spaghetti-diagram, Stop to Fix</p>
-                            </div>
-                            <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-700">
-                                <p class="text-xs text-slate-500 uppercase font-bold mb-1">Beavatkozás</p>
-                                <p class="text-white text-sm">Ellátási lánc optimalizálás, egységes munkafolyamat kialakítása.</p>
-                            </div>
-                        </div>
-
-                        <div class="pt-4 border-t border-slate-700/50">
-                            <h4 class="text-white font-bold mb-3 text-sm">Eredmények</h4>
-                            <div class="grid grid-cols-3 gap-4 text-center">
-                                <div>
-                                    <div class="text-xl font-bold text-amber-400">-6%</div>
-                                    <div class="text-xs text-slate-500">fuvarköltség</div>
-                                </div>
-                                <div>
-                                    <div class="text-xl font-bold text-amber-400">0 Ft</div>
-                                    <div class="text-xs text-slate-500">beruházás</div>
-                                </div>
-                                <div>
-                                    <div class="text-xl font-bold text-amber-400">Optimális ellátási lánc</div>
-                                    <div class="text-xs text-slate-500">belső logisztika</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Case 3: AI + RPA -->
-                    <div id="lean-ai-rpa" class="case-card hidden">
-                        <!--<div class="flex items-center justify-between mb-4">
-                            <h3 class="text-2xl font-bold text-white">AI + RPA integrált pilot</h3>
-                            <i class="fa-solid fa-microchip text-2xl text-slate-600"></i>
-                        </div>-->
-
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                            <div class="bg-red-900/20 border-l-4 border-red-500 p-3 rounded-r-lg">
-                                <p class="text-xs font-bold text-red-400 uppercase mb-1">Probléma</p>
-                                <p class="text-slate-300 text-xs">Manuális feldolgozás, statisztika hiánya és az ügyfél elégedettség csökkenése</p>
-                            </div>
-                            <div class="bg-amber-900/20 border-l-4 border-amber-500 p-3 rounded-r-lg">
-                                <p class="text-xs font-bold text-amber-400 uppercase mb-1">Szűk keresztmetszet</p>
-                                <p class="text-slate-300 text-xs">Monotonitásból fakadó hibák, nagyszámú és repetitív munkavégzés </p>
-                            </div>
-                            <div class="bg-slate-900/50 border-l-4 border-slate-500 p-3 rounded-r-lg">
-                                <p class="text-xs font-bold text-slate-400 uppercase mb-1">Veszteség</p>
-                                <p class="text-slate-300 text-xs">Hibák, várakozás, kihasználatlan kreativitás</p>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                            <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-700">
-                                <p class="text-xs text-slate-500 uppercase font-bold mb-1">Eszközök</p>
-                                <p class="text-white text-sm">GEMBA -> As-Is/To-be folyamatábrák, AI dok. elemzés</p>
-                            </div>
-                            <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-700">
-                                <p class="text-xs text-slate-500 uppercase font-bold mb-1">Beavatkozás</p>
-                                <p class="text-white text-sm">AI kategorizál és validál, RPA végrehajt.</p>
-                            </div>
-                        </div>
-
-                        <div class="pt-4 border-t border-slate-700/50">
-                            <h4 class="text-white font-bold mb-3 text-sm">Várható eredmények</h4>
-                            <div class="grid grid-cols-3 gap-4 text-center">
-                                <div>
-                                    <div class="text-xl font-bold text-amber-400">70%</div>
-                                    <div class="text-xs text-slate-500">munka kiváltás</div>
-                                </div>
-                                <div>
-                                    <div class="text-xl font-bold text-amber-400">-80%</div>
-                                    <div class="text-xs text-slate-500">feldolgozási idő</div>
-                                </div>
-                                <div>
-                                    <div class="text-xl font-bold text-amber-400">Auto</div>
-                                    <div class="text-xs text-slate-500">riportálás</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- CARD FOOTER: COMMON LOGIC -->
-                <div class="bg-slate-900/80 p-4 border-t border-slate-700">
-                    <div class="flex items-center mb-2">
-                        <i class="fa-solid fa-layer-group text-amber-500 mr-2"></i>
-                        <h4 class="text-white font-bold text-sm uppercase tracking-wide">Közös Lean mögöttes logika</h4>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-slate-400 text-xs">
-                        <div>
-                            <strong class="text-slate-300 block mb-1">1. GEMBA</strong>
-                            L1–L4 folyamattérkép vezetői, szakértői szinteken.
-                        </div>
-						<div>
-                            <strong class="text-slate-300 block mb-1">2. VSM minden szinten</strong>
-                            Értékáram térkép megrajzolása
-                        </div>
-                        <div>
-                            <strong class="text-slate-300 block mb-1">3. Kereszt-folyamatok</strong>
-                            Feltártuk a más részlegeket érintő hatásokat (nincs silózás).
-                        </div>
-                        <div>
-                            <strong class="text-slate-300 block mb-1">4. Veszteségcsökkentés</strong>
-                            Fókuszban: túlterhelés, várakozás és a felesleges munka.
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+    <!-- ==========================================
+         4. SZOLGÁLTATÁSOK
+         ========================================== -->
+    <section id="szolgaltatasok" class="page-section">
+      <div class="container">
+        <div class="section-head center fade-in">
+          <span class="section-label">Árazás</span>
+          <h2 class="section-title">Három belépési pont – a te tempódban</h2>
+          <p class="section-sub">Válassza azt, amely illik a vállalata jelenlegi helyzetéhez és igényeihez.</p>
         </div>
+        <div class="pricing-grid">
+          <article class="pricing-card fade-in" style="transition-delay:0.06s">
+            <div class="pricing-level">Alap</div>
+            <div class="pricing-name">Digitális Veszteségfeltárás</div>
+            <div class="pricing-duration">⏱ 2 nap &nbsp;·&nbsp; Helyszíni + online</div>
+            <div class="pricing-price">350 000 Ft</div>
+            <div class="pricing-vat">+ ÁFA</div>
+            <div class="pricing-desc">Független helyzetfelmérés – tudja meg hol tart, milyen veszteségei vannak most.</div>
+            <button class="btn btn-outline btn-full" onclick="goToSection(7)">Ingyenes 30 perces konzultáció</button>
+          </article>
+          <article class="pricing-card featured fade-in" style="transition-delay:0.13s">
+            <span class="featured-badge">⭐ Ajánlott</span>
+            <div class="pricing-level">Ajánlott</div>
+            <div class="pricing-name">Folyamatoptimalizálási Sprint</div>
+            <div class="pricing-duration">⏱ 5 nap &nbsp;·&nbsp; Teljes audit</div>
+            <div class="pricing-price">Egyedi ajánlat</div>
+            <div class="pricing-desc">ROI kalkuláció, folyamattérkép, vendor shortlist – minden amit a döntéshez kell.</div>
+            <div class="pricing-note">✓ Előzetes diagnózis nélkül is indítható</div>
+            <button class="btn btn-white btn-full" onclick="goToSection(7)">Ingyenes 30 perces konzultáció</button>
+          </article>
+          <article class="pricing-card fade-in" style="transition-delay:0.20s">
+            <div class="pricing-level">Haladó</div>
+            <div class="pricing-name">Folyamatos Fejlesztési Keret</div>
+            <div class="pricing-duration">🔄 Havi előfizetés &nbsp;·&nbsp; Folyamatos</div>
+            <div class="pricing-price">380 000 Ft-tól</div>
+            <div class="pricing-vat">+ ÁFA / hó</div>
+            <div class="pricing-desc">Vendor felügyelet, visszamérés, kompetencia on-demand – hosszú távú partner.</div>
+            <button class="btn btn-outline btn-full" onclick="goToSection(7)">Ingyenes 30 perces konzultáció</button>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- 5. SECTION B: OPERATIONAL RPA CASES (Light Mode) -->
-    <section id="rpa-cases" class="fullscreen-section bg-white border-t border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="text-center mb-12">
-                <span class="text-slate-500 font-bold tracking-wide uppercase text-sm">Operatív gyorsítás</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Automatizációs "Quick Wins"</h2>
-                <p class="text-lg text-slate-600 mt-4">Konkrét példák a mindennapi feladatok kiváltására.</p>
-            </div>
-
-            <!-- Horizontal Tabs -->
-            <div class="flex flex-wrap justify-center mb-12">
-                <button class="tab-btn-rpa active" onclick="showRpaCase('hr')">HR & Beléptetés</button>
-                <button class="tab-btn-rpa" onclick="showRpaCase('reporting')">Heti riport</button>
-                <button class="tab-btn-rpa" onclick="showRpaCase('finance')">Számlázás</button>
-                <button class="tab-btn-rpa" onclick="showRpaCase('crisis')">Skálázhatóság</button>
-            </div>
-
-            <!-- RPA Content -->
-            <div class="min-h-[500px] h-full">
-                
-                <!-- RPA Case: HR -->
-                <div id="rpa-hr" class="rpa-card active bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm h-full flex flex-col justify-center">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center h-full">
-                        <div>
-                            <div class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold mb-4">NAGYVÁLLALAT</div>
-                            <h3 class="text-2xl font-bold text-slate-900 mb-4">15 000+ beléptetés évente</h3>
-                            <p class="text-slate-600 mb-6">Magas fluktuáció és alkalmi munkaerő. A manuális adminisztráció (8-11 perc/fő) leterhelte a HR-t.</p>
-                            <div class="flex items-center space-x-8">
-                                <div><p class="text-sm text-slate-500 uppercase">Manuális</p><p class="text-2xl font-bold text-red-500">8-11 perc</p></div>
-                                <i class="fa-solid fa-arrow-right text-slate-300"></i>
-                                <div><p class="text-sm text-slate-500 uppercase">Robot</p><p class="text-2xl font-bold text-green-600">0 perc*</p></div>
-                            </div>
-                            <p class="text-xs text-slate-400 mt-2">*Emberi ráfordítás</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md h-full flex flex-col justify-center">
-                            <h4 class="font-bold text-slate-800 mb-4">Eredmény</h4>
-                            <p class="text-sm text-slate-600">A robot automatikusan rögzíti az adatokat a rendszerekben. A HR újra emberekkel foglalkozhat.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- RPA Case: Reporting -->
-                <div id="rpa-reporting" class="rpa-card hidden bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm h-full flex flex-col justify-center">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center h-full">
-                        <div>
-                            <div class="inline-block px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-bold mb-4">SALES & VEZETÉS</div>
-                            <h3 class="text-2xl font-bold text-slate-900 mb-4">A "hétfő reggel" effektus</h3>
-                            <p class="text-slate-600 mb-6">Minden hétfőn 4 óra ment el az adatok manuális összemásolásával a vezetőségi ülésre.</p>
-                            <div class="flex items-center space-x-8">
-                                <div><p class="text-sm text-slate-500 uppercase">Előtte</p><p class="text-2xl font-bold text-red-500">4 óra/hét</p></div>
-                                <i class="fa-solid fa-arrow-right text-slate-300"></i>
-                                <div><p class="text-sm text-slate-500 uppercase">Utána</p><p class="text-2xl font-bold text-green-600">Azonnal</p></div>
-                            </div>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md h-full flex flex-col justify-center">
-                            <h4 class="font-bold text-slate-800 mb-4">Eredmény</h4>
-                            <p class="text-sm text-slate-600">A robot hajnalban fut le. Reggel 8:00-kor a kész, hiba nélküli riport várja a vezérigazgatót az email fiókjában.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- RPA Case: Finance -->
-                <div id="rpa-finance" class="rpa-card hidden bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm h-full flex flex-col justify-center">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center h-full">
-                        <div>
-                            <div class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold mb-4">PÉNZÜGY</div>
-                            <h3 class="text-2xl font-bold text-slate-900 mb-4">900 ügyfél számlázása</h3>
-                            <p class="text-slate-600 mb-6">Heti szinten 10 munkavállaló 3-4 óráját vitte el a részletes teljesítményigazolások és számlák generálása.</p>
-                            <div class="flex items-center space-x-8">
-                                <div><p class="text-sm text-slate-500 uppercase">Erőforrás</p><p class="text-2xl font-bold text-slate-700">10 fő</p></div>
-                                <i class="fa-solid fa-arrow-right text-slate-300"></i>
-                                <div><p class="text-sm text-slate-500 uppercase">Automatizáció</p><p class="text-2xl font-bold text-green-600">1 robot</p></div>
-                            </div>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md h-full flex flex-col justify-center">
-                            <h4 class="font-bold text-slate-800 mb-4">Eredmény</h4>
-                            <p class="text-sm text-slate-600">A robot hétvégén, munkaidőn kívül végzi el a feladatot. 100% pontosság, felszabadult pénzügyi csapat.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- RPA Case: Crisis -->
-                <div id="rpa-crisis" class="rpa-card hidden bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm h-full flex flex-col justify-center">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center h-full">
-                        <div>
-                            <div class="inline-block px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-bold mb-4">KRÍZISKEZELÉS</div>
-                            <h3 class="text-2xl font-bold text-slate-900 mb-4">5000 szerződés azonnal</h3>
-                            <p class="text-slate-600 mb-6">Jogszabályi változás miatt azonnali rögzítés két rendszerben. Kézzel ez 1250 munkaóra lett volna.</p>
-                            <div class="flex items-center space-x-8">
-                                <div><p class="text-sm text-slate-500 uppercase">Manuális</p><p class="text-2xl font-bold text-red-500">1250 óra</p></div>
-                                <i class="fa-solid fa-arrow-right text-slate-300"></i>
-                                <div><p class="text-sm text-slate-500 uppercase">Megoldás</p><p class="text-2xl font-bold text-green-600">Skálázás</p></div>
-                            </div>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-amber-500 h-full flex flex-col justify-center">
-                            <h4 class="font-bold text-slate-800 mb-4">Stratégiai előny</h4>
-                            <p class="text-sm text-slate-600">A meglévő robotokat átcsoportosítottuk. 24 órás futással megoldották a feladatot anélkül, hogy 8 új embert kellett volna felvenni.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+    <!-- ==========================================
+         5. MIÉRT MI
+         ========================================== -->
+    <section id="miert-mi" class="page-section">
+      <div class="container">
+        <div class="section-head fade-in">
+          <span class="section-label" style="background:rgba(255,255,255,0.12);color:var(--accent);">Versenyelőnyünk</span>
+          <h2 class="section-title">Amit mások nem tudnak adni</h2>
+          <p class="section-sub" style="color:rgba(255,255,255,0.7);">Nem vagyunk resellers, nem vagyunk integrátorok. Független tanácsadók vagyunk – az ön oldalán.</p>
         </div>
+        <div class="why-grid">
+          <div class="why-card fade-in" style="transition-delay:0.06s">
+            <div class="why-icon">🛡️</div>
+            <div><h3>100% független tanácsadás</h3><p>Nem vagyunk érdekeltek egyetlen vendor sikerében sem – független maradunk, az ön érdekét képviseljük.</p></div>
+          </div>
+          <div class="why-card fade-in" style="transition-delay:0.13s">
+            <div class="why-icon">🏢</div>
+            <div><h3>Nagyvállalati tudás, KKV áron</h3><p>Nagyvállalati RPA és AI tapasztalat – megfizethető, KKV-ra szabott keretrendszerben hozva el.</p></div>
+          </div>
+          <div class="why-card fade-in" style="transition-delay:0.20s">
+            <div class="why-icon">💡</div>
+            <div><h3>A Lean önmagában is nyereség</h3><p>A folyamatfejlesztés önmagában is nyereség – az automatizáció csak hab a tortán. Már az audit megtérül.</p></div>
+          </div>
+          <div class="why-card fade-in" style="transition-delay:0.27s">
+            <div class="why-icon">⚖️</div>
+            <div><h3>AI jogi megfelelőség</h3><p>GDPR, AI Act megfelelőség igény szerint – jogszabályi háttér beépítve a javaslatokba.</p></div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- 6. FUTURE: Hybrid AI -->
-    <section id="jovo" class="fullscreen-section bg-slate-900 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/2 h-full bg-slate-800/30 skew-x-12 transform translate-x-20"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="text-white">
-                    <div class="badge bg-amber-500/20 text-amber-400 px-3 py-1 rounded-full text-xs font-bold inline-block mb-6">A JÖVŐ: HIBRID AUTOMATIZÁCIÓ</div>
-                    <h2 class="text-4xl font-bold mb-6">Beszélgetés a dokumentumokkal</h2>
-                    <p class="text-slate-300 text-lg mb-8">Ahol a dokumentum (szerződés) és az ERP (SAP) eddig nem kommunikált, ott most az AI a tolmács.</p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="bg-slate-800 p-3 rounded-lg mr-4">
-                                <i class="fa-solid fa-comments text-amber-500 text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg">Vállalati chatbot</h4>
-                                <p class="text-slate-400 text-sm">Kérdezzen a több száz oldalas ÁSZF-től úgy, mintha egy kollégával beszélne.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="bg-slate-800 p-3 rounded-lg mr-4">
-                                <i class="fa-solid fa-network-wired text-amber-500 text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg">Intelligens összekapcsolás</h4>
-                                <p class="text-slate-400 text-sm">Az AI kiolvassa a keretösszeget a PDF-ből, a robot pedig ellenőrzi a költést az SAP-ban.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="bg-slate-800 p-3 rounded-lg mr-4">
-                                <i class="fa-solid fa-envelope-open-text text-amber-500 text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg">Ügyfél megkeresések osztályozása</h4>
-                                <p class="text-slate-400 text-sm">Auto-klasszifikáció: Bejövő e-mailek (panasz, ajánlatkérés) szétválogatása és priorizálása AI segítségével.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Chat Interface -->
-                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-700 max-w-md mx-auto lg:mr-0">
-                    <div class="bg-slate-800 p-4 flex items-center border-b border-slate-700">
-                        <div class="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
-                        <div class="w-3 h-3 bg-green-500 rounded-full mr-4"></div>
-                        <span class="text-slate-300 text-sm font-mono">Equilor AI Assistant</span>
-                    </div>
-                    <div class="p-6 bg-slate-50 h-[350px] flex flex-col justify-end font-sans text-sm">
-                        <div class="chat-bubble chat-user animate-fade-in" style="animation-delay: 0.5s;">Mikor jár le a szerződés?</div>
-                        <div class="chat-bubble chat-ai animate-fade-in" style="animation-delay: 2s;">2025. december 31.</div>
-                        <div class="chat-bubble chat-user animate-fade-in" style="animation-delay: 3.5s;">Van még keret?</div>
-                        <div class="chat-bubble chat-ai animate-fade-in" style="animation-delay: 5s;">Ellenőriztem az SAP-ban: <strong>Még 2,8M Ft költhető.</strong></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- ==========================================
+         6. ESETTANULMÁNYOK (rejtett – aktiválható)
+         ========================================== -->
+    <section id="esettanulmanyok" class="page-section">
+      <div class="container">
+        <div class="section-head center"><span class="section-label">Eredmények</span><h2 class="section-title">Esettanulmányok</h2></div>
+        <div style="text-align:center;padding:48px;color:var(--gray-text);background:var(--gray-light);border-radius:var(--radius);">Esettanulmány hamarosan...</div>
+      </div>
     </section>
 
-    <!-- 7. ROI SECTION -->
-    <section id="roi" class="fullscreen-section bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">A megtérülés (ROI)</h2>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-1 space-y-6">
-                    <div class="space-y-2">
-                        <button class="w-full text-left p-4 rounded-lg border transition-all duration-200 roi-selector active bg-slate-900 text-white border-slate-900" onclick="updateChart('manufacturing')">
-                            <div class="font-bold">Gyártó cég</div>
-                            <div class="text-sm opacity-80">Középvállalat (500 fő)</div>
-                        </button>
-                        <button class="w-full text-left p-4 rounded-lg border border-slate-200 hover:bg-slate-50 transition-all duration-200 roi-selector text-slate-600" onclick="updateChart('finance')">
-                            <div class="font-bold">Pénzügyi szolgáltató</div>
-                            <div class="text-sm opacity-80">Nagyvállalat (1200 fő)</div>
-                        </button>
-                        <button class="w-full text-left p-4 rounded-lg border border-slate-200 hover:bg-slate-50 transition-all duration-200 roi-selector text-slate-600" onclick="updateChart('tech')">
-                            <div class="font-bold">IT / Tech cég</div>
-                            <div class="text-sm opacity-80">KKV (150 fő)</div>
-                        </button>
-                    </div>
-                    <div class="bg-amber-50 p-6 rounded-xl border border-amber-100 mt-8">
-                        <p class="text-sm text-amber-800 font-bold uppercase mb-2">Becsült éves megtakarítás</p>
-                        <div class="text-4xl font-bold text-slate-900" id="savings-display">~215 M Ft</div>
-                    </div>
-                </div>
-                <div class="lg:col-span-2 bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
-                    <div class="chart-wrapper"><canvas id="roiChart"></canvas></div>
-                </div>
-            </div>
+    <!-- ==========================================
+         7. CSAPAT
+         ========================================== -->
+    <section id="rolunk" class="page-section">
+      <div class="container">
+        <div class="section-head center fade-in">
+          <span class="section-label">A csapat</span>
+          <h2 class="section-title">Akik mögötte állnak</h2>
+          <p class="section-sub">Tapasztalt szakemberek, akik nagyvállalatoknál tanulták a mesterséget – és most KKV-knak adják tovább.</p>
         </div>
+        <div class="team-grid">
+          <article class="team-card fade-in" style="transition-delay:0.06s">
+            <div class="team-avatar">TZ</div>
+            <div class="team-info">
+              <h3>Tóth Zoltán Márton</h3>
+              <span class="team-role">Lean + AI Expert</span>
+              <p>Rövid bemutatkozó mondat – töltse ki saját szavaival, ami a leginkább megragadja a szaktudást és hozzáállást.</p>
+            </div>
+          </article>
+          <article class="team-card fade-in" style="transition-delay:0.13s">
+            <div class="team-avatar">KG</div>
+            <div class="team-info">
+              <h3>Kiss Gábor Balázs</h3>
+              <span class="team-role">RPA Architect</span>
+              <p>Rövid bemutatkozó mondat – töltse ki saját szavaival, ami a leginkább megragadja a szaktudást és hozzáállást.</p>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- 8. CONTACT SECTION -->
-    <section id="kapcsolat" class="fullscreen-section bg-slate-900 relative overflow-hidden text-center">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-        <div class="max-w-4xl mx-auto px-4 relative z-10">
-            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                Indítsuk el a pilot programot
-            </h2>
-            <p class="text-xl text-slate-300 mb-10 leading-relaxed">
-                Válasszunk ki közösen 2-3 céget, és bizonyítsuk be a koncepciót kockázatmentesen.
-            </p>
-            <a href="mailto:toth.zoltan.marton@gmail.com" class="inline-block bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-4 px-10 rounded-full transition-transform hover:scale-105 shadow-lg shadow-amber-500/20">
-                Kapcsolatfelvétel
-            </a>
+    <!-- ==========================================
+         8. ZÁRÓ CTA
+         ========================================== -->
+    <section id="cta" class="page-section">
+      <div class="container">
+        <div class="cta-box fade-in">
+          <div class="cta-inner">
+            <span class="section-label" style="background:rgba(255,255,255,0.15);color:var(--accent);">Első lépés</span>
+            <h2 class="section-title">Az első lépés ingyenes –<br>megmutatjuk hol állnak a folyamataik.</h2>
+            <p class="section-sub">Nincs elkötelezettség, nincs nyomás. Egy 30 perces konzultáció után pontosan tudni fogja, hol tart és mit érdemes tennie.</p>
+            <button class="btn btn-white" style="font-size:0.95rem;padding:13px 30px;" onclick="goToSection(7)">
+              Vegyük fel a kapcsolatot &nbsp;→
+            </button>
+            <p class="cta-guarantee">✓ Ingyenes &nbsp;·&nbsp; ✓ Kötelezettség nélkül &nbsp;·&nbsp; ✓ 48 órán belül visszajelzünk</p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-950 py-12 border-t border-slate-800 text-center">
-        <p class="text-slate-500 text-sm">&copy; 2025 Stratégiai partnerségi javaslat. Belső használatra.</p>
+    <!-- ==========================================
+         9. FOOTER / KAPCSOLAT
+         ========================================== -->
+    <footer id="kapcsolat" class="page-section">
+      <div class="container" style="height:100%;display:flex;align-items:center;">
+        <div class="footer-wrap" style="width:100%;">
+          <div class="footer-inner">
+            <div class="footer-logo">
+              <div class="nav-logo" onclick="goToSection(0)">
+                <svg class="logo-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="36" height="36" rx="8" fill="#2E6DA4"/>
+                  <!-- L betű -->
+                  <rect x="6" y="10" width="3.5" height="16" rx="1.5" fill="white"/>
+                  <rect x="6" y="22.5" width="10" height="3.5" rx="1.5" fill="white"/>
+                  <!-- B betű – szár (x=19..22.5) -->
+                  <rect x="19" y="10" width="3.5" height="16" rx="1.5" fill="#A8CBEA"/>
+                  <!-- B felső ív – 1px réssel a szártól (x=23.5-től) -->
+                  <path d="M23.5 10 H26 Q30 10 30 14 Q30 18 26 18 H23.5 Z" fill="#A8CBEA"/>
+                  <!-- B alsó ív – 1px réssel a szártól (x=23.5-től) -->
+                  <path d="M23.5 18 H26.5 Q31 18 31 22 Q31 26 26.5 26 H23.5 Z" fill="#A8CBEA"/>
+                </svg>
+                <span class="logo-text">Lean<span>Brothers</span></span>
+              </div>
+              <p class="footer-tagline">Nem automatizáljuk a selejtet. Rendbe tesszük a folyamatot – aztán a megfelelő megoldást hozzuk be.</p>
+            </div>
+            <div class="footer-contact">
+              <h4>Kapcsolat</h4>
+              <a href="/cdn-cgi/l/email-protection#dab2bfb6b6b59ab6bfbbb4b8a8b5aeb2bfa8a9f4b2af">📧 <span class="__cf_email__" data-cfemail="3b535e5757547b575e5a555949544f535e494815534e">[email&#160;protected]</span></a>
+              <a href="tel:+36301234567">📞 +36 30 XXX XXXX</a>
+            </div>
+            <div class="footer-contact">
+              <h4>Navigáció</h4>
+              <a onclick="goToSection(1)" style="cursor:pointer;">A probléma</a>
+              <a onclick="goToSection(2)" style="cursor:pointer;">Módszerünk</a>
+              <a onclick="goToSection(3)" style="cursor:pointer;">Szolgáltatások</a>
+              <a onclick="goToSection(4)" style="cursor:pointer;">Miért mi</a>
+              <a onclick="goToSection(5)" style="cursor:pointer;">Csapat</a>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span>© 2025 LeanBrothers | Minden jog fenntartva</span>
+            <span>Digitális Lean &amp; Automatizáció</span>
+          </div>
+        </div>
+      </div>
     </footer>
 
-    <!-- SCRIPTS -->
-    <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+  </div><!-- /#scroll-wrapper -->
+
+  <!-- Oldalsó pontnavigátor (csak desktop) -->
+  <nav class="section-nav" id="sectionNav" aria-label="Szekció navigátor"></nav>
+
+  <!-- ==========================================
+       JAVASCRIPT
+       ========================================== -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // ==============================================
+    // KONFIGURÁCIÓ
+    // ==============================================
+    const SECTION_IDS    = ['hero','problema','modszer','szolgaltatasok','miert-mi','rolunk','cta','kapcsolat'];
+    const SECTION_LABELS = ['Hero','A probléma','Módszerünk','Szolgáltatások','Miért mi','Csapat','CTA','Kapcsolat'];
+
+    const wrapper    = document.getElementById('scroll-wrapper');
+    const navbar     = document.getElementById('navbar');
+    const sectionNav = document.getElementById('sectionNav');
+    const sections   = SECTION_IDS.map(id => document.getElementById(id)).filter(Boolean);
+    const navLinks   = document.querySelectorAll('.nav-links a');
+
+    let currentIdx  = 0;
+    let isScrolling = false;
+    const isMobile  = () => window.innerWidth <= 768;
+
+    // ==============================================
+    // 1. PONTNAVIGÁTOR FELÉPÍTÉSE
+    // ==============================================
+    sections.forEach((_, i) => {
+      const btn = document.createElement('button');
+      btn.title = SECTION_LABELS[i];
+      btn.setAttribute('aria-label', SECTION_LABELS[i]);
+      btn.addEventListener('click', () => goToSection(i));
+      sectionNav.appendChild(btn);
+    });
+
+    // ==============================================
+    // 2. UI FRISSÍTÉS (nav + pontok)
+    // ==============================================
+    function updateUI() {
+      // Navbar linkek
+      navLinks.forEach(a => {
+        const idx = parseInt(a.getAttribute('data-idx') ?? '-1');
+        a.classList.toggle('active', idx === currentIdx);
+      });
+      // Pontnavigátor
+      sectionNav.querySelectorAll('button').forEach((btn, i) => {
+        btn.classList.toggle('active', i === currentIdx);
+      });
+    }
+
+    // ==============================================
+    // 3. SZEKCIÓ UGRÁS
+    // ==============================================
+    function goToSection(idx) {
+      if (idx < 0 || idx >= sections.length) return;
+      currentIdx = idx;
+
+      if (isMobile()) {
+        // Mobilon: normál window scroll
+        sections[idx].scrollIntoView({ behavior: 'smooth' });
+      } else {
+        // Desktopon: wrapper-en belüli scroll
+        isScrolling = true;
+        wrapper.scrollTo({ top: sections[idx].offsetTop, behavior: 'smooth' });
+        setTimeout(() => { isScrolling = false; }, 850);
+      }
+      updateUI();
+    }
+
+    // ==============================================
+    // 4. EGÉRGÖRGŐ (csak desktop)
+    // ==============================================
+    wrapper.addEventListener('wheel', (e) => {
+      if (isMobile()) return;
+      if (isScrolling) { e.preventDefault(); return; }
+      e.preventDefault();
+      goToSection(e.deltaY > 0 ? currentIdx + 1 : currentIdx - 1);
+    }, { passive: false });
+
+    // ==============================================
+    // 5. BILLENTYŰZET (csak desktop)
+    // ==============================================
+    document.addEventListener('keydown', (e) => {
+      if (isMobile()) return;
+      if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+        e.preventDefault(); goToSection(currentIdx + 1);
+      } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        e.preventDefault(); goToSection(currentIdx - 1);
+      }
+    });
+
+    // ==============================================
+    // 6. INTERSECTION OBSERVER – pozíciókövetés
+    // ==============================================
+    const posObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !isScrolling) {
+          const idx = sections.indexOf(entry.target);
+          if (idx !== -1) { currentIdx = idx; updateUI(); }
         }
+      });
+    }, {
+      root: isMobile() ? null : wrapper,
+      threshold: 0.5
+    });
+    sections.forEach(s => posObserver.observe(s));
 
-        // LEAN CASES Logic
-        function showLeanCase(caseId) {
-            // Toggle Buttons (Inside the unified card header)
-            document.querySelectorAll('.lean-tab-btn').forEach(btn => btn.classList.remove('active'));
-            // Find button that triggered this or manually manage active state
-            // Here we use a simple approach by matching button text or index if strictly controlled,
-            // but clearer is passing `this` or managing by ID.
-            // Since onclick="showLeanCase(...)" is on the button, `event.currentTarget` works.
-            event.currentTarget.classList.add('active');
-            
-            // Toggle Content
-            document.querySelectorAll('.case-card').forEach(card => {
-                card.classList.remove('active');
-                card.classList.add('hidden');
-            });
-            const selected = document.getElementById('lean-' + caseId);
-            if(selected) {
-                selected.classList.remove('hidden');
-                selected.classList.add('active');
-            }
+    // ==============================================
+    // 7. SCROLL-FADE ANIMÁCIÓ
+    // ==============================================
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
         }
+      });
+    }, {
+      root: isMobile() ? null : wrapper,
+      threshold: 0.08
+    });
+    fadeEls.forEach(el => fadeObserver.observe(el));
 
-        // RPA CASES Logic
-        function showRpaCase(caseId) {
-            document.querySelectorAll('.tab-btn-rpa').forEach(btn => btn.classList.remove('active'));
-            event.currentTarget.classList.add('active');
+    // ==============================================
+    // 8. NAVBAR ÁRNYÉK
+    // ==============================================
+    const onScroll = () => {
+      const scrollTop = isMobile() ? window.scrollY : wrapper.scrollTop;
+      navbar.classList.toggle('scrolled', scrollTop > 20);
+    };
+    wrapper.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll);
 
-            document.querySelectorAll('.rpa-card').forEach(card => {
-                card.classList.remove('active');
-                card.classList.add('hidden');
-            });
-            const selected = document.getElementById('rpa-' + caseId);
-            selected.classList.remove('hidden');
-            selected.classList.add('active');
-        }
+    // ==============================================
+    // 9. HAMBURGER MENÜ
+    // ==============================================
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+    function closeMobile() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
 
-        // CHART Logic
-        const roiData = {
-            manufacturing: { savings: 215, cost: 9.4 },
-            finance: { savings: 549, cost: 10.5 },
-            tech: { savings: 110, cost: 6.3 }
-        };
-        let myChart;
+    // Kezdeti állapot
+    updateUI();
+  </script>
 
-        function initChart() {
-            const ctx = document.getElementById('roiChart').getContext('2d');
-            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, 'rgba(251, 191, 36, 0.8)');
-            gradient.addColorStop(1, 'rgba(245, 158, 11, 0.4)');
+  <!--
+  =====================================================
+  ÚJ SZEKCIÓ HOZZÁADÁSÁHOZ – SABLON
+  =====================================================
+  1. Másold be ezt a HTML blokkot a kívánt helyre
+  2. Add a SECTION_IDS és SECTION_LABELS tömbhöz a JS-ben
+  3. Töltsd ki a tartalmat
 
-            myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Befektetés', 'Megtakarítás'],
-                    datasets: [{
-                        data: [9.4, 215],
-                        backgroundColor: ['rgba(148, 163, 184, 0.5)', gradient],
-                        borderRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        y: { beginAtZero: true, grid: { color: '#f1f5f9' } },
-                        x: { grid: { display: false } }
-                    }
-                }
-            });
-        }
-
-        function updateChart(sector) {
-            const data = roiData[sector];
-            document.getElementById('savings-display').innerText = `~${data.savings} M Ft`;
-            
-            document.querySelectorAll('.roi-selector').forEach(btn => {
-                btn.classList.remove('bg-slate-900', 'text-white', 'border-slate-900');
-                btn.classList.add('text-slate-600', 'border-slate-200');
-            });
-            event.currentTarget.classList.remove('text-slate-600', 'border-slate-200');
-            event.currentTarget.classList.add('bg-slate-900', 'text-white', 'border-slate-900');
-
-            myChart.data.datasets[0].data = [data.cost, data.savings];
-            myChart.update();
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            initChart();
-        });
-    </script>
-</body>
-
-</html>
-
+  <section id="uj-szekcion" class="page-section">
+    <div class="container">
+      <div class="section-head center fade-in">
+        <span class="section-label">Kategória</span>
+        <h2 class="section-titl
