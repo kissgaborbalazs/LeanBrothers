@@ -1,0 +1,18 @@
+# =====================================================
+# LeanBrothers – robots.txt
+# Dokumentáció: https://developers.google.com/search/docs/crawling-indexing/robots/intro
+# =====================================================
+
+# Minden crawler engedélyezve
+User-agent: *
+Allow: /
+
+# Sitemap helye (Google automatikusan olvassa)
+Sitemap: https://www.leanbrothers.hu/sitemap.xml
+
+# =====================================================
+# Blokkoltak – ha lesznek nem-publikus mappák, ide kerülnek
+# Példa:
+# Disallow: /admin/
+# Disallow: /draft/
+# =====================================================

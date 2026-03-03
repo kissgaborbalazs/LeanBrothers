@@ -1,0 +1,230 @@
+{
+  "_comment": "LeanBrothers – Magyar tartalom. Szerkeszd szabadon, nem kell kódhoz nyúlni.",
+  "meta": {
+    "title": "LeanBrothers – Lean & AI Tanácsadás KKV-knak | Folyamatoptimalizálás, RPA, Automatizáció",
+    "description": "Magyar KKV-knak nyújtunk független Lean és AI tanácsadást. Feltárjuk a folyamatveszteségeket, ROI kalkulációt készítünk, és a megfelelő automatizációs megoldást hozzuk be – vendor-semleges alapon."
+  },
+  "nav": {
+    "problem": "A probléma",
+    "method": "Módszerünk",
+    "services": "Szolgáltatások",
+    "whyUs": "Miért mi",
+    "team": "Csapat",
+    "faq": "GYIK",
+    "cta": "Vegyük fel a kapcsolatot"
+  },
+  "hero": {
+    "badge": "✶ Digitális Lean & Automatizáció",
+    "title": "Folyamat alapú működés, <em>mérhető</em> eredmények",
+    "subtitle": "Nem technológiát adunk el. Rendet teszünk a folyamatokban – aztán bemutatjuk a megfelelő megoldást.",
+    "ctaPrimary": "Vegyük fel a kapcsolatot",
+    "ctaSecondary": "Hogyan dolgozunk →",
+    "note": "✓ Ingyenes első konzultáció · ✓ Független, vendor-semleges tanácsadás",
+    "cards": [
+      {
+        "label": "Lean Diagnózis",
+        "value": "Folyamatveszteség azonosítva"
+      },
+      {
+        "label": "ROI Kalkuláció",
+        "value": "Megtérülés dokumentálva"
+      },
+      {
+        "label": "AI Bevezetés",
+        "value": "A megfelelő vendor kiválasztva"
+      }
+    ]
+  },
+  "problem": {
+    "label": "Az igazság",
+    "title": "Amit a legtöbb AI-tanácsadó nem mond el",
+    "subtitle": "Mielőtt technológiát vezetnénk be, meg kell érteni, mi az igazi probléma.",
+    "cards": [
+      {
+        "icon": "💸",
+        "title": "A rossz alap kétszeres ár",
+        "text": "Rossz folyamatra épített automatizáció kétszer annyiba kerül – egyszer a bevezetésnél, egyszer a kidobásnál."
+      },
+      {
+        "icon": "🎯",
+        "title": "A vendor mindig megoldást lát",
+        "text": "A vendorok megoldást akarnak eladni – nem a ti problémátokat megoldani. Ebből érdekeik vannak."
+      },
+      {
+        "icon": "📈",
+        "title": "Valós megtérülés = rendezett folyamat",
+        "text": "A megtérülés csak akkor valós, ha a folyamat előbb rendben van. Az automatizáció nem tud csodát tenni."
+      }
+    ]
+  },
+  "method": {
+    "label": "A mi megközelítésünk",
+    "title": "A mi módszerünk: Lean → Dokumentáció → Vendor",
+    "subtitle": "Háromlépéses, bizonyított keretrendszer – amellyel tényleg megtérül a befektetés.",
+    "steps": [
+      {
+        "tag": "Lean Diagnózis",
+        "title": "Feltárjuk a valódi veszteségeket",
+        "text": "Helyszíni felmérés, adatgyűjtés, interjúk. Megmutatjuk, hol folyik el az idő és a pénz."
+      },
+      {
+        "tag": "Dokumentáció",
+        "title": "Dokumentálunk és priorizálunk",
+        "text": "Folyamattérkép, értékáram-térkép, ROI kalkuláció, technológiai javaslat – minden feketén-fehéren."
+      },
+      {
+        "tag": "Vendor Kiválasztás",
+        "title": "A megfelelő partnert hozzuk be",
+        "text": "Független vendor ajánlás, megvalósítás felügyelet. Mi az ön érdekét képviseljük."
+      }
+    ]
+  },
+  "services": {
+    "label": "Belépési pontok",
+    "title": "Három belépési pont – az ön igényei szerint",
+    "subtitle": "Válassza azt, amely illik a vállalata jelenlegi helyzetéhez és igényeihez.",
+    "ctaBtn": "Ingyenes 30 perces konzultáció",
+    "cards": [
+      {
+        "level": "Alap",
+        "name": "Digitális Veszteségfeltárás",
+        "duration": "⏱ 2 nap · Helyszíni + online",
+        "price": "Egyedi ajánlat",
+        "desc": "Független helyzetfelmérés – tudja meg hol tart, milyen veszteségei vannak most.",
+        "featured": false
+      },
+      {
+        "level": "Ajánlott",
+        "name": "Folyamatoptimalizálási Sprint",
+        "duration": "⏱ 5 nap · Teljes audit",
+        "price": "Egyedi ajánlat",
+        "desc": "ROI kalkuláció, értékáram-térkép, folyamattérkép, vendor shortlist – minden amit a döntéshez kell.",
+        "note": "✓ Előzetes diagnózis nélkül is indítható",
+        "featured": true,
+        "badge": "⭐ Ajánlott"
+      },
+      {
+        "level": "Haladó",
+        "name": "Folyamatos Fejlesztési Keret",
+        "duration": "🔄 Havi előfizetés · Folyamatos",
+        "price": "Egyedi ajánlat",
+        "desc": "Vendor felügyelet, visszamérés, kompetencia on-demand – hosszú távú partner.",
+        "featured": false
+      }
+    ]
+  },
+  "whyUs": {
+    "label": "Versenyelőnyünk",
+    "title": "Amit mások nem tudnak adni",
+    "subtitle": "Nem vagyunk resellers, nem vagyunk integrátorok. Független tanácsadók vagyunk – az ön oldalán.",
+    "cards": [
+      {
+        "icon": "🛡️",
+        "title": "100% független tanácsadás",
+        "text": "Nem vagyunk érdekeltek egyetlen vendor sikerében sem – függetlenek maradunk, az ön érdekét képviseljük."
+      },
+      {
+        "icon": "🏢",
+        "title": "Nagyvállalati tudás, KKV áron",
+        "text": "Nagyvállalati RPA és AI tapasztalat – megfizethető, KKV-ra szabott keretrendszerben."
+      },
+      {
+        "icon": "💡",
+        "title": "A Lean önmagában is nyereség",
+        "text": "A folyamatfejlesztés önmagában is nyereség – az automatizáció csak hab a tortán."
+      },
+      {
+        "icon": "⚖️",
+        "title": "AI jogi megfelelőség",
+        "text": "GDPR, AI Act megfelelőség igény szerint – jogszabályi háttér beépítve a javaslatokba."
+      }
+    ]
+  },
+  "team": {
+    "label": "A csapat",
+    "title": "Akik mögötte állnak",
+    "subtitle": "Tapasztalt szakemberek, akik nagyvállalatoknál tanulták a mesterséget – és most KKV-knak adják tovább.",
+    "members": [
+      {
+        "name": "Tóth Zoltán Márton",
+        "role": "Lean Six Sigma Expert & IT Business Analyst",
+        "bio": "20+ éves tapasztalat logisztikai és folyamatoptimalizálási területen. Magyar Postánál vezette a Lean transzformációt, jelenleg MVM-nél IT Business Analyst és Lean Six Sigma folyamatszakértő. Szakterülete az értékáram-elemzés és a döntéstámogatási rendszerek generatív mesterséges intelligenciával történő támogatása és automatizálása. A 2024-es „Business Analyst of the Year: BA team methodological development category” díj nyertese.",
+        "email": "tothzoltanmarton@leanbrothers.hu",
+        "phone": "+36 70 410 4959",
+        "linkedin": "https://www.linkedin.com/in/tothzoltanmarton/",
+        "photo": "img/toth-zoltan-marton.jpg"
+      },
+      {
+        "name": "Kiss Gábor Balázs",
+        "role": "RPA Solution Architect | UiPath & C# Expert",
+        "bio": "„Ha valamit négyszer kell csinálni, automatizálom.” – Magyar Postánál 20 éve dolgozik, ebből 4 éve vezető RPA architektként. Alulról építkezett: operátorból lett vállalati szintű automatizálási szakértő. UiPath, C# és AI-integráció terén skálázható, hosszú távon karbantartható megoldásokat tervez.",
+        "email": "kissgaborbalazs@leanbrothers.hu",
+        "phone": "+36 30 492 3837",
+        "linkedin": "https://www.linkedin.com/in/gabor-balazs-kiss/",
+        "photo": "img/kiss-gabor-balazs.jpg"
+      }
+    ]
+  },
+  "faq": {
+    "label": "Gyakori kérdések",
+    "title": "Amit a legtöbben kérdeznek",
+    "subtitle": "Rövid, őszinte válaszok – mielőtt felvesszük a kapcsolatot.",
+    "items": [
+      {
+        "q": "Mikor érdemes Lean tanácsadót bevonni az automatizáció előtt?",
+        "a": "Akkor, ha az automatizálni kívánt folyamat még nem optimalizált. Rossz folyamatra épített RPA vagy AI kétszer annyiba kerül – egyszer a bevezetésnél, egyszer amikor ki kell dobni. A Lean diagnosztika elvégzése előfeltétele a fenntartható megtérülésnek."
+      },
+      {
+        "q": "Mennyibe kerül egy RPA bevezetés KKV-knak Magyarországon?",
+        "a": "A bevezetés költsége a folyamat komplexitásától és az automatizálandó lépések számától függ. Előzetes Lean diagnosztika és ROI kalkuláció elvégzése után pontosan megtudható, hogy megtérül-e a befektetés. LeanBrothers egyedi ajánlatot ad minden ügyfélnek – az első konzultáció ingyenes."
+      },
+      {
+        "q": "Mi a különbség a Lean tanácsadó és egy RPA/AI vendor között?",
+        "a": "Egy vendor technológiát akar eladni – ebből van érdekeltségük. Egy független Lean tanácsadó, mint a LeanBrothers, nem kötődik egyetlen szállítóhoz sem: először a folyamatot rendezi, ROI-t számol, majd a legmegfelelőbb megoldást ajánlja – amely akár egyáltalán nem igényel szoftvert."
+      },
+      {
+        "q": "Milyen méretű vállalkozásnak ajánlott a folyamatoptimalizálás?",
+        "a": "LeanBrothers elsősorban 50 főnél nagyobb KKV-knak dolgozik, ahol már vannak ismétlődő, kézzel végzett folyamatok (pl. adatrögzítés, riportolás, számlázás), de a cégméret még nem indokol nagy szoftverlicenc-kiadást."
+      },
+      {
+        "q": "Mennyi idő alatt látszanak az első eredmények?",
+        "a": "A Lean diagnózis önmagában – automatizáció nélkül – már az első 2 napban kézzel fogható megtakarításokat azonosít. Az automatizációs projektek általában 6–12 héten belül éles üzembe kerülnek, és a ROI jellemzően 6–18 hónapon belül realizálódik."
+      },
+      {
+        "q": "GDPR és EU AI Act: hogyan érint ez minket a bevezetésnél?",
+        "a": "Az EU AI Act 2024-ben lépett hatályba, és fokozatosan élesedik. Ha személyes adatot érintő vagy döntéstámogató folyamatot automatizálnak, kötelező a megfelelőségi vizsgálat. LeanBrothers az AI jogi megfelelőséget beépíti a vendor-kiválasztási szempontok közé."
+      }
+    ]
+  },
+  "cta": {
+    "label": "Első lépés",
+    "title": "Az első lépés ingyenes –<br>megmutatjuk hol állnak a folyamataik.",
+    "subtitle": "Nincs elkötelezettség, nincs nyomás. Egy 30 perces konzultáció után pontosan tudni fogja, hol tart és mit érdemes tennie.",
+    "btn": "Vegyük fel a kapcsolatot →",
+    "guarantee": "✓ Ingyenes · ✓ Kötelezettség nélkül · ✓ 48 órán belül visszajelzünk"
+  },
+  "footer": {
+    "tagline": "Nem technológiát adunk el. Rendet teszünk a folyamatokban – aztán bemutatjuk a megfelelő megoldást.",
+    "contactHead": "Kapcsolat",
+    "navHead": "Navigáció",
+    "copyright": "© 2026 LeanBrothers | Minden jog fenntartva",
+    "subline": "Digitális Lean & Automatizáció"
+  },
+  "modal": {
+    "label": "Ingyenes konzultáció",
+    "title": "Vegyük fel a kapcsolatot",
+    "subtitle": "48 órán belül visszajelzünk – kötelezettség nélkül.",
+    "fieldName": "Teljes név",
+    "fieldEmail": "Email cím",
+    "fieldCompany": "Cég neve",
+    "fieldSize": "Létszám",
+    "fieldService": "Melyik szolgáltatás érdekli?",
+    "fieldMessage": "Rövid leírás (opcionális)",
+    "consent": "Elfogadom, hogy a LeanBrothers az üzenetemet a kapcsolatfelvétel céljából tárolja és feldolgozza. Adatokat harmadik félnek nem adjuk át.",
+    "submitBtn": "Üzenet elküldése →",
+    "successTitle": "Üzenetét megkaptuk!",
+    "successText": "48 órán belül felvesszük Önnel a kapcsolatot. Addig is, ha sürgős, hívjon minket közvetlenül.",
+    "successBtn": "Köszönöm, bezárom",
+    "errorText": "Hiba történt a küldés közben. Kérjük, írjon közvetlenül az info@leanbrothers.hu címre."
+  }
+}

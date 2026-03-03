@@ -1,737 +1,194 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="hu" id="html-root">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LeanBrothers – Digitális Lean & Automatizáció</title>
+
+  <!-- ==========================================
+       SEO ALAP META TAGEK
+       ========================================== -->
+  <title>LeanBrothers – Lean & AI Tanácsadás KKV-knak | Folyamatoptimalizálás, RPA, Automatizáció</title>
+  <meta name="description" content="Magyar KKV-knak nyújtunk független Lean és AI tanácsadást. Feltárjuk a folyamatveszteségeket, ROI kalkulációt készítünk, és a megfelelő automatizációs megoldást hozzuk be – vendor-semleges alapon. UiPath RPA, folyamatoptimalizálás, AI bevezetés." />
+  <meta name="keywords" content="lean tanácsadás, folyamatoptimalizálás, RPA implementáció, UiPath tanácsadó, AI bevezetés KKV, automatizáció Magyarország, digitális transzformáció, értékáram térkép, üzleti folyamat elemzés, lean six sigma" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="LeanBrothers" />
+  <link rel="canonical" href="https://www.leanbrothers.hu/" />
+
+  <!-- ==========================================
+       HREFLANG – KÉT NYELV
+       ========================================== -->
+  <link rel="alternate" hreflang="hu" href="https://www.leanbrothers.hu/" />
+  <link rel="alternate" hreflang="en" href="https://www.leanbrothers.hu/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.leanbrothers.hu/" />
+
+  <!-- ==========================================
+       OPEN GRAPH (Facebook, LinkedIn megosztás)
+       ========================================== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="LeanBrothers" />
+  <meta property="og:url" content="https://www.leanbrothers.hu/" />
+  <meta property="og:title" content="LeanBrothers – Lean & AI Tanácsadás KKV-knak" />
+  <meta property="og:description" content="Nem technológiát adunk el. Rendet teszünk a folyamatokban – aztán a megfelelő megoldást hozzuk be. Független Lean és RPA tanácsadás magyar KKV-knak." />
+  <meta property="og:image" content="https://www.leanbrothers.hu/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="hu_HU" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <!-- ==========================================
+       TWITTER CARD
+       ========================================== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LeanBrothers – Lean & AI Tanácsadás KKV-knak" />
+  <meta name="twitter:description" content="Független folyamatoptimalizálás és RPA tanácsadás – vendor-semleges, megtérülésre fókuszálva." />
+  <meta name="twitter:image" content="https://www.leanbrothers.hu/og-image.jpg" />
+
+  <!-- ==========================================
+       JSON-LD STRUKTURÁLT ADAT
+       Schema.org ProfessionalService – Google így érti meg a vállalkozást
+       ========================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "LeanBrothers",
+    "url": "https://www.leanbrothers.hu",
+    "logo": "https://www.leanbrothers.hu/logo.png",
+    "image": "https://www.leanbrothers.hu/og-image.jpg",
+    "description": "Független Lean és AI tanácsadás KKV-knak. Folyamatoptimalizálás, RPA implementáció, UiPath fejlesztés és AI bevezetés – vendor-semleges alapon.",
+    "slogan": "Nem technológiát adunk el. Rendet teszünk a folyamatokban.",
+    "foundingDate": "2024",
+    "areaServed": {
+      "@type": "Country",
+      "name": "Hungary"
+    },
+    "serviceType": [
+      "Lean tanácsadás",
+      "Folyamatoptimalizálás",
+      "RPA implementáció",
+      "UiPath fejlesztés",
+      "AI bevezetési tanácsadás",
+      "Digitális transzformáció",
+      "Értékáram elemzés",
+      "Business Process Management"
+    ],
+    "knowsAbout": [
+      "Lean Six Sigma",
+      "RPA",
+      "UiPath",
+      "Folyamatoptimalizálás",
+      "AI integráció",
+      "GDPR megfelelőség",
+      "EU AI Act"
+    ],
+    "employee": [
+      {
+        "@type": "Person",
+        "name": "Tóth Zoltán Márton",
+        "jobTitle": "Lean Six Sigma Expert & IT Business Analyst",
+        "sameAs": "https://www.linkedin.com/in/tothzoltanmarton/"
+      },
+      {
+        "@type": "Person",
+        "name": "Kiss Gábor Balázs",
+        "jobTitle": "RPA Solution Architect",
+        "sameAs": "https://www.linkedin.com/in/gabor-balazs-kiss/"
+      }
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "info@leanbrothers.hu",
+      "availableLanguage": ["Hungarian", "English"]
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Szolgáltatások",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Digitális Veszteségfeltárás",
+            "description": "2 napos független folyamatfelmérés – megmutatjuk hol folynak el az erőforrások."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Folyamatoptimalizálási Sprint",
+            "description": "5 napos teljes audit: ROI kalkuláció, értékáram térkép, folyamattérkép, vendor shortlist."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Folyamatos Fejlesztési Keret",
+            "description": "Havi előfizetéses keretszerződés: vendor felügyelet, visszamérés, on-demand tanácsadás."
+          }
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: FAQ Schema – GYIK szekció a Google rich result-hoz -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Mikor érdemes Lean tanácsadót bevonni az automatizáció előtt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Akkor, ha az automatizálni kívánt folyamat még nem optimalizált. Rossz folyamatra épített RPA vagy AI kétszer annyiba kerül – egyszer a bevezetésnél, egyszer amikor ki kell dobni. A Lean diagnosztika elvégzése előfeltétele a fenntartható megtérülésnek."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Mennyibe kerül egy RPA bevezetés KKV-knak Magyarországon?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A bevezetés költsége a folyamat komplexitásától és az automatizálandó lépések számától függ. Egy előzetes Lean diagnosztika és ROI kalkuláció elvégzése után pontosan megtudható, hogy megtérül-e a befektetés, és milyen időtávon. LeanBrothers egyedi ajánlatot ad minden ügyfélnek."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Mi a különbség a Lean tanácsadó és egy RPA/AI vendor között?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Egy vendor technológiát akar eladni – ebből van érdekeltségük. Egy független Lean tanácsadó, mint a LeanBrothers, nem kötődik egyetlen szállítóhoz sem: először a folyamatot rendezi, ROI-t számol, majd a legmegfelelőbb megoldást ajánlja – amely akár egyáltalán nem igényel szoftvert."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Milyen méretű vállalkozásnak ajánlott a folyamatoptimalizálás?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LeanBrothers elsősorban 50 főnél nagyobb KKV-knak dolgozik, ahol már vannak ismétlődő, kézzel végzett folyamatok (pl. adatrögzítés, riportolás, számlázás, ügyfélkommunikáció), de a cégméret még nem indokol nagy szoftverlicenc-kiadást. Ez az a sáv, ahol a Lean + célzott automatizáció a legtöbbet hozza."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Mennyi idő alatt látszanak az első eredmények?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Lean diagnózis önmagában – automatizáció nélkül – már az első 2 napban kézzel fogható megtakarításokat azonosít. Az automatizációs projektek általában 6-12 héten belül éles üzembe kerülnek, és a ROI jellemzően 6-18 hónapon belül realizálódik."
+        }
+      }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <style>
-    /* ==========================================
-       CSS VÁLTOZÓK – egy helyen módosítható
-       ========================================== */
-    :root {
-      --primary:       #1F4E79;
-      --primary-dark:  #163857;
-      --primary-light: #2E6DA4;
-      --accent:        #D6E4F0;
-      --accent-mid:    #A8CBEA;
-      --white:         #FFFFFF;
-      --gray-light:    #F7F9FC;
-      --gray-mid:      #E2EAF4;
-      --gray-text:     #4A5568;
-      --dark:          #1A202C;
-      --font:          'Inter', sans-serif;
-      --radius:        12px;
-      --shadow:        0 4px 24px rgba(31,78,121,0.10);
-      --shadow-lg:     0 8px 40px rgba(31,78,121,0.16);
-      --transition:    0.3s ease;
-      --max-w:         1140px;
-      --nav-h:         68px;
-    }
-
-    /* ==========================================
-       RESET & ALAP
-       ========================================== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* Desktop: teljes oldalas görgetés */
-    html, body {
-      height: 100%;
-      overflow: hidden;
-    }
-    body {
-      font-family: var(--font);
-      color: var(--dark);
-      background: var(--white);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-    }
-    img { max-width: 100%; display: block; }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-
-    /* ==========================================
-       FULL-PAGE SCROLL WRAPPER
-       Navbar: fixed az oldal tetején
-       Wrapper: pontosan alatta kezdődik, tölti a maradék viewport-ot
-       ========================================== */
-    #scroll-wrapper {
-      position: fixed;
-      top: var(--nav-h);   /* pontosan a navbar alatt */
-      left: 0; right: 0; bottom: 0;
-      overflow-y: scroll;
-      scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;
-      scrollbar-width: none;
-    }
-    #scroll-wrapper::-webkit-scrollbar { display: none; }
-
-    /* Minden szekció = scroll-wrapper teljes látható magassága */
-    .page-section {
-      scroll-snap-align: start;
-      height: 100%;          /* = 100vh - var(--nav-h) */
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-    }
-
-    /* ==========================================
-       SEGÉDOSZTÁLYOK
-       ========================================== */
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 32px;
-      width: 100%;
-    }
-    .section-label {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--primary-light);
-      background: var(--accent);
-      padding: 4px 14px;
-      border-radius: 99px;
-      margin-bottom: 14px;
-    }
-    .section-title {
-      font-size: clamp(1.35rem, 2.4vw, 2.1rem);
-      font-weight: 800;
-      color: var(--primary);
-      line-height: 1.2;
-      margin-bottom: 10px;
-    }
-    .section-sub {
-      font-size: clamp(0.86rem, 1.1vw, 0.98rem);
-      color: var(--gray-text);
-      max-width: 580px;
-    }
-    .section-head { margin-bottom: 32px; }
-    .section-head.center { text-align: center; }
-    .section-head.center .section-sub { margin: 0 auto; }
-
-    /* ==========================================
-       GOMBOK
-       ========================================== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-family: var(--font);
-      font-size: 0.88rem;
-      font-weight: 700;
-      padding: 11px 22px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: var(--transition);
-      border: none;
-      white-space: nowrap;
-    }
-    .btn-primary {
-      background: var(--primary);
-      color: var(--white);
-      box-shadow: 0 4px 16px rgba(31,78,121,0.30);
-    }
-    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
-    .btn-outline {
-      background: transparent;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-    }
-    .btn-outline:hover { background: var(--accent); transform: translateY(-2px); }
-    .btn-white {
-      background: var(--white);
-      color: var(--primary);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-    }
-    .btn-white:hover { background: var(--accent); transform: translateY(-2px); }
-    .btn-full { width: 100%; }
-
-    /* ==========================================
-       SCROLL-FADE ANIMÁCIÓ
-       ========================================== */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    /* ==========================================
-       NAVBAR
-       ========================================== */
-    #navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--gray-mid);
-      transition: box-shadow var(--transition);
-      height: var(--nav-h);
-    }
-    #navbar.scrolled { box-shadow: var(--shadow); }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: var(--nav-h);
-      gap: 16px;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-      cursor: pointer;
-    }
-    .logo-svg { width: 34px; height: 34px; flex-shrink: 0; }
-    .logo-text {
-      font-size: 1.18rem;
-      font-weight: 800;
-      color: var(--primary);
-      letter-spacing: -0.02em;
-      white-space: nowrap;
-    }
-    .logo-text span { color: var(--primary-light); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      flex: 1;
-      justify-content: center;
-    }
-    .nav-links a {
-      font-size: 0.83rem;
-      font-weight: 600;
-      color: var(--gray-text);
-      padding: 6px 10px;
-      border-radius: 6px;
-      transition: var(--transition);
-      white-space: nowrap;
-      cursor: pointer;
-    }
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--primary);
-      background: var(--accent);
-    }
-    .nav-cta { flex-shrink: 0; }
-
-    /* Hamburger gomb */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-      flex-shrink: 0;
-    }
-    .hamburger span {
-      display: block;
-      width: 22px; height: 2px;
-      background: var(--primary);
-      border-radius: 2px;
-      transition: var(--transition);
-    }
-
-    /* Mobil legördülő menü */
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      gap: 2px;
-      padding: 10px 20px 14px;
-      border-top: 1px solid var(--gray-mid);
-      background: var(--white);
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--gray-text);
-      padding: 9px 12px;
-      border-radius: 6px;
-      transition: var(--transition);
-      cursor: pointer;
-    }
-    .mobile-menu a:hover { background: var(--accent); color: var(--primary); }
-    .mobile-menu .btn { margin-top: 6px; }
-
-    /* Oldalsó pontnavigátor (desktop) */
-    .section-nav {
-      position: fixed;
-      right: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 500;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .section-nav button {
-      width: 9px; height: 9px;
-      border-radius: 50%;
-      border: 2px solid rgba(31,78,121,0.5);
-      background: transparent;
-      cursor: pointer;
-      transition: var(--transition);
-      padding: 0;
-    }
-    .section-nav button.active {
-      background: var(--primary);
-      border-color: var(--primary);
-    }
-
-    /* ==========================================
-       1. HERO
-       ========================================== */
-    #hero {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 60%, #0E2A45 100%);
-      color: var(--white);
-    }
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
-    }
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 99px;
-      padding: 5px 14px;
-      font-size: 0.73rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      color: var(--accent);
-      margin-bottom: 18px;
-    }
-    .hero-title {
-      font-size: clamp(1.7rem, 3vw, 2.8rem);
-      font-weight: 800;
-      line-height: 1.12;
-      margin-bottom: 14px;
-      color: var(--white);
-    }
-    .hero-title em { font-style: normal; color: var(--accent-mid); }
-    .hero-sub {
-      font-size: clamp(0.88rem, 1.1vw, 1rem);
-      color: rgba(255,255,255,0.8);
-      max-width: 440px;
-      margin-bottom: 24px;
-    }
-    .hero-cta-group { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .hero-note { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 12px; }
-
-    /* Hero illusztráció – kártya oszlop, nincs átfedés */
-    .hero-visual { display: flex; justify-content: center; align-items: center; }
-    .hero-card-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      width: 280px;
-    }
-    .h-card {
-      background: rgba(255,255,255,0.09);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 14px;
-      padding: 16px 20px;
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-    .h-card:hover { background: rgba(255,255,255,0.14); transform: translateX(4px); }
-    .h-card-icon { font-size: 1.6rem; flex-shrink: 0; }
-    .h-card-label { font-size: 0.67rem; font-weight: 600; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
-    .h-card-value { font-size: 0.88rem; font-weight: 700; color: var(--white); }
-
-    /* ==========================================
-       2. PROBLÉMA
-       ========================================== */
-    #problema { background: var(--white); }
-
-    .problem-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .problem-card {
-      background: var(--gray-light);
-      border: 1px solid var(--gray-mid);
-      border-radius: var(--radius);
-      padding: 26px 22px;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .problem-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--primary-light));
-      border-radius: 3px 3px 0 0;
-      transform: scaleX(0);
-      transition: transform var(--transition);
-    }
-    .problem-card:hover { border-color: var(--accent-mid); box-shadow: var(--shadow); transform: translateY(-3px); }
-    .problem-card:hover::before { transform: scaleX(1); }
-    .problem-icon {
-      width: 44px; height: 44px;
-      background: var(--accent);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.25rem;
-      margin-bottom: 14px;
-    }
-    .problem-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 7px; }
-    .problem-card p { font-size: 0.83rem; color: var(--gray-text); }
-
-    /* ==========================================
-       3. MÓDSZER
-       ========================================== */
-    #modszer { background: var(--gray-light); }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      position: relative;
-    }
-    .steps-grid::before {
-      content: '';
-      position: absolute;
-      top: 34px;
-      left: calc(100% / 6);
-      right: calc(100% / 6);
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent-mid), var(--primary-light), var(--accent-mid));
-      z-index: 0;
-    }
-    .step-item { text-align: center; padding: 0 18px; position: relative; z-index: 1; }
-    .step-num {
-      width: 68px; height: 68px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.25rem; font-weight: 800; color: var(--white);
-      margin: 0 auto 18px;
-      box-shadow: 0 4px 18px rgba(31,78,121,0.3);
-      border: 4px solid var(--gray-light);
-    }
-    .step-item h3 { font-size: 0.96rem; font-weight: 700; color: var(--primary); margin-bottom: 7px; }
-    .step-item p { font-size: 0.83rem; color: var(--gray-text); }
-    .step-tag {
-      display: inline-block;
-      font-size: 0.67rem; font-weight: 700;
-      color: var(--primary-light); background: var(--accent);
-      padding: 2px 9px; border-radius: 99px;
-      margin-bottom: 7px; letter-spacing: 0.06em;
-    }
-
-    /* ==========================================
-       4. SZOLGÁLTATÁSOK
-       ========================================== */
-    #szolgaltatasok { background: var(--white); }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      align-items: start;
-    }
-    .pricing-card {
-      border: 2px solid var(--gray-mid);
-      border-radius: var(--radius);
-      padding: 24px 20px;
-      transition: var(--transition);
-      position: relative;
-    }
-    .pricing-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
-    .pricing-card.featured {
-      border-color: var(--primary);
-      background: var(--primary);
-      color: var(--white);
-      transform: scale(1.03);
-      box-shadow: var(--shadow-lg);
-    }
-    .pricing-card.featured:hover { transform: scale(1.03) translateY(-3px); }
-    .featured-badge {
-      position: absolute;
-      top: -12px; left: 50%; transform: translateX(-50%);
-      background: var(--accent-mid); color: var(--primary-dark);
-      font-size: 0.65rem; font-weight: 800;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 3px 12px; border-radius: 99px; white-space: nowrap;
-    }
-    .pricing-level { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 5px; }
-    .pricing-card:not(.featured) .pricing-level { color: var(--primary-light); }
-    .pricing-card.featured .pricing-level { color: var(--accent-mid); }
-    .pricing-name { font-size: 1.05rem; font-weight: 800; margin-bottom: 4px; }
-    .pricing-card:not(.featured) .pricing-name { color: var(--primary); }
-    .pricing-duration {
-      font-size: 0.78rem; margin-bottom: 12px;
-      padding-bottom: 12px; border-bottom: 1px solid var(--gray-mid);
-    }
-    .pricing-card:not(.featured) .pricing-duration { color: var(--gray-text); }
-    .pricing-card.featured .pricing-duration { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.15); }
-    .pricing-price { font-size: 1.5rem; font-weight: 800; margin-bottom: 2px; }
-    .pricing-card:not(.featured) .pricing-price { color: var(--primary); }
-    .pricing-vat { font-size: 0.72rem; margin-bottom: 12px; }
-    .pricing-card:not(.featured) .pricing-vat { color: var(--gray-text); }
-    .pricing-card.featured .pricing-vat { color: rgba(255,255,255,0.5); }
-    .pricing-desc { font-size: 0.83rem; margin-bottom: 18px; min-height: 36px; }
-    .pricing-card:not(.featured) .pricing-desc { color: var(--gray-text); }
-    .pricing-card.featured .pricing-desc { color: rgba(255,255,255,0.75); }
-    .pricing-note {
-      font-size: 0.76rem;
-      font-weight: 600;
-      color: var(--accent-mid);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .pricing-card:not(.featured) .pricing-note { color: var(--primary-light); }
-
-    /* ==========================================
-       5. MIÉRT MI
-       ========================================== */
-    #miert-mi {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: var(--white);
-    }
-    #miert-mi .section-title { color: var(--white); }
-
-    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .why-card {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: var(--radius);
-      padding: 22px 20px;
-      display: flex; gap: 15px; align-items: flex-start;
-      transition: var(--transition);
-    }
-    .why-card:hover { background: rgba(255,255,255,0.11); }
-    .why-icon {
-      width: 42px; height: 42px; flex-shrink: 0;
-      background: rgba(255,255,255,0.12);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-    }
-    .why-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-    .why-card p { font-size: 0.81rem; color: rgba(255,255,255,0.6); }
-
-    /* ==========================================
-       6. ESETTANULMÁNYOK (rejtett)
-       ========================================== */
-    #esettanulmanyok { display: none !important; }
-
-    /* ==========================================
-       7. CSAPAT
-       ========================================== */
-    #rolunk { background: var(--gray-light); }
-
-    .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
-    .team-card {
-      background: var(--white);
-      border: 1px solid var(--gray-mid);
-      border-radius: var(--radius);
-      padding: 26px 24px;
-      display: flex; gap: 18px; align-items: flex-start;
-      transition: var(--transition);
-    }
-    .team-card:hover { box-shadow: var(--shadow); border-color: var(--accent-mid); }
-    .team-avatar {
-      width: 62px; height: 62px; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; font-weight: 800; color: var(--white);
-    }
-    .team-info h3 { font-size: 0.98rem; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
-    .team-role {
-      display: inline-block;
-      font-size: 0.7rem; font-weight: 700;
-      color: var(--primary-light); background: var(--accent);
-      padding: 2px 9px; border-radius: 99px; margin-bottom: 8px;
-    }
-    .team-info p { font-size: 0.83rem; color: var(--gray-text); }
-
-    /* ==========================================
-       8. ZÁRÓ CTA
-       ========================================== */
-    #cta { background: var(--white); }
-
-    .cta-box {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      border-radius: 20px;
-      padding: 52px 44px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      max-width: 780px;
-      margin: 0 auto;
-    }
-    .cta-box::before {
-      content: '';
-      position: absolute;
-      width: 300px; height: 300px; border-radius: 50%;
-      background: rgba(255,255,255,0.04);
-      top: -80px; right: -80px; pointer-events: none;
-    }
-    .cta-inner { position: relative; z-index: 1; }
-    .cta-box .section-title { color: var(--white); font-size: clamp(1.3rem, 2.2vw, 1.9rem); }
-    .cta-box .section-sub { color: rgba(255,255,255,0.72); margin: 0 auto 24px; }
-    .cta-guarantee { margin-top: 16px; font-size: 0.78rem; color: rgba(255,255,255,0.5); }
-
-    /* ==========================================
-       9. FOOTER / KAPCSOLAT
-       ========================================== */
-    #kapcsolat {
-      background: var(--dark);
-      color: rgba(255,255,255,0.7);
-    }
-    .footer-wrap {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 100%;
-    }
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 28px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-    .footer-logo .logo-text { color: var(--white); }
-    .footer-logo .logo-text span { color: var(--accent-mid); }
-    .footer-tagline { font-size: 0.8rem; margin-top: 9px; max-width: 250px; line-height: 1.5; }
-    .footer-contact h4 {
-      color: var(--white);
-      font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      margin-bottom: 11px;
-    }
-    .footer-contact a {
-      display: block; font-size: 0.83rem;
-      color: rgba(255,255,255,0.55); margin-bottom: 6px;
-      transition: var(--transition);
-    }
-    .footer-contact a:hover { color: var(--accent-mid); }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 18px;
-      font-size: 0.76rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    /* ==========================================
-       RESZPONZÍV – Tablet 900-1024px
-       ========================================== */
-    @media (max-width: 1024px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
-      .section-nav { display: none; }
-    }
-
-    /* ==========================================
-       RESZPONZÍV – Mobil max 768px
-       Normál görgetés: fixed → static wrapper, sticky navbar
-       ========================================== */
-    @media (max-width: 768px) {
-      :root { --nav-h: 58px; }
-
-      html, body { height: auto; overflow: auto; }
-
-      /* Navbar: fixed helyett sticky mobilon */
-      #navbar { position: sticky; }
-
-      /* Wrapper visszaáll normál flow-ba */
-      #scroll-wrapper {
-        position: static;
-        height: auto;
-        overflow: visible;
-        scroll-snap-type: none;
-        scroll-behavior: auto;
-      }
-
-      /* Szekciók normál magasság */
-      .page-section {
-        height: auto;
-        min-height: calc(100svh - var(--nav-h));
-        overflow: visible;
-        padding: 44px 0;
-        justify-content: center;
-      }
-
-      .nav-links, .nav-cta { display: none; }
-      .hamburger { display: flex; }
-      .container { padding: 0 18px; }
-
-      .hero-inner,
-      .problem-grid,
-      .steps-grid,
-      .pricing-grid,
-      .why-grid,
-      .team-grid { grid-template-columns: 1fr; gap: 14px; }
-
-      .steps-grid::before { display: none; }
-      .pricing-card.featured { transform: none; }
-      .pricing-card.featured:hover { transform: translateY(-3px); }
-      .hero-cta-group { flex-direction: column; align-items: stretch; }
-      .hero-cta-group .btn { width: 100%; text-align: center; }
-      .section-head { margin-bottom: 22px; }
-      .cta-box { padding: 32px 20px; border-radius: 14px; }
-      .footer-inner { flex-direction: column; gap: 20px; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .team-card { flex-direction: column; gap: 14px; }
-      .team-avatar { width: 54px; height: 54px; }
-      .why-card { flex-direction: column; gap: 10px; }
-      .section-nav { display: none; }
-    }
-
-    /* ==========================================
-       RESZPONZÍV – Kis mobil max 400px
-       ========================================== */
-    @media (max-width: 400px) {
-      .hero-title { font-size: 1.5rem; }
-      .pricing-price { font-size: 1.3rem; }
-      .step-num { width: 56px; height: 56px; font-size: 1rem; }
-      .container { padding: 0 14px; }
-    }
-  </style>
+  <!-- Design: style.css -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -763,15 +220,22 @@
 
           <!-- Desktop linkek -->
           <ul class="nav-links">
-            <li><a data-idx="1" onclick="goToSection(1)">A probléma</a></li>
-            <li><a data-idx="2" onclick="goToSection(2)">Módszerünk</a></li>
-            <li><a data-idx="3" onclick="goToSection(3)">Szolgáltatások</a></li>
-            <li><a data-idx="4" onclick="goToSection(4)">Miért mi</a></li>
-            <li><a data-idx="5" onclick="goToSection(5)">Csapat</a></li>
+            <li><a data-idx="1" onclick="goToSection(1)" data-i18n="nav.problem" data-hu="A probléma" data-en="The Problem">A probléma</a></li>
+            <li><a data-idx="2" onclick="goToSection(2)" data-i18n="nav.method" data-hu="Módszerünk" data-en="Our Method">Módszerünk</a></li>
+            <li><a data-idx="3" onclick="goToSection(3)" data-i18n="nav.services" data-hu="Szolgáltatások" data-en="Services">Szolgáltatások</a></li>
+            <li><a data-idx="4" onclick="goToSection(4)" data-i18n="nav.whyUs" data-hu="Miért mi" data-en="Why Us">Miért mi</a></li>
+            <li><a data-idx="5" onclick="goToSection(5)" data-i18n="nav.team" data-hu="Csapat" data-en="Team">Csapat</a></li>
+            <li><a data-idx="6" onclick="goToSection(6)" data-i18n="nav.faq" data-hu="GYIK" data-en="FAQ">GYIK</a></li>
           </ul>
 
           <div class="nav-cta">
-            <button class="btn btn-primary" onclick="goToSection(7)">Vegyük fel a kapcsolatot</button>
+            <button class="btn btn-primary" onclick="openModal()" data-i18n="hero.ctaPrimary" data-hu="Vegyük fel a kapcsolatot" data-en="Get in Touch">Vegyük fel a kapcsolatot</button>
+          </div>
+
+          <!-- Nyelv váltó -->
+          <div class="lang-switcher">
+            <button class="lang-btn active" id="btn-hu" onclick="loadLang('hu')">HU</button>
+            <button class="lang-btn" id="btn-en" onclick="loadLang('en')">EN</button>
           </div>
 
           <button class="hamburger" id="hamburger" aria-label="Menü">
@@ -782,12 +246,13 @@
 
       <!-- Mobil menü -->
       <div class="mobile-menu" id="mobileMenu">
-        <a onclick="goToSection(1);closeMobile()">A probléma</a>
-        <a onclick="goToSection(2);closeMobile()">Módszerünk</a>
-        <a onclick="goToSection(3);closeMobile()">Szolgáltatások</a>
-        <a onclick="goToSection(4);closeMobile()">Miért mi</a>
-        <a onclick="goToSection(5);closeMobile()">Csapat</a>
-        <button class="btn btn-primary" onclick="goToSection(7);closeMobile()">Vegyük fel a kapcsolatot</button>
+        <a onclick="goToSection(1);closeMobile()" data-i18n="nav.problem" data-hu="A probléma" data-en="The Problem">A probléma</a>
+        <a onclick="goToSection(2);closeMobile()" data-i18n="nav.method" data-hu="Módszerünk" data-en="Our Method">Módszerünk</a>
+        <a onclick="goToSection(3);closeMobile()" data-i18n="nav.services" data-hu="Szolgáltatások" data-en="Services">Szolgáltatások</a>
+        <a onclick="goToSection(4);closeMobile()" data-i18n="nav.whyUs" data-hu="Miért mi" data-en="Why Us">Miért mi</a>
+        <a onclick="goToSection(5);closeMobile()" data-i18n="nav.team" data-hu="Csapat" data-en="Team">Csapat</a>
+        <a onclick="goToSection(6);closeMobile()" data-i18n="nav.faq" data-hu="GYIK" data-en="FAQ">GYIK</a>
+        <button class="btn btn-primary" onclick="openModal();closeMobile()" data-i18n="hero.ctaPrimary" data-hu="Vegyük fel a kapcsolatot" data-en="Get in Touch">Vegyük fel a kapcsolatot</button>
       </div>
     </nav>
 
@@ -798,22 +263,22 @@
       <div class="container">
         <div class="hero-inner">
           <div class="fade-in">
-            <div class="hero-badge">✦ Digitális Lean &amp; Automatizáció</div>
+            <div class="hero-badge" data-hu="✦ Digitális Lean &amp; Automatizáció" data-en="✦ Digital Lean &amp; Automation">✦ Digitális Lean &amp; Automatizáció</div>
             <h1 class="hero-title">
-              Tudja, hogy kell az <em>AI</em>.<br>
-              De tudja, hol <em>kezdje?</em>
+              <span data-i18n="hero.title" data-hu='Folyamat alapú működés, <em>mérhető</em> eredmények' data-en='Process-driven operations, <em>measurable</em> results'>Folyamat alapú működés, <em>mérhető</em> eredmények</span>
             </h1>
-            <p class="hero-sub">
-              Nem technológiát adunk el. Rendet teszünk a folyamatokban – aztán a megfelelő megoldást hozzuk be.
+            <p class="hero-sub" data-i18n="footer.tagline" data-hu="Nem technológiát adunk el. Rendet teszünk a folyamatokban – aztán bemutatjuk a megfelelő megoldást." data-en="We don't sell technology. We bring order to your processes – then introduce the right solution.">
+              Nem technológiát adunk el. Rendet teszünk a folyamatokban – aztán bemutatjuk a megfelelő megoldást.
             </p>
             <div class="hero-cta-group">
-              <button class="btn btn-white" onclick="goToSection(7)">Vegyük fel a kapcsolatot</button>
+              <button class="btn btn-white" onclick="openModal()" data-i18n="hero.ctaPrimary" data-hu="Vegyük fel a kapcsolatot" data-en="Get in Touch">Vegyük fel a kapcsolatot</button>
               <button class="btn btn-outline" onclick="goToSection(2)"
-                style="color:rgba(255,255,255,0.85);border-color:rgba(255,255,255,0.38);">
+                style="color:rgba(255,255,255,0.85);border-color:rgba(255,255,255,0.38);"
+                data-i18n="hero.ctaSecondary" data-hu="Hogyan dolgozunk →" data-en="How We Work →">
                 Hogyan dolgozunk →
               </button>
             </div>
-            <p class="hero-note">✓ Ingyenes első konzultáció &nbsp;·&nbsp; ✓ Független, vendor-semleges tanácsadás</p>
+            <p class="hero-note" data-hu="✓ Ingyenes első konzultáció &nbsp;·&nbsp; ✓ Független, vendor-semleges tanácsadás" data-en="✓ Free first consultation &nbsp;·&nbsp; ✓ Independent, vendor-neutral advisory">✓ Ingyenes első konzultáció &nbsp;·&nbsp; ✓ Független, vendor-semleges tanácsadás</p>
           </div>
 
           <div class="hero-visual fade-in" style="transition-delay:0.18s">
@@ -821,22 +286,22 @@
               <div class="h-card">
                 <div class="h-card-icon">⚙️</div>
                 <div>
-                  <div class="h-card-label">Lean Diagnózis</div>
-                  <div class="h-card-value">Folyamatveszteség azonosítva</div>
+                  <div class="h-card-label" data-i18n="method.steps.0.tag" data-hu="Lean Diagnózis" data-en="Lean Diagnosis">Lean Diagnózis</div>
+                  <div class="h-card-value" data-i18n="hero.cards.0.value" data-hu="Folyamatveszteség azonosítva" data-en="Process waste identified">Folyamatveszteség azonosítva</div>
                 </div>
               </div>
               <div class="h-card">
                 <div class="h-card-icon">📊</div>
                 <div>
-                  <div class="h-card-label">ROI Kalkuláció</div>
-                  <div class="h-card-value">Megtérülés dokumentálva</div>
+                  <div class="h-card-label" data-i18n="hero.cards.1.label" data-hu="ROI Kalkuláció" data-en="ROI Calculation">ROI Kalkuláció</div>
+                  <div class="h-card-value" data-i18n="hero.cards.1.value" data-hu="Megtérülés dokumentálva" data-en="Return on investment documented">Megtérülés dokumentálva</div>
                 </div>
               </div>
               <div class="h-card">
                 <div class="h-card-icon">🤖</div>
                 <div>
-                  <div class="h-card-label">AI Bevezetés</div>
-                  <div class="h-card-value">A megfelelő vendor kiválasztva</div>
+                  <div class="h-card-label" data-i18n="hero.cards.2.label" data-hu="AI Bevezetés" data-en="AI Implementation">AI Bevezetés</div>
+                  <div class="h-card-value" data-i18n="hero.cards.2.value" data-hu="A megfelelő vendor kiválasztva" data-en="The right vendor selected">A megfelelő vendor kiválasztva</div>
                 </div>
               </div>
             </div>
@@ -851,25 +316,25 @@
     <section id="problema" class="page-section">
       <div class="container">
         <div class="section-head center fade-in">
-          <span class="section-label">Az igazság</span>
-          <h2 class="section-title">Amit a legtöbb AI-tanácsadó nem mond el</h2>
-          <p class="section-sub">Mielőtt technológiát vezetnénk be, meg kell érteni, mi az igazi probléma.</p>
+          <span class="section-label" data-i18n="problem.label" data-hu="Az igazság" data-en="The Truth">Az igazság</span>
+          <h2 class="section-title" data-i18n="problem.title" data-hu="Amit a legtöbb AI-tanácsadó nem mond el" data-en="What most AI consultants won't tell you">Amit a legtöbb AI-tanácsadó nem mond el</h2>
+          <p class="section-sub" data-i18n="problem.subtitle" data-hu="Mielőtt technológiát vezetnénk be, meg kell érteni, mi az igazi probléma." data-en="Before implementing technology, we need to understand the real problem.">Mielőtt technológiát vezetnénk be, meg kell érteni, mi az igazi probléma.</p>
         </div>
         <div class="problem-grid">
           <article class="problem-card fade-in" style="transition-delay:0.06s">
             <div class="problem-icon">💸</div>
-            <h3>A rossz alap kétszeres ár</h3>
-            <p>Rossz folyamatra épített automatizáció kétszer annyiba kerül – egyszer a bevezetésnél, egyszer a kidobásnál.</p>
+            <h3 data-i18n="problem.cards.0.title" data-hu="A rossz alap kétszeres ár" data-en="A bad foundation costs double">A rossz alap kétszeres ár</h3>
+            <p data-i18n="problem.cards.0.text" data-hu="Rossz folyamatra épített automatizáció kétszer annyiba kerül – egyszer a bevezetésnél, egyszer a kidobásnál." data-en="Automation built on flawed processes costs twice as much – once to implement, once to discard.">Rossz folyamatra épített automatizáció kétszer annyiba kerül – egyszer a bevezetésnél, egyszer a kidobásnál.</p>
           </article>
           <article class="problem-card fade-in" style="transition-delay:0.13s">
             <div class="problem-icon">🎯</div>
-            <h3>A vendor mindig megoldást lát</h3>
-            <p>A vendorok megoldást akarnak eladni – nem a ti problémátokat megoldani. Ebből érdekeik vannak.</p>
+            <h3 data-i18n="problem.cards.1.title" data-hu="A vendor mindig megoldást lát" data-en="Vendors always see a sale">A vendor mindig megoldást lát</h3>
+            <p data-i18n="problem.cards.1.text" data-hu="A vendorok megoldást akarnak eladni – nem a ti problémátokat megoldani. Ebből érdekeik vannak." data-en="Vendors want to sell solutions – not solve your problems. They have a vested interest in that.">A vendorok megoldást akarnak eladni – nem a ti problémátokat megoldani. Ebből érdekeik vannak.</p>
           </article>
           <article class="problem-card fade-in" style="transition-delay:0.20s">
             <div class="problem-icon">📈</div>
-            <h3>Valós megtérülés = rendezett folyamat</h3>
-            <p>A megtérülés csak akkor valós, ha a folyamat előbb rendben van. Az automatizáció nem tud csodát tenni.</p>
+            <h3 data-i18n="problem.cards.2.title" data-hu="Valós megtérülés = rendezett folyamat" data-en="Real ROI = ordered processes">Valós megtérülés = rendezett folyamat</h3>
+            <p data-i18n="problem.cards.2.text" data-hu="A megtérülés csak akkor valós, ha a folyamat előbb rendben van. Az automatizáció nem tud csodát tenni." data-en="ROI is only real when the process is in order first. Automation cannot work miracles.">A megtérülés csak akkor valós, ha a folyamat előbb rendben van. Az automatizáció nem tud csodát tenni.</p>
           </article>
         </div>
       </div>
@@ -881,28 +346,28 @@
     <section id="modszer" class="page-section">
       <div class="container">
         <div class="section-head center fade-in">
-          <span class="section-label">A mi megközelítésünk</span>
-          <h2 class="section-title">A mi módszerünk: Lean → Dokumentáció → Vendor</h2>
-          <p class="section-sub">Három lépéses, bizonyított keretrendszer – amellyel tényleg megtérül a befektetés.</p>
+          <span class="section-label" data-i18n="method.label" data-hu="A mi megközelítésünk" data-en="Our Approach">A mi megközelítésünk</span>
+          <h2 class="section-title" data-i18n="method.title" data-hu="A mi módszerünk: Lean → Dokumentáció → Vendor" data-en="Our Method: Lean → Documentation → Vendor">A mi módszerünk: Lean → Dokumentáció → Vendor</h2>
+          <p class="section-sub" data-i18n="method.subtitle" data-hu="Háromlépéses, bizonyított keretrendszer – amellyel tényleg megtérül a befektetés." data-en="A three-step, proven framework – where investments actually pay off.">Háromlépéses, bizonyított keretrendszer – amellyel tényleg megtérül a befektetés.</p>
         </div>
         <div class="steps-grid">
           <div class="step-item fade-in" style="transition-delay:0.06s">
             <div class="step-num">1</div>
-            <span class="step-tag">Lean Diagnózis</span>
-            <h3>Feltárjuk a valódi veszteségeket</h3>
-            <p>Helyszíni felmérés, adatgyűjtés, interjúk. Megmutatjuk, hol foly el az idő és a pénz.</p>
+            <span class="step-tag" data-i18n="method.steps.0.tag" data-hu="Lean Diagnózis" data-en="Lean Diagnosis">Lean Diagnózis</span>
+            <h3 data-i18n="method.steps.0.title" data-hu="Feltárjuk a valódi veszteségeket" data-en="We uncover the real losses">Feltárjuk a valódi veszteségeket</h3>
+            <p data-i18n="method.steps.0.text" data-hu="Helyszíni felmérés, adatgyűjtés, interjúk. Megmutatjuk, hol folyik el az idő és a pénz." data-en="On-site assessment, data collection, interviews. We show you where time and money are being lost.">Helyszíni felmérés, adatgyűjtés, interjúk. Megmutatjuk, hol folyik el az idő és a pénz.</p>
           </div>
           <div class="step-item fade-in" style="transition-delay:0.13s">
             <div class="step-num">2</div>
-            <span class="step-tag">Dokumentáció</span>
-            <h3>Dokumentálunk és priorizálunk</h3>
-            <p>Folyamattérkép, ROI kalkuláció, technológiai javaslat – minden feketén-fehéren.</p>
+            <span class="step-tag" data-i18n="method.steps.1.tag" data-hu="Dokumentáció" data-en="Documentation">Dokumentáció</span>
+            <h3 data-i18n="method.steps.1.title" data-hu="Dokumentálunk és priorizálunk" data-en="We document and prioritize">Dokumentálunk és priorizálunk</h3>
+            <p data-i18n="method.steps.1.text" data-hu="Folyamattérkép, értékáram-térkép, ROI kalkuláció, technológiai javaslat – minden feketén-fehéren." data-en="Process map, value stream map, ROI calculation, technology proposal – everything in black and white.">Folyamattérkép, értékáram-térkép, ROI kalkuláció, technológiai javaslat – minden feketén-fehéren.</p>
           </div>
           <div class="step-item fade-in" style="transition-delay:0.20s">
             <div class="step-num">3</div>
-            <span class="step-tag">Vendor Kiválasztás</span>
-            <h3>A megfelelő partnert hozzuk be</h3>
-            <p>Független vendor ajánlás, megvalósítás felügyelet. Mi az ön érdekét képviseljük.</p>
+            <span class="step-tag" data-i18n="method.steps.2.tag" data-hu="Vendor Kiválasztás" data-en="Vendor Selection">Vendor Kiválasztás</span>
+            <h3 data-i18n="method.steps.2.title" data-hu="A megfelelő partnert hozzuk be" data-en="We bring in the right partner">A megfelelő partnert hozzuk be</h3>
+            <p data-i18n="method.steps.2.text" data-hu="Független vendor ajánlás, megvalósítás felügyelet. Mi az ön érdekét képviseljük." data-en="Independent vendor recommendation, implementation oversight. We represent your interests.">Független vendor ajánlás, megvalósítás felügyelet. Mi az ön érdekét képviseljük.</p>
           </div>
         </div>
       </div>
@@ -914,38 +379,36 @@
     <section id="szolgaltatasok" class="page-section">
       <div class="container">
         <div class="section-head center fade-in">
-          <span class="section-label">Árazás</span>
-          <h2 class="section-title">Három belépési pont – a te tempódban</h2>
-          <p class="section-sub">Válassza azt, amely illik a vállalata jelenlegi helyzetéhez és igényeihez.</p>
+          <span class="section-label" data-i18n="services.label" data-hu="Belépési pontok" data-en="Entry Points">Belépési pontok</span>
+          <h2 class="section-title" data-i18n="services.title" data-hu="Három belépési pont – az ön igényei szerint" data-en="Three entry points – tailored to your needs">Három belépési pont – az ön igényei szerint</h2>
+          <p class="section-sub" data-i18n="services.subtitle" data-hu="Válassza azt, amely illik a vállalata jelenlegi helyzetéhez és igényeihez." data-en="Choose the one that fits your company's current situation and needs.">Válassza azt, amely illik a vállalata jelenlegi helyzetéhez és igényeihez.</p>
         </div>
         <div class="pricing-grid">
           <article class="pricing-card fade-in" style="transition-delay:0.06s">
-            <div class="pricing-level">Alap</div>
-            <div class="pricing-name">Digitális Veszteségfeltárás</div>
-            <div class="pricing-duration">⏱ 2 nap &nbsp;·&nbsp; Helyszíni + online</div>
-            <div class="pricing-price">350 000 Ft</div>
-            <div class="pricing-vat">+ ÁFA</div>
-            <div class="pricing-desc">Független helyzetfelmérés – tudja meg hol tart, milyen veszteségei vannak most.</div>
-            <button class="btn btn-outline btn-full" onclick="goToSection(7)">Ingyenes 30 perces konzultáció</button>
+            <div class="pricing-level" data-i18n="services.cards.0.level" data-hu="Alap" data-en="Basic">Alap</div>
+            <div class="pricing-name" data-i18n="services.cards.0.name" data-hu="Digitális Veszteségfeltárás" data-en="Digital Waste Discovery">Digitális Veszteségfeltárás</div>
+            <div class="pricing-duration" data-hu="⏱ 2 nap &nbsp;·&nbsp; Helyszíni + online" data-en="⏱ 2 days &nbsp;·&nbsp; On-site + online">⏱ 2 nap &nbsp;·&nbsp; Helyszíni + online</div>
+            <div class="pricing-price" data-i18n="services.cards.2.price" data-hu="Egyedi ajánlat" data-en="Custom quote">Egyedi ajánlat</div>
+            <div class="pricing-desc" data-i18n="services.cards.0.desc" data-hu="Független helyzetfelmérés – tudja meg hol tart, milyen veszteségei vannak most." data-en="Independent situation assessment – find out where you stand and what waste you have today.">Független helyzetfelmérés – tudja meg hol tart, milyen veszteségei vannak most.</div>
+            <button class="btn btn-outline btn-full" onclick="openModal()" data-i18n="services.ctaBtn" data-hu="Ingyenes 30 perces konzultáció" data-en="Free 30-min Consultation">Ingyenes 30 perces konzultáció</button>
           </article>
           <article class="pricing-card featured fade-in" style="transition-delay:0.13s">
-            <span class="featured-badge">⭐ Ajánlott</span>
-            <div class="pricing-level">Ajánlott</div>
-            <div class="pricing-name">Folyamatoptimalizálási Sprint</div>
-            <div class="pricing-duration">⏱ 5 nap &nbsp;·&nbsp; Teljes audit</div>
-            <div class="pricing-price">Egyedi ajánlat</div>
-            <div class="pricing-desc">ROI kalkuláció, folyamattérkép, vendor shortlist – minden amit a döntéshez kell.</div>
-            <div class="pricing-note">✓ Előzetes diagnózis nélkül is indítható</div>
-            <button class="btn btn-white btn-full" onclick="goToSection(7)">Ingyenes 30 perces konzultáció</button>
+            <span class="featured-badge" data-i18n="services.cards.1.badge" data-hu="⭐ Ajánlott" data-en="⭐ Recommended">⭐ Ajánlott</span>
+            <div class="pricing-level" data-i18n="services.cards.1.level" data-hu="Ajánlott" data-en="Recommended">Ajánlott</div>
+            <div class="pricing-name" data-i18n="services.cards.1.name" data-hu="Folyamatoptimalizálási Sprint" data-en="Process Optimization Sprint">Folyamatoptimalizálási Sprint</div>
+            <div class="pricing-duration" data-hu="⏱ 5 nap &nbsp;·&nbsp; Teljes audit" data-en="⏱ 5 days &nbsp;·&nbsp; Full audit">⏱ 5 nap &nbsp;·&nbsp; Teljes audit</div>
+            <div class="pricing-price" data-i18n="services.cards.2.price" data-hu="Egyedi ajánlat" data-en="Custom quote">Egyedi ajánlat</div>
+            <div class="pricing-desc" data-i18n="services.cards.1.desc" data-hu="ROI kalkuláció, értékáram-térkép, folyamattérkép, vendor shortlist – minden amit a döntéshez kell." data-en="ROI calculation, value stream map, process map, vendor shortlist – everything needed to decide.">ROI kalkuláció, értékáram-térkép, folyamattérkép, vendor shortlist – minden amit a döntéshez kell.</div>
+            <div class="pricing-note" data-i18n="services.cards.1.note" data-hu="✓ Előzetes diagnózis nélkül is indítható" data-en="✓ Can start without prior diagnosis">✓ Előzetes diagnózis nélkül is indítható</div>
+            <button class="btn btn-white btn-full" onclick="openModal()" data-i18n="services.ctaBtn" data-hu="Ingyenes 30 perces konzultáció" data-en="Free 30-min Consultation">Ingyenes 30 perces konzultáció</button>
           </article>
           <article class="pricing-card fade-in" style="transition-delay:0.20s">
-            <div class="pricing-level">Haladó</div>
-            <div class="pricing-name">Folyamatos Fejlesztési Keret</div>
-            <div class="pricing-duration">🔄 Havi előfizetés &nbsp;·&nbsp; Folyamatos</div>
-            <div class="pricing-price">380 000 Ft-tól</div>
-            <div class="pricing-vat">+ ÁFA / hó</div>
-            <div class="pricing-desc">Vendor felügyelet, visszamérés, kompetencia on-demand – hosszú távú partner.</div>
-            <button class="btn btn-outline btn-full" onclick="goToSection(7)">Ingyenes 30 perces konzultáció</button>
+            <div class="pricing-level" data-i18n="services.cards.2.level" data-hu="Haladó" data-en="Advanced">Haladó</div>
+            <div class="pricing-name" data-i18n="services.cards.2.name" data-hu="Folyamatos Fejlesztési Keret" data-en="Continuous Improvement Framework">Folyamatos Fejlesztési Keret</div>
+            <div class="pricing-duration" data-hu="🔄 Havi előfizetés &nbsp;·&nbsp; Folyamatos" data-en="🔄 Monthly subscription &nbsp;·&nbsp; Ongoing">🔄 Havi előfizetés &nbsp;·&nbsp; Folyamatos</div>
+            <div class="pricing-price" data-i18n="services.cards.2.price" data-hu="Egyedi ajánlat" data-en="Custom quote">Egyedi ajánlat</div>
+            <div class="pricing-desc" data-i18n="services.cards.2.desc" data-hu="Vendor felügyelet, visszamérés, kompetencia on-demand – hosszú távú partner." data-en="Vendor oversight, re-measurement, on-demand expertise – long-term partnership.">Vendor felügyelet, visszamérés, kompetencia on-demand – hosszú távú partner.</div>
+            <button class="btn btn-outline btn-full" onclick="openModal()" data-i18n="services.ctaBtn" data-hu="Ingyenes 30 perces konzultáció" data-en="Free 30-min Consultation">Ingyenes 30 perces konzultáció</button>
           </article>
         </div>
       </div>
@@ -957,26 +420,38 @@
     <section id="miert-mi" class="page-section">
       <div class="container">
         <div class="section-head fade-in">
-          <span class="section-label" style="background:rgba(255,255,255,0.12);color:var(--accent);">Versenyelőnyünk</span>
-          <h2 class="section-title">Amit mások nem tudnak adni</h2>
-          <p class="section-sub" style="color:rgba(255,255,255,0.7);">Nem vagyunk resellers, nem vagyunk integrátorok. Független tanácsadók vagyunk – az ön oldalán.</p>
+          <span class="section-label" style="background:rgba(255,255,255,0.12);color:var(--accent);" data-i18n="whyUs.label" data-hu="Versenyelőnyünk" data-en="Our Edge">Versenyelőnyünk</span>
+          <h2 class="section-title" data-i18n="whyUs.title" data-hu="Amit mások nem tudnak adni" data-en="What others can't offer">Amit mások nem tudnak adni</h2>
+          <p class="section-sub" style="color:rgba(255,255,255,0.7);" data-i18n="whyUs.subtitle" data-hu="Nem vagyunk resellers, nem vagyunk integrátorok. Független tanácsadók vagyunk – az ön oldalán." data-en="We are not resellers, we are not integrators. We are independent consultants – on your side.">Nem vagyunk resellers, nem vagyunk integrátorok. Független tanácsadók vagyunk – az ön oldalán.</p>
         </div>
         <div class="why-grid">
           <div class="why-card fade-in" style="transition-delay:0.06s">
             <div class="why-icon">🛡️</div>
-            <div><h3>100% független tanácsadás</h3><p>Nem vagyunk érdekeltek egyetlen vendor sikerében sem – független maradunk, az ön érdekét képviseljük.</p></div>
+            <div>
+              <h3 data-i18n="whyUs.cards.0.title" data-hu="100% független tanácsadás" data-en="100% Independent Advisory">100% független tanácsadás</h3>
+              <p data-i18n="whyUs.cards.0.text" data-hu="Nem vagyunk érdekeltek egyetlen vendor sikerében sem – függetlenek maradunk, az ön érdekét képviseljük." data-en="We have no stake in any vendor's success – we stay independent and represent your interests.">Nem vagyunk érdekeltek egyetlen vendor sikerében sem – függetlenek maradunk, az ön érdekét képviseljük.</p>
+            </div>
           </div>
           <div class="why-card fade-in" style="transition-delay:0.13s">
             <div class="why-icon">🏢</div>
-            <div><h3>Nagyvállalati tudás, KKV áron</h3><p>Nagyvállalati RPA és AI tapasztalat – megfizethető, KKV-ra szabott keretrendszerben hozva el.</p></div>
+            <div>
+              <h3 data-i18n="whyUs.cards.1.title" data-hu="Nagyvállalati tudás, KKV áron" data-en="Enterprise knowledge, SME pricing">Nagyvállalati tudás, KKV áron</h3>
+              <p data-i18n="whyUs.cards.1.text" data-hu="Nagyvállalati RPA és AI tapasztalat – megfizethető, KKV-ra szabott keretrendszerben." data-en="Enterprise-grade RPA and AI experience – in an affordable, SME-tailored framework.">Nagyvállalati RPA és AI tapasztalat – megfizethető, KKV-ra szabott keretrendszerben.</p>
+            </div>
           </div>
           <div class="why-card fade-in" style="transition-delay:0.20s">
             <div class="why-icon">💡</div>
-            <div><h3>A Lean önmagában is nyereség</h3><p>A folyamatfejlesztés önmagában is nyereség – az automatizáció csak hab a tortán. Már az audit megtérül.</p></div>
+            <div>
+              <h3 data-i18n="whyUs.cards.2.title" data-hu="A Lean önmagában is nyereség" data-en="Lean alone is already profit">A Lean önmagában is nyereség</h3>
+              <p data-i18n="whyUs.cards.2.text" data-hu="A folyamatfejlesztés önmagában is nyereség – az automatizáció csak hab a tortán." data-en="Process improvement is a profit in itself – automation is just the icing on the cake.">A folyamatfejlesztés önmagában is nyereség – az automatizáció csak hab a tortán.</p>
+            </div>
           </div>
           <div class="why-card fade-in" style="transition-delay:0.27s">
             <div class="why-icon">⚖️</div>
-            <div><h3>AI jogi megfelelőség</h3><p>GDPR, AI Act megfelelőség igény szerint – jogszabályi háttér beépítve a javaslatokba.</p></div>
+            <div>
+              <h3 data-i18n="whyUs.cards.3.title" data-hu="AI jogi megfelelőség" data-en="AI Legal Compliance">AI jogi megfelelőség</h3>
+              <p data-i18n="whyUs.cards.3.text" data-hu="GDPR, AI Act megfelelőség igény szerint – jogszabályi háttér beépítve a javaslatokba." data-en="GDPR, AI Act compliance on demand – regulatory background built into every recommendation.">GDPR, AI Act megfelelőség igény szerint – jogszabályi háttér beépítve a javaslatokba.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -998,25 +473,35 @@
     <section id="rolunk" class="page-section">
       <div class="container">
         <div class="section-head center fade-in">
-          <span class="section-label">A csapat</span>
-          <h2 class="section-title">Akik mögötte állnak</h2>
-          <p class="section-sub">Tapasztalt szakemberek, akik nagyvállalatoknál tanulták a mesterséget – és most KKV-knak adják tovább.</p>
+          <span class="section-label" data-i18n="team.label" data-hu="A csapat" data-en="The Team">A csapat</span>
+          <h2 class="section-title" data-i18n="team.title" data-hu="Akik mögötte állnak" data-en="The people behind it">Akik mögötte állnak</h2>
+          <p class="section-sub" data-i18n="team.subtitle" data-hu="Tapasztalt szakemberek, akik nagyvállalatoknál tanulták a mesterséget – és most KKV-knak adják tovább." data-en="Experienced professionals who learned their craft at large enterprises – and now share it with SMEs.">Tapasztalt szakemberek, akik nagyvállalatoknál tanulták a mesterséget – és most KKV-knak adják tovább.</p>
         </div>
         <div class="team-grid">
           <article class="team-card fade-in" style="transition-delay:0.06s">
-            <div class="team-avatar">TZ</div>
+            <div class="team-avatar"><img src="img/toth-zoltan-marton.jpg" alt="Tóth Zoltán Márton" width="72" height="72" loading="lazy" /></div>
             <div class="team-info">
               <h3>Tóth Zoltán Márton</h3>
-              <span class="team-role">Lean + AI Expert</span>
-              <p>Rövid bemutatkozó mondat – töltse ki saját szavaival, ami a leginkább megragadja a szaktudást és hozzáállást.</p>
+              <span class="team-role" data-i18n="team.members.0.role" data-hu="Lean Six Sigma Expert & IT Business Analyst" data-en="Lean Six Sigma Expert & IT Business Analyst">Lean Six Sigma Expert & IT Business Analyst</span>
+              <p data-i18n="team.members.0.bio" data-hu="20+ éves tapasztalat logisztikai és folyamatoptimalizálási területen. Magyar Postánál vezette a Lean transzformációt, jelenleg MVM-nél IT Business Analyst és Lean Six Sigma folyamatszakértő. Szakterülete az értékáram-elemzés és a döntéstámogatási rendszerek generatív mesterséges intelligenciával történő támogatása és automatizálása. A 2024-es „Business Analyst of the Year: BA team methodological development categorty" díj nyertese." data-en="20+ years of experience in logistics and process optimization. Led the Lean transformation at Magyar Posta, currently IT Business Analyst and Lean Six Sigma process expert at MVM. Specializes in value stream analysis and supporting decision systems with generative AI. Winner of the 2024 'Business Analyst of the Year: BA team methodological development category' award.">20+ éves tapasztalat logisztikai és folyamatoptimalizálási területen. Magyar Postánál vezette a Lean transzformációt, jelenleg MVM-nél IT Business Analyst és Lean Six Sigma folyamatszakértő. Szakterülete az értékáram-elemzés és a döntéstámogatási rendszerek generatív mesterséges intelligenciával történő támogatása és automatizálása. A 2024-es „Business Analyst of the Year: BA team methodological development categorty" díj nyertese.</p>
+              <div class="team-links">
+                <a href="/cdn-cgi/l/email-protection#2c58435844564340584d42414d5e5843426c40494d424e5e435844495e5f024459" class="team-link">📧 <span class="__cf_email__" data-cfemail="176378637f6d787b6376797a7665637879577b727679756578637f726564397f62">[email&#160;protected]</span></a>
+                <a href="tel:+36704104959" class="team-link">📞 +36 70 410 4959</a>
+                <a href="https://www.linkedin.com/in/tothzoltanmarton/" target="_blank" rel="noopener" class="team-link">🔗 LinkedIn</a>
+              </div>
             </div>
           </article>
           <article class="team-card fade-in" style="transition-delay:0.13s">
-            <div class="team-avatar">KG</div>
+            <div class="team-avatar"><img src="img/kiss-gabor-balazs.jpg" alt="Kiss Gábor Balázs" width="72" height="72" loading="lazy" /></div>
             <div class="team-info">
               <h3>Kiss Gábor Balázs</h3>
-              <span class="team-role">RPA Architect</span>
-              <p>Rövid bemutatkozó mondat – töltse ki saját szavaival, ami a leginkább megragadja a szaktudást és hozzáállást.</p>
+              <span class="team-role" data-i18n="team.members.1.role" data-hu="RPA Solution Architect | UiPath & C# Expert" data-en="RPA Solution Architect | UiPath & C# Expert">RPA Solution Architect | UiPath & C# Expert</span>
+              <p data-i18n="team.members.1.bio" data-hu="&bdquo;Ha valamit négyszer kell csinálni, automatizálom.&rdquo; – Magyar Postánál 20 éve dolgozik, ebből 4 éve vezető RPA architektként. Alulról építkezett: operátorból lett vállalati szintű automatizálási szakértő. UiPath, C# és AI-integráció terén skálázható, hosszú távon karbantartható megoldásokat tervez." data-en="&ldquo;If something has to be done four times, I automate it.&rdquo; – Has worked at Magyar Posta for 20 years, 4 of which as a lead RPA architect. Built from the ground up: from operator to enterprise-level automation expert. Designs scalable, long-term maintainable solutions in UiPath, C# and AI integration.">„Ha valamit négyszer kell csinálni, automatizálom." – Magyar Postánál 20 éve dolgozik, ebből 4 éve vezető RPA architektként. Alulról építkezett: operátorból lett vállalati szintű automatizálási szakértő. UiPath, C# és AI-integráció terén skálázható, hosszú távon karbantartható megoldásokat tervez.</p>
+              <div class="team-links">
+                <a href="/cdn-cgi/l/email-protection#c2a9abb1b1a5a3a0adb0a0a3aea3b8b182aea7a3aca0b0adb6aaa7b0b1ecaab7" class="team-link">📧 <span class="__cf_email__" data-cfemail="aec5c7ddddc9cfccc1dccccfc2cfd4ddeec2cbcfc0ccdcc1dac6cbdcdd80c6db">[email&#160;protected]</span></a>
+                <a href="tel:+36304923837" class="team-link">📞 +36 30 492 3837</a>
+                <a href="https://www.linkedin.com/in/gabor-balazs-kiss/" target="_blank" rel="noopener" class="team-link">🔗 LinkedIn</a>
+              </div>
             </div>
           </article>
         </div>
@@ -1024,19 +509,95 @@
     </section>
 
     <!-- ==========================================
+         GYIK – Gyakran Ismételt Kérdések
+         SEO: FAQ Schema rich result + long-tail kulcsszavak
+         ========================================== -->
+    <section id="gyik" class="page-section">
+      <div class="container">
+        <div class="section-head center fade-in">
+          <span class="section-label"
+            data-i18n="faq.label" data-hu="Gyakori kérdések" data-en="FAQ">Gyakori kérdések</span>
+          <h2 class="section-title"
+            data-i18n="faq.title" data-hu="Amit a legtöbben kérdeznek" data-en="What people ask most">Amit a legtöbben kérdeznek</h2>
+          <p class="section-sub"
+            data-i18n="faq.subtitle" data-hu="Kattints egy kérdésre a válaszért."
+            data-en="Click a question to read the answer.">Kattints egy kérdésre a válaszért.</p>
+        </div>
+
+        <div class="faq-grid" id="faqGrid">
+
+          <div class="faq-item fade-in" style="transition-delay:0.05s" onclick="openFaqModal(0)">
+            <button class="faq-q"
+              data-i18n="faq.items.0.q"
+              data-hu="Mikor érdemes Lean tanácsadót bevonni az automatizáció előtt?"
+              data-en="When should you involve a Lean consultant before automation?">
+              Mikor érdemes Lean tanácsadót bevonni az automatizáció előtt?
+            </button>
+          </div>
+
+          <div class="faq-item fade-in" style="transition-delay:0.10s" onclick="openFaqModal(1)">
+            <button class="faq-q"
+              data-i18n="faq.items.1.q"
+              data-hu="Mennyibe kerül egy RPA bevezetés KKV-knak Magyarországon?"
+              data-en="What does an RPA implementation cost for Hungarian SMEs?">
+              Mennyibe kerül egy RPA bevezetés KKV-knak Magyarországon?
+            </button>
+          </div>
+
+          <div class="faq-item fade-in" style="transition-delay:0.15s" onclick="openFaqModal(2)">
+            <button class="faq-q"
+              data-i18n="faq.items.2.q"
+              data-hu="Mi a különbség a Lean tanácsadó és egy RPA/AI vendor között?"
+              data-en="What’s the difference between a Lean consultant and an RPA/AI vendor?">
+              Mi a különbség a Lean tanácsadó és egy RPA/AI vendor között?
+            </button>
+          </div>
+
+          <div class="faq-item fade-in" style="transition-delay:0.20s" onclick="openFaqModal(3)">
+            <button class="faq-q"
+              data-i18n="faq.items.3.q"
+              data-hu="Milyen méretű vállalkozásnak ajánlott a folyamatoptimalizálás?"
+              data-en="What size company benefits most from process optimization?">
+              Milyen méretű vállalkozásnak ajánlott a folyamatoptimalizálás?
+            </button>
+          </div>
+
+          <div class="faq-item fade-in" style="transition-delay:0.25s" onclick="openFaqModal(4)">
+            <button class="faq-q"
+              data-i18n="faq.items.4.q"
+              data-hu="Mennyi idő alatt látszanak az első eredmények?"
+              data-en="How soon will we see the first results?">
+              Mennyi idő alatt látszanak az első eredmények?
+            </button>
+          </div>
+
+          <div class="faq-item fade-in" style="transition-delay:0.30s" onclick="openFaqModal(5)">
+            <button class="faq-q"
+              data-i18n="faq.items.5.q"
+              data-hu="GDPR és EU AI Act: hogyan érint ez minket a bevezetésnél?"
+              data-en="GDPR and EU AI Act: how does this affect our implementation?">
+              GDPR és EU AI Act: hogyan érint ez minket a bevezetésnél?
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- ==========================================
          8. ZÁRÓ CTA
          ========================================== -->
     <section id="cta" class="page-section">
       <div class="container">
         <div class="cta-box fade-in">
           <div class="cta-inner">
-            <span class="section-label" style="background:rgba(255,255,255,0.15);color:var(--accent);">Első lépés</span>
-            <h2 class="section-title">Az első lépés ingyenes –<br>megmutatjuk hol állnak a folyamataik.</h2>
-            <p class="section-sub">Nincs elkötelezettség, nincs nyomás. Egy 30 perces konzultáció után pontosan tudni fogja, hol tart és mit érdemes tennie.</p>
-            <button class="btn btn-white" style="font-size:0.95rem;padding:13px 30px;" onclick="goToSection(7)">
+            <span class="section-label" style="background:rgba(255,255,255,0.15);color:var(--accent);" data-i18n="cta.label" data-hu="Első lépés" data-en="First Step">Első lépés</span>
+            <h2 class="section-title" data-i18n="cta.title" data-hu="Az első lépés ingyenes –<br>megmutatjuk hol állnak a folyamataik." data-en="The first step is free –<br>we show you where your processes stand.">Az első lépés ingyenes –<br>megmutatjuk hol állnak a folyamataik.</h2>
+            <p class="section-sub" data-i18n="cta.subtitle" data-hu="Nincs elkötelezettség, nincs nyomás. Egy 30 perces konzultáció után pontosan tudni fogja, hol tart és mit érdemes tennie." data-en="No commitment, no pressure. After a 30-minute consultation you'll know exactly where you stand and what to do next.">Nincs elkötelezettség, nincs nyomás. Egy 30 perces konzultáció után pontosan tudni fogja, hol tart és mit érdemes tennie.</p>
+            <button class="btn btn-white" style="font-size:0.95rem;padding:13px 30px;" onclick="openModal()"
+              data-hu="Vegyük fel a kapcsolatot &nbsp;→" data-en="Get in Touch &nbsp;→">
               Vegyük fel a kapcsolatot &nbsp;→
             </button>
-            <p class="cta-guarantee">✓ Ingyenes &nbsp;·&nbsp; ✓ Kötelezettség nélkül &nbsp;·&nbsp; ✓ 48 órán belül visszajelzünk</p>
+            <p class="cta-guarantee" data-hu="✓ Ingyenes &nbsp;·&nbsp; ✓ Kötelezettség nélkül &nbsp;·&nbsp; ✓ 48 órán belül visszajelzünk" data-en="✓ Free &nbsp;·&nbsp; ✓ No obligation &nbsp;·&nbsp; ✓ We respond within 48 hours">✓ Ingyenes &nbsp;·&nbsp; ✓ Kötelezettség nélkül &nbsp;·&nbsp; ✓ 48 órán belül visszajelzünk</p>
           </div>
         </div>
       </div>
@@ -1065,25 +626,25 @@
                 </svg>
                 <span class="logo-text">Lean<span>Brothers</span></span>
               </div>
-              <p class="footer-tagline">Nem automatizáljuk a selejtet. Rendbe tesszük a folyamatot – aztán a megfelelő megoldást hozzuk be.</p>
+              <p class="footer-tagline" data-i18n="footer.tagline" data-hu="Nem technológiát adunk el. Rendet teszünk a folyamatokban – aztán bemutatjuk a megfelelő megoldást." data-en="We don't sell technology. We bring order to your processes – then introduce the right solution.">Nem technológiát adunk el. Rendet teszünk a folyamatokban – aztán bemutatjuk a megfelelő megoldást.</p>
             </div>
             <div class="footer-contact">
-              <h4>Kapcsolat</h4>
-              <a href="/cdn-cgi/l/email-protection#dab2bfb6b6b59ab6bfbbb4b8a8b5aeb2bfa8a9f4b2af">📧 <span class="__cf_email__" data-cfemail="3b535e5757547b575e5a555949544f535e494815534e">[email&#160;protected]</span></a>
-              <a href="tel:+36301234567">📞 +36 30 XXX XXXX</a>
+              <h4 data-i18n="footer.contactHead" data-hu="Kapcsolat" data-en="Contact">Kapcsolat</h4>
+              <a href="/cdn-cgi/l/email-protection#4b22252d240b272e2a252939243f232e393865233e">📧 <span class="__cf_email__" data-cfemail="dcb5b2bab39cb0b9bdb2beaeb3a8b4b9aeaff2b4a9">[email&#160;protected]</span></a>
             </div>
             <div class="footer-contact">
-              <h4>Navigáció</h4>
-              <a onclick="goToSection(1)" style="cursor:pointer;">A probléma</a>
-              <a onclick="goToSection(2)" style="cursor:pointer;">Módszerünk</a>
-              <a onclick="goToSection(3)" style="cursor:pointer;">Szolgáltatások</a>
-              <a onclick="goToSection(4)" style="cursor:pointer;">Miért mi</a>
-              <a onclick="goToSection(5)" style="cursor:pointer;">Csapat</a>
+              <h4 data-i18n="footer.navHead" data-hu="Navigáció" data-en="Navigation">Navigáció</h4>
+              <a onclick="goToSection(1)" style="cursor:pointer;" data-i18n="nav.problem" data-hu="A probléma" data-en="The Problem">A probléma</a>
+              <a onclick="goToSection(2)" style="cursor:pointer;" data-i18n="nav.method" data-hu="Módszerünk" data-en="Our Method">Módszerünk</a>
+              <a onclick="goToSection(3)" style="cursor:pointer;" data-i18n="nav.services" data-hu="Szolgáltatások" data-en="Services">Szolgáltatások</a>
+              <a onclick="goToSection(4)" style="cursor:pointer;" data-i18n="nav.whyUs" data-hu="Miért mi" data-en="Why Us">Miért mi</a>
+              <a onclick="goToSection(5)" style="cursor:pointer;" data-i18n="nav.team" data-hu="Csapat" data-en="Team">Csapat</a>
+              <a onclick="goToSection(6)" style="cursor:pointer;" data-i18n="nav.faq" data-hu="GYIK" data-en="FAQ">GYIK</a>
             </div>
           </div>
           <div class="footer-bottom">
-            <span>© 2025 LeanBrothers | Minden jog fenntartva</span>
-            <span>Digitális Lean &amp; Automatizáció</span>
+            <span data-i18n="footer.copyright" data-hu="© 2026 LeanBrothers | Minden jog fenntartva" data-en="© 2026 LeanBrothers | All rights reserved">© 2026 LeanBrothers | Minden jog fenntartva</span>
+            <span data-i18n="footer.subline" data-hu="Digitális Lean &amp; Automatizáció" data-en="Digital Lean &amp; Automation">Digitális Lean &amp; Automatizáció</span>
           </div>
         </div>
       </div>
@@ -1091,152 +652,150 @@
 
   </div><!-- /#scroll-wrapper -->
 
+
+
+  <!-- ==========================================
+       GYIK POPUP MODAL
+       ========================================== -->
+  <div class="faq-modal-overlay" id="faqModal" role="dialog" aria-modal="true" aria-labelledby="faqModalQ">
+    <div class="faq-modal-box">
+      <button class="faq-modal-close" onclick="closeFaqModal()" aria-label="Bezárás">✕</button>
+      <span class="faq-modal-badge" id="faqModalBadge">GYIK 1 / 6</span>
+      <h2 class="faq-modal-q" id="faqModalQ">Kérdés</h2>
+      <div class="faq-modal-divider"></div>
+      <p class="faq-modal-a" id="faqModalA">Válasz</p>
+      <div class="faq-modal-nav">
+        <button id="faqPrevBtn" onclick="faqNavigate(-1)">
+          ← <span data-hu="Előző" data-en="Previous">Előző</span>
+        </button>
+        <span class="faq-modal-counter" id="faqCounter">1 / 6</span>
+        <button id="faqNextBtn" onclick="faqNavigate(1)">
+          <span data-hu="Következő" data-en="Next">Következő</span> →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       KAPCSOLATI POPUP MODAL
+       Formspree endpoint: cseréld le a saját ID-dra
+       Regisztráció: https://formspree.io
+       ========================================== -->
+  <div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+
+      <!-- Fejléc -->
+      <div class="modal-header">
+        <div class="modal-header-text">
+          <span class="modal-label"
+            data-i18n="modal.label" data-hu="Ingyenes konzultáció" data-en="Free Consultation">Ingyenes konzultáció</span>
+          <h2 class="modal-title" id="modalTitle"
+            data-i18n="modal.title" data-hu="Vegyük fel a kapcsolatot" data-en="Let's get in touch">Vegyük fel a kapcsolatot</h2>
+          <p class="modal-sub"
+            data-i18n="modal.subtitle" data-hu="48 órán belül visszajelzünk – kötelezettség nélkül." data-en="We'll get back to you within 48 hours – no obligation.">48 órán belül visszajelzünk – kötelezettség nélkül.</p>
+        </div>
+        <button class="modal-close" onclick="closeModal()" aria-label="Bezárás">✕</button>
+      </div>
+
+      <!-- Sikeres küldés állapot -->
+      <div class="modal-success" id="modalSuccess">
+        <div class="modal-success-icon">✅</div>
+        <h3 data-i18n="modal.successTitle" data-hu="Üzenétét megkaptuk!" data-en="Message received!">Üzenétét megkaptuk!</h3>
+        <p data-i18n="modal.successText" data-hu="48 óran belül felvesszük Önnel a kapcsolatot." data-en="We'll be in touch within 48 hours.">48 órán belül felvesszük Önnel a kapcsolatot.</p>
+        <button class="btn btn-primary" onclick="closeModal()" data-i18n="modal.successBtn" data-hu="Köszönöm, bezárom" data-en="Thanks, close">Köszönöm, bezárom</button>
+      </div>
+
+      <!-- Hiba üzenet -->
+      <div class="modal-error-msg" id="modalErrorMsg">
+        <p data-i18n="modal.errorText" data-hu="Hiba történt a küldés közben. Írjon közvetlenül: info@leanbrothers.hu" data-en="Something went wrong. Please email: info@leanbrothers.hu">Hiba történt a küldés közben. Írjon közvetlenül: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0861666e6748646d69666a7a677c606d7a7b26607d">[email&#160;protected]</a></p>
+      </div>
+
+      <!-- Kapcsolati form -->
+      <!-- ACTION: cseréld le Formspree ID-ra: https://formspree.io/register -->
+      <form class="modal-form" id="contactForm"
+        action="https://formspree.io/f/xbdaewle"
+        method="POST" novalidate>
+
+        <input type="hidden" name="_subject" value="LeanBrothers – Új érdeklődő" />
+        <input type="hidden" name="_language" id="formLang" value="hu" />
+        <input type="text" name="_gotcha" style="display:none" />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fieldName" data-i18n="modal.fieldName" data-hu="Teljes név" data-en="Full name">Teljes név <span class="required">*</span></label>
+            <input type="text" id="fieldName" name="name" placeholder="Pl. Nagy János" autocomplete="name" required />
+          </div>
+          <div class="form-group">
+            <label for="fieldEmail" data-i18n="modal.fieldEmail" data-hu="Email cím" data-en="Email address">Email cím <span class="required">*</span></label>
+            <input type="email" id="fieldEmail" name="email" placeholder="nev@ceg.hu" autocomplete="email" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fieldCompany" data-i18n="modal.fieldCompany" data-hu="Cég neve" data-en="Company name">Ceg neve</label>
+            <input type="text" id="fieldCompany" name="company" placeholder="Pl. ABC Kft." autocomplete="organization" />
+          </div>
+          <div class="form-group">
+            <label for="fieldSize" data-i18n="modal.fieldSize" data-hu="Létszám" data-en="Company size">Létszám</label>
+            <select id="fieldSize" name="company_size">
+              <option value="">Válasszon...</option>
+              <option value="50-100">50–100 fo</option>
+              <option value="101-250">101–250 fo</option>
+              <option value="251-500">251–500 fo</option>
+              <option value="500+">500+ fo</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="fieldService" data-i18n="modal.fieldService" data-hu="Választott szolgáltatás" data-en="Which service interests you?">"Választott szolgáltatás</label>
+          <select id="fieldService" name="service">
+            <option value="">Válasszon...</option>
+            <option value="Digitális Veszteségfeltárás">Digitális Veszteségfeltárás (2 nap)</option>
+            <option value="Folyamatoptimalizálási Sprint">Folyamatoptimalizálási Sprint (5 nap)</option>
+            <option value="Folyamatos Fejlesztési Keret">Folyamatos Fejlesztesi Keret (havi)</option>
+            <option value="Még nem tudom, segítséget kérek">Még nem tudom, segítséget kérek</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="fieldMessage" data-i18n="modal.fieldMessage" data-hu="Rövid leírás (opcionalis)" data-en="Brief description (optional)">Rövid leírás <span style="font-weight:400;color:var(--gray-text)">(opcionalis)</span></label>
+          <textarea id="fieldMessage" name="message" placeholder="Miben tudunk segíteni?"></textarea>
+        </div>
+
+        <div class="form-consent">
+          <input type="checkbox" id="fieldConsent" name="gdpr_consent" required />
+          <label for="fieldConsent" data-i18n="modal.consent"
+            data-hu="Elfogadom, hogy a LeanBrothers az uzeneteme a kapcsolatfelvetel celja cljából tárolja. Adatokat harmadik félnek nem adjuk át."
+            data-en="I agree that LeanBrothers stores my message for contact purposes. Data will not be shared with third parties.">
+            Elfogadom, hogy a LeanBrothers az uzeneteme a kapcsolatfelvetel celjabol tarolja. Adatokat harmadik felnek nem adjuk at.
+          </label>
+        </div>
+
+        <button type="submit" class="modal-submit" id="modalSubmitBtn">
+          <span class="spinner"></span>
+          <span class="btn-label" data-i18n="modal.submitBtn" data-hu="Uzenet elkuldes →" data-en="Send message →">Uzenet elkuldes →</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- Oldalsó pontnavigátor (csak desktop) -->
   <nav class="section-nav" id="sectionNav" aria-label="Szekció navigátor"></nav>
 
+  <!-- Tetejére ugrás gomb -->
+  <button id="back-to-top" aria-label="Vissza a tetejére" title="Tetejére" onclick="goToSection(0)">
+    <svg viewBox="0 0 24 24">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
   <!-- ==========================================
-       JAVASCRIPT
+       JAVASCRIPT – main.js
        ========================================== -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // ==============================================
-    // KONFIGURÁCIÓ
-    // ==============================================
-    const SECTION_IDS    = ['hero','problema','modszer','szolgaltatasok','miert-mi','rolunk','cta','kapcsolat'];
-    const SECTION_LABELS = ['Hero','A probléma','Módszerünk','Szolgáltatások','Miért mi','Csapat','CTA','Kapcsolat'];
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="main.js" defer></script>
 
-    const wrapper    = document.getElementById('scroll-wrapper');
-    const navbar     = document.getElementById('navbar');
-    const sectionNav = document.getElementById('sectionNav');
-    const sections   = SECTION_IDS.map(id => document.getElementById(id)).filter(Boolean);
-    const navLinks   = document.querySelectorAll('.nav-links a');
-
-    let currentIdx  = 0;
-    let isScrolling = false;
-    const isMobile  = () => window.innerWidth <= 768;
-
-    // ==============================================
-    // 1. PONTNAVIGÁTOR FELÉPÍTÉSE
-    // ==============================================
-    sections.forEach((_, i) => {
-      const btn = document.createElement('button');
-      btn.title = SECTION_LABELS[i];
-      btn.setAttribute('aria-label', SECTION_LABELS[i]);
-      btn.addEventListener('click', () => goToSection(i));
-      sectionNav.appendChild(btn);
-    });
-
-    // ==============================================
-    // 2. UI FRISSÍTÉS (nav + pontok)
-    // ==============================================
-    function updateUI() {
-      // Navbar linkek
-      navLinks.forEach(a => {
-        const idx = parseInt(a.getAttribute('data-idx') ?? '-1');
-        a.classList.toggle('active', idx === currentIdx);
-      });
-      // Pontnavigátor
-      sectionNav.querySelectorAll('button').forEach((btn, i) => {
-        btn.classList.toggle('active', i === currentIdx);
-      });
-    }
-
-    // ==============================================
-    // 3. SZEKCIÓ UGRÁS
-    // ==============================================
-    function goToSection(idx) {
-      if (idx < 0 || idx >= sections.length) return;
-      currentIdx = idx;
-
-      if (isMobile()) {
-        // Mobilon: normál window scroll
-        sections[idx].scrollIntoView({ behavior: 'smooth' });
-      } else {
-        // Desktopon: wrapper-en belüli scroll
-        isScrolling = true;
-        wrapper.scrollTo({ top: sections[idx].offsetTop, behavior: 'smooth' });
-        setTimeout(() => { isScrolling = false; }, 850);
-      }
-      updateUI();
-    }
-
-    // ==============================================
-    // 4. EGÉRGÖRGŐ (csak desktop)
-    // ==============================================
-    wrapper.addEventListener('wheel', (e) => {
-      if (isMobile()) return;
-      if (isScrolling) { e.preventDefault(); return; }
-      e.preventDefault();
-      goToSection(e.deltaY > 0 ? currentIdx + 1 : currentIdx - 1);
-    }, { passive: false });
-
-    // ==============================================
-    // 5. BILLENTYŰZET (csak desktop)
-    // ==============================================
-    document.addEventListener('keydown', (e) => {
-      if (isMobile()) return;
-      if (e.key === 'ArrowDown' || e.key === 'PageDown') {
-        e.preventDefault(); goToSection(currentIdx + 1);
-      } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-        e.preventDefault(); goToSection(currentIdx - 1);
-      }
-    });
-
-    // ==============================================
-    // 6. INTERSECTION OBSERVER – pozíciókövetés
-    // ==============================================
-    const posObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !isScrolling) {
-          const idx = sections.indexOf(entry.target);
-          if (idx !== -1) { currentIdx = idx; updateUI(); }
-        }
-      });
-    }, {
-      root: isMobile() ? null : wrapper,
-      threshold: 0.5
-    });
-    sections.forEach(s => posObserver.observe(s));
-
-    // ==============================================
-    // 7. SCROLL-FADE ANIMÁCIÓ
-    // ==============================================
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          fadeObserver.unobserve(entry.target);
-        }
-      });
-    }, {
-      root: isMobile() ? null : wrapper,
-      threshold: 0.08
-    });
-    fadeEls.forEach(el => fadeObserver.observe(el));
-
-    // ==============================================
-    // 8. NAVBAR ÁRNYÉK
-    // ==============================================
-    const onScroll = () => {
-      const scrollTop = isMobile() ? window.scrollY : wrapper.scrollTop;
-      navbar.classList.toggle('scrolled', scrollTop > 20);
-    };
-    wrapper.addEventListener('scroll', onScroll);
-    window.addEventListener('scroll', onScroll);
-
-    // ==============================================
-    // 9. HAMBURGER MENÜ
-    // ==============================================
-    document.getElementById('hamburger').addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.toggle('open');
-    });
-    function closeMobile() {
-      document.getElementById('mobileMenu').classList.remove('open');
-    }
-
-    // Kezdeti állapot
-    updateUI();
-  </script>
 
   <!--
   =====================================================
@@ -1249,5 +808,4 @@
   <section id="uj-szekcion" class="page-section">
     <div class="container">
       <div class="section-head center fade-in">
-        <span class="section-label">Kategória</span>
-        <h2 class="section-titl
+        <span class="section-label">Kategó

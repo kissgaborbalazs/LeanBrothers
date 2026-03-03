@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- =====================================================
+       LeanBrothers – sitemap.xml
+       Google Search Console-ba benyújtandó:
+       https://search.google.com/search-console
+       URL: https://www.leanbrothers.hu/sitemap.xml
+       ===================================================== -->
+
+  <!-- Magyar főoldal -->
+  <url>
+    <loc>https://www.leanbrothers.hu/</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <!-- Alternatív nyelvi verziók -->
+    <xhtml:link rel="alternate" hreflang="hu" href="https://www.leanbrothers.hu/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.leanbrothers.hu/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.leanbrothers.hu/" />
+  </url>
+
+  <!-- Angol verzió (ha külön URL-en lesz) -->
+  <!-- Ha az EN verzió ugyanazon az URL-en van lang-switcher-rel,
+       ezt a blokkot töröld. Ha /en/ alkönyvtárban lesz, hagyd meg. -->
+  <!--
+  <url>
+    <loc>https://www.leanbrothers.hu/en/</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://www.leanbrothers.hu/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.leanbrothers.hu/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.leanbrothers.hu/" />
+  </url>
+  -->
+
+</urlset>

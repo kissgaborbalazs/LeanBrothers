@@ -1,0 +1,230 @@
+{
+  "_comment": "LeanBrothers – English content. Edit freely, no code changes needed.",
+  "meta": {
+    "title": "LeanBrothers – Lean & AI Consulting for SMEs | Process Optimization, RPA, Automation",
+    "description": "Independent Lean and AI consulting for Hungarian SMEs. We identify process waste, calculate ROI, and bring in the right automation solution – vendor-neutral. UiPath RPA, process optimization, AI implementation."
+  },
+  "nav": {
+    "problem": "The Problem",
+    "method": "Our Method",
+    "services": "Services",
+    "whyUs": "Why Us",
+    "team": "Team",
+    "faq": "FAQ",
+    "cta": "Get in Touch"
+  },
+  "hero": {
+    "badge": "✶ Digital Lean & Automation",
+    "title": "Process-driven operations, <em>measurable</em> results",
+    "subtitle": "We don't sell technology. We bring order to your processes – then introduce the right solution.",
+    "ctaPrimary": "Get in Touch",
+    "ctaSecondary": "How We Work →",
+    "note": "✓ Free first consultation · ✓ Independent, vendor-neutral advisory",
+    "cards": [
+      {
+        "label": "Lean Diagnosis",
+        "value": "Process waste identified"
+      },
+      {
+        "label": "ROI Calculation",
+        "value": "Return on investment documented"
+      },
+      {
+        "label": "AI Implementation",
+        "value": "The right vendor selected"
+      }
+    ]
+  },
+  "problem": {
+    "label": "The Truth",
+    "title": "What most AI consultants won't tell you",
+    "subtitle": "Before implementing technology, we need to understand the real problem.",
+    "cards": [
+      {
+        "icon": "💸",
+        "title": "A bad foundation costs double",
+        "text": "Automation built on flawed processes costs twice as much – once to implement, once to discard."
+      },
+      {
+        "icon": "🎯",
+        "title": "Vendors always see a sale",
+        "text": "Vendors want to sell solutions – not solve your problems. They have a vested interest in that."
+      },
+      {
+        "icon": "📈",
+        "title": "Real ROI = ordered processes",
+        "text": "ROI is only real when the process is in order first. Automation cannot work miracles."
+      }
+    ]
+  },
+  "method": {
+    "label": "Our Approach",
+    "title": "Our Method: Lean → Documentation → Vendor",
+    "subtitle": "A three-step, proven framework – where investments actually pay off.",
+    "steps": [
+      {
+        "tag": "Lean Diagnosis",
+        "title": "We uncover the real losses",
+        "text": "On-site assessment, data collection, interviews. We show you where time and money are being lost."
+      },
+      {
+        "tag": "Documentation",
+        "title": "We document and prioritize",
+        "text": "Process map, value stream map, ROI calculation, technology proposal – everything in black and white."
+      },
+      {
+        "tag": "Vendor Selection",
+        "title": "We bring in the right partner",
+        "text": "Independent vendor recommendation, implementation oversight. We represent your interests."
+      }
+    ]
+  },
+  "services": {
+    "label": "Entry Points",
+    "title": "Three entry points – tailored to your needs",
+    "subtitle": "Choose the one that fits your company's current situation and needs.",
+    "ctaBtn": "Free 30-min Consultation",
+    "cards": [
+      {
+        "level": "Basic",
+        "name": "Digital Waste Discovery",
+        "duration": "⏱ 2 days · On-site + online",
+        "price": "Custom quote",
+        "desc": "Independent situation assessment – find out where you stand and what waste you have today.",
+        "featured": false
+      },
+      {
+        "level": "Recommended",
+        "name": "Process Optimization Sprint",
+        "duration": "⏱ 5 days · Full audit",
+        "price": "Custom quote",
+        "desc": "ROI calculation, value stream map, process map, vendor shortlist – everything needed to decide.",
+        "note": "✓ Can start without prior diagnosis",
+        "featured": true,
+        "badge": "⭐ Recommended"
+      },
+      {
+        "level": "Advanced",
+        "name": "Continuous Improvement Framework",
+        "duration": "🔄 Monthly subscription · Ongoing",
+        "price": "Custom quote",
+        "desc": "Vendor oversight, re-measurement, on-demand expertise – long-term partnership.",
+        "featured": false
+      }
+    ]
+  },
+  "whyUs": {
+    "label": "Our Edge",
+    "title": "What others can't offer",
+    "subtitle": "We are not resellers, we are not integrators. We are independent consultants – on your side.",
+    "cards": [
+      {
+        "icon": "🛡️",
+        "title": "100% Independent Advisory",
+        "text": "We have no stake in any vendor's success – we stay independent and represent your interests."
+      },
+      {
+        "icon": "🏢",
+        "title": "Enterprise knowledge, SME pricing",
+        "text": "Enterprise-grade RPA and AI experience – in an affordable, SME-tailored framework."
+      },
+      {
+        "icon": "💡",
+        "title": "Lean alone is already profit",
+        "text": "Process improvement is a profit in itself – automation is just the icing on the cake."
+      },
+      {
+        "icon": "⚖️",
+        "title": "AI Legal Compliance",
+        "text": "GDPR, AI Act compliance on demand – regulatory background built into every recommendation."
+      }
+    ]
+  },
+  "team": {
+    "label": "The Team",
+    "title": "The people behind it",
+    "subtitle": "Experienced professionals who learned their craft at large enterprises – and now share it with SMEs.",
+    "members": [
+      {
+        "name": "Tóth Zoltán Márton",
+        "role": "Lean Six Sigma Expert & IT Business Analyst",
+        "bio": "20+ years of experience in logistics and process optimization. Led the Lean transformation at Magyar Posta, currently IT Business Analyst and Lean Six Sigma process expert at MVM. Specializes in value stream analysis and supporting decision systems with generative AI. Winner of the 2024 'Business Analyst of the Year: BA team methodological development category' award.",
+        "email": "tothzoltanmarton@leanbrothers.hu",
+        "phone": "+36 70 410 4959",
+        "linkedin": "https://www.linkedin.com/in/tothzoltanmarton/",
+        "photo": "img/toth-zoltan-marton.jpg"
+      },
+      {
+        "name": "Kiss Gábor Balázs",
+        "role": "RPA Solution Architect | UiPath & C# Expert",
+        "bio": "\"If something has to be done four times, I automate it.\" – Has worked at Magyar Posta for 20 years, 4 of which as a lead RPA architect. Built from the ground up: from operator to enterprise-level automation expert. Designs scalable, long-term maintainable solutions in UiPath, C# and AI integration.",
+        "email": "kissgaborbalazs@leanbrothers.hu",
+        "phone": "+36 30 492 3837",
+        "linkedin": "https://www.linkedin.com/in/gabor-balazs-kiss/",
+        "photo": "img/kiss-gabor-balazs.jpg"
+      }
+    ]
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "What people ask most",
+    "subtitle": "Short, honest answers – before we get in touch.",
+    "items": [
+      {
+        "q": "When should you involve a Lean consultant before automation?",
+        "a": "When the process you want to automate is not yet optimized. RPA or AI built on a flawed process costs twice as much – once to implement, once to discard. Lean diagnostics are a prerequisite for sustainable ROI."
+      },
+      {
+        "q": "What does an RPA implementation cost for Hungarian SMEs?",
+        "a": "The cost depends on the complexity of the process and the number of steps to automate. After a preliminary Lean diagnostic and ROI calculation, you'll know exactly whether the investment pays off. LeanBrothers provides a custom quote – the first consultation is free."
+      },
+      {
+        "q": "What's the difference between a Lean consultant and an RPA/AI vendor?",
+        "a": "A vendor wants to sell technology – that's their interest. An independent Lean consultant like LeanBrothers is not tied to any vendor: we first order the process, calculate the ROI, then recommend the best solution – which may not require any software at all."
+      },
+      {
+        "q": "What size company benefits most from process optimization?",
+        "a": "LeanBrothers primarily works with SMEs of 50+ employees where there are already repetitive, manual processes (e.g. data entry, reporting, invoicing), but the company size doesn't yet justify large software license spend."
+      },
+      {
+        "q": "How soon will we see the first results?",
+        "a": "The Lean diagnosis alone – without any automation – identifies tangible savings within the first 2 days. Automation projects typically go live within 6–12 weeks, and ROI is typically realized within 6–18 months."
+      },
+      {
+        "q": "GDPR and EU AI Act: how does this affect our implementation?",
+        "a": "The EU AI Act entered into force in 2024 and is being phased in gradually. If you automate processes involving personal data or decision support, compliance assessment is mandatory. LeanBrothers integrates AI legal compliance into vendor selection criteria – not as an afterthought, but at the design stage."
+      }
+    ]
+  },
+  "cta": {
+    "label": "First Step",
+    "title": "The first step is free –<br>we show you where your processes stand.",
+    "subtitle": "No commitment, no pressure. After a 30-minute consultation you'll know exactly where you stand and what to do next.",
+    "btn": "Get in Touch →",
+    "guarantee": "✓ Free · ✓ No obligation · ✓ We respond within 48 hours"
+  },
+  "footer": {
+    "tagline": "We don't sell technology. We bring order to your processes – then introduce the right solution.",
+    "contactHead": "Contact",
+    "navHead": "Navigation",
+    "copyright": "© 2026 LeanBrothers | All rights reserved",
+    "subline": "Digital Lean & Automation"
+  },
+  "modal": {
+    "label": "Free Consultation",
+    "title": "Let's get in touch",
+    "subtitle": "We'll get back to you within 48 hours – no obligation.",
+    "fieldName": "Full name",
+    "fieldEmail": "Email address",
+    "fieldCompany": "Company name",
+    "fieldSize": "Company size",
+    "fieldService": "Which service interests you?",
+    "fieldMessage": "Brief description (optional)",
+    "consent": "I agree that LeanBrothers stores and processes my message for the purpose of getting in touch. Data will not be shared with third parties.",
+    "submitBtn": "Send message →",
+    "successTitle": "Message received!",
+    "successText": "We'll be in touch within 48 hours. If it's urgent, feel free to call us directly.",
+    "successBtn": "Thanks, close",
+    "errorText": "Something went wrong. Please email us directly at info@leanbrothers.hu."
+  }
+}
