@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adatkezelési Tájékoztató – LeanBrothers</title>
+  <meta name="description" content="LeanBrothers adatkezelési tájékoztató – kapcsolatfelvételi űrlap adatkezelése." />
+  <!-- Keresőknek nem kell indexelni ezt az oldalt -->
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://www.leanbrothers.hu/adatvedelem.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =====================================================
+       LeanBrothers – adatvedelem.html
+       Önálló oldal, style.css nélkül (portábilis)
+       ===================================================== */
+
+    :root {
+      --primary:       #1F4E79;
+      --primary-dark:  #163857;
+      --primary-light: #2E6DA4;
+      --accent:        #D6E4F0;
+      --accent-mid:    #A8CBEA;
+      --white:         #FFFFFF;
+      --gray-light:    #F7F9FC;
+      --gray-mid:      #E2EAF4;
+      --gray-text:     #4A5568;
+      --dark:          #1A202C;
+      --font:          'Inter', sans-serif;
+      --radius:        12px;
+      --max-w:         780px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      color: var(--dark);
+      background: var(--gray-light);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--primary-light); text-decoration: underline; }
+    a:hover { color: var(--primary); }
+
+    /* ── Fejléc sáv ── */
+    .site-header {
+      background: var(--primary);
+      padding: 0;
+    }
+    .header-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-text {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    .logo-text span { color: var(--accent-mid); }
+    .back-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--white); }
+
+    /* ── Tartalom kártya ── */
+    .page-wrap {
+      max-width: var(--max-w);
+      margin: 40px auto 64px;
+      padding: 0 24px;
+    }
+    .doc-card {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 4px 32px rgba(31,78,121,0.08);
+      overflow: hidden;
+    }
+
+    /* ── Dokumentum fejléc ── */
+    .doc-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      padding: 36px 44px 32px;
+      color: var(--white);
+    }
+    .doc-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-mid);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 4px 12px;
+      border-radius: 99px;
+      margin-bottom: 14px;
+    }
+    .doc-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .doc-meta {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .doc-meta span { margin-right: 16px; }
+
+    /* ── Dokumentum törzs ── */
+    .doc-body {
+      padding: 40px 44px 48px;
+    }
+
+    /* Szekciók */
+    .gdpr-section {
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--gray-mid);
+    }
+    .gdpr-section:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .gdpr-section h2 {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: var(--accent);
+      color: var(--primary);
+      font-size: 0.72rem;
+      font-weight: 800;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .gdpr-section p {
+      font-size: 0.9rem;
+      color: var(--gray-text);
+      margin-bottom: 10px;
+    }
+    .gdpr-section p:last-child { margin-bottom: 0; }
+    .gdpr-section strong { color: var(--dark); font-weight: 700; }
+
+    /* Jogok lista */
+    .rights-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .rights-list li {
+      font-size: 0.87rem;
+      color: var(--gray-text);
+      background: var(--gray-light);
+      border: 1px solid var(--gray-mid);
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .rights-list li::before {
+      content: '✓';
+      color: var(--primary-light);
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Adatfeldolgozó tábla-szerű blokk */
+    .processor-box {
+      background: var(--gray-light);
+      border: 1px solid var(--gray-mid);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-top: 12px;
+    }
+    .processor-box h3 {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .processor-box dl {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4px 12px;
+      font-size: 0.84rem;
+    }
+    .processor-box dt {
+      color: var(--gray-text);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .processor-box dd { color: var(--dark); }
+
+    /* Kiemelő doboz (NAIH) */
+    .info-box {
+      background: var(--accent);
+      border-left: 4px solid var(--primary-light);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin-top: 12px;
+    }
+    .info-box p {
+      font-size: 0.85rem;
+      color: var(--primary-dark);
+      margin: 0;
+    }
+
+    /* ── Lábléc ── */
+    .doc-footer {
+      background: var(--gray-light);
+      border-top: 1px solid var(--gray-mid);
+      padding: 20px 44px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .doc-footer p {
+      font-size: 0.76rem;
+      color: var(--gray-text);
+    }
+    .doc-footer a {
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+
+    /* ── Reszponzív ── */
+    @media (max-width: 600px) {
+      .header-inner { padding: 14px 18px; }
+      .doc-header   { padding: 26px 22px 22px; }
+      .doc-body     { padding: 28px 22px 36px; }
+      .doc-footer   { padding: 16px 22px; flex-direction: column; align-items: flex-start; }
+      .doc-title    { font-size: 1.25rem; }
+      .rights-list  { grid-template-columns: 1fr; }
+      .page-wrap    { margin: 20px auto 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Fejléc navigáció ── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo-wrap" aria-label="LeanBrothers – Főoldal">
+        <!-- LB logó (inline SVG, nem kell külső fájl) -->
+        <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="36" height="36" rx="8" fill="#2E6DA4"/>
+          <rect x="6" y="10" width="3.5" height="16" rx="1.5" fill="white"/>
+          <rect x="6" y="22.5" width="10" height="3.5" rx="1.5" fill="white"/>
+          <rect x="19" y="10" width="3.5" height="16" rx="1.5" fill="#A8CBEA"/>
+          <path d="M23.5 10 H26 Q30 10 30 14 Q30 18 26 18 H23.5 Z" fill="#A8CBEA"/>
+          <path d="M23.5 18 H26.5 Q31 18 31 22 Q31 26 26.5 26 H23.5 Z" fill="#A8CBEA"/>
+        </svg>
+        <span class="logo-text">Lean<span>Brothers</span></span>
+      </a>
+      <a href="/" class="back-link">← Vissza a főoldalra</a>
+    </div>
+  </header>
+
+  <!-- ── Tartalom ── -->
+  <main class="page-wrap">
+    <article class="doc-card" aria-labelledby="docTitle">
+
+      <!-- Dokumentum fejléc -->
+      <div class="doc-header">
+        <div class="doc-badge">Jogi dokumentum</div>
+        <h1 class="doc-title" id="docTitle">Adatkezelési Tájékoztató</h1>
+        <div class="doc-meta">
+          <span>📅 Hatályos: 2025. január 1-től</span>
+          <span>🔄 Utolsó módosítás: 2026. március</span>
+        </div>
+      </div>
+
+      <!-- Dokumentum törzse -->
+      <div class="doc-body">
+
+        <!-- 1. Adatkezelő -->
+        <section class="gdpr-section" aria-labelledby="s1">
+          <h2 id="s1"><span class="section-num">1</span> Az adatkezelő</h2>
+          <p>
+            <strong>Adatkezelők neve:</strong> Tóth Zoltán Márton és Kiss Gábor Balázs<br />
+            <strong>Tevékenység:</strong> Lean és AI tanácsadás (LeanBrothers)<br />
+            <strong>Kapcsolattartási email:</strong>
+            <a href="mailto:info@leanbrothers.hu">info@leanbrothers.hu</a><br />
+            <strong>Weboldal:</strong>
+            <a href="https://www.leanbrothers.hu" target="_blank" rel="noopener">www.leanbrothers.hu</a>
+          </p>
+          <p>
+            Az adatkezelők természetes személyként (magánszemélyként) végzik az adatkezelési
+            tevékenységet a GDPR 4. cikk (7) bekezdése alapján.
+          </p>
+        </section>
+
+        <!-- 2. Kezelt adatok és cél -->
+        <section class="gdpr-section" aria-labelledby="s2">
+          <h2 id="s2"><span class="section-num">2</span> A kezelt adatok köre és az adatkezelés célja</h2>
+          <p>
+            A weboldalon található kapcsolatfelvételi űrlapon az alábbi adatok megadására van lehetőség.
+            A <strong>csillaggal (*) jelölt mezők</strong> kitöltése kötelező a kapcsolatfelvételhez,
+            a többi mező kitöltése önkéntes.
+          </p>
+
+          <div class="processor-box" style="margin-top:14px;">
+            <h3>Kezelt adatok</h3>
+            <dl>
+              <dt>Teljes név *</dt>         <dd>Személyazonosítás, megszólítás</dd>
+              <dt>Email-cím *</dt>           <dd>Visszajelzés küldése</dd>
+              <dt>Cégnév</dt>               <dd>Az érdeklődő vállalkozásának azonosítása</dd>
+              <dt>Létszám-kategória</dt>     <dd>Megfelelő szolgáltatás ajánlása</dd>
+              <dt>Érdeklődési terület</dt>   <dd>Releváns válasz előkészítése</dd>
+              <dt>Szöveges üzenet</dt>       <dd>Az igény pontosabb megértése</dd>
+            </dl>
+          </div>
+
+          <p style="margin-top:14px;">
+            <strong>Az adatkezelés célja kizárólag:</strong> az érdeklődő megkeresésének megválaszolása
+            és esetleges konzultáció egyeztetése. Az adatokat más célra nem használjuk fel,
+            nem elemezzük, nem profilozzuk, hírlevelet nem küldünk belőlük.
+          </p>
+        </section>
+
+        <!-- 3. Jogalap -->
+        <section class="gdpr-section" aria-labelledby="s3">
+          <h2 id="s3"><span class="section-num">3</span> Az adatkezelés jogalapja</h2>
+          <p>
+            Az adatkezelés jogalapja az Ön <strong>önkéntes hozzájárulása</strong>
+            (GDPR 6. cikk (1) bekezdés a) pont), amelyet az űrlap elküldésekor
+            a jelölőnégyzet bejelölésével ad meg.
+          </p>
+          <p>
+            A hozzájárulás megadása <strong>önkéntes</strong>. Megtagadása esetén azonban
+            az űrlapon keresztüli kapcsolatfelvételre nincs lehetőség
+            (telefonon vagy emailben természetesen igen).
+          </p>
+          <p>
+            A hozzájárulást Ön bármikor visszavonhatja az
+            <a href="mailto:info@leanbrothers.hu">info@leanbrothers.hu</a> e-mail-címre
+            küldött üzenettel. A visszavonás nem érinti a visszavonást megelőző adatkezelés
+            jogszerűségét.
+          </p>
+        </section>
+
+        <!-- 4. Megőrzési idő -->
+        <section class="gdpr-section" aria-labelledby="s4">
+          <h2 id="s4"><span class="section-num">4</span> Adatmegőrzési idő</h2>
+          <p>
+            Az Ön adatait a kapcsolatfelvétel lezárásától számított
+            <strong>legfeljebb 1 (egy) évig</strong> őrizzük meg.
+          </p>
+          <p>
+            Ha az Ön megkeresése üzleti együttműködéshez vezet, az üzleti kapcsolat
+            fennállásáig, illetve a vonatkozó számviteli és adójogi előírások alapján
+            szükséges ideig kezeljük az adatokat.
+          </p>
+          <p>
+            Az 1 éves megőrzési idő elteltével az adatokat véglegesen töröljük
+            a Formspree rendszeréből és saját levelezőrendszerünkből egyaránt.
+          </p>
+        </section>
+
+        <!-- 5. Adatfeldolgozó -->
+        <section class="gdpr-section" aria-labelledby="s5">
+          <h2 id="s5"><span class="section-num">5</span> Adatfeldolgozó – harmadik fél igénybevétele</h2>
+          <p>
+            Az űrlapon elküldött üzenetek kézbesítéséhez az alábbi adatfeldolgozót vesszük igénybe.
+            Az adatfeldolgozó önállóan nem jogosult az adatokat felhasználni,
+            kizárólag az általunk meghatározott célra kezelheti azokat.
+          </p>
+
+          <div class="processor-box">
+            <h3>Formspree Inc.</h3>
+            <dl>
+              <dt>Székhely:</dt>    <dd>555 Mission St, San Francisco, CA 94105, USA</dd>
+              <dt>Cél:</dt>         <dd>Kapcsolatfelvételi űrlap üzeneteinek kézbesítése</dd>
+              <dt>Továbbítás jogalapja:</dt>
+                                    <dd>EU–USA Standard Szerződéses Záradékok (SCC, GDPR 46. cikk (2) c) pont)</dd>
+              <dt>Adatvédelmi szabályzat:</dt>
+                                    <dd><a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a></dd>
+            </dl>
+          </div>
+
+          <p style="margin-top:14px;">
+            Az Ön adatait más harmadik félnek <strong>nem adjuk át</strong>,
+            nem értékesítjük, reklám célra nem használjuk.
+          </p>
+        </section>
+
+        <!-- 6. Az érintett jogai -->
+        <section class="gdpr-section" aria-labelledby="s6">
+          <h2 id="s6"><span class="section-num">6</span> Az Ön jogai</h2>
+          <p>Az adatkezeléssel kapcsolatban az alábbi jogokat gyakorolhatja:</p>
+          <ul class="rights-list" role="list">
+            <li><strong>Hozzáférés</strong> – tájékoztatást kérhet a kezelt adatairól (GDPR 15. cikk)</li>
+            <li><strong>Helyesbítés</strong> – kérheti a pontatlan adatok javítását (16. cikk)</li>
+            <li><strong>Törlés</strong> – kérheti adatai törlését („elfeledtetés joga", 17. cikk)</li>
+            <li><strong>Korlátozás</strong> – kérheti az adatkezelés korlátozását (18. cikk)</li>
+            <li><strong>Hordozhatóság</strong> – kérheti adatait géppel olvasható formátumban (20. cikk)</li>
+            <li><strong>Tiltakozás</strong> – tiltakozhat az adatkezelés ellen (21. cikk)</li>
+          </ul>
+          <p style="margin-top:14px;">
+            Kérelmét az <a href="mailto:info@leanbrothers.hu">info@leanbrothers.hu</a> e-mail-címre
+            küldheti. <strong>30 napon belül</strong> válaszolunk. Összetett kérelem esetén
+            ez az idő legfeljebb 60 napra meghosszabbítható – erről értesítjük Önt.
+          </p>
+        </section>
+
+        <!-- 7. Panasztétel -->
+        <section class="gdpr-section" aria-labelledby="s7">
+          <h2 id="s7"><span class="section-num">7</span> Panasztétel joga</h2>
+          <p>
+            Ha úgy ítéli meg, hogy adatainak kezelése megsérti a GDPR előírásait,
+            panaszt nyújthat be a felügyeleti hatósághoz:
+          </p>
+          <div class="info-box">
+            <p>
+              <strong>Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)</strong><br />
+              🌐 <a href="https://www.naih.hu" target="_blank" rel="noopener">www.naih.hu</a>
+              &ensp;·&ensp;
+              📧 <a href="mailto:ugyfelszolgalat@naih.hu">ugyfelszolgalat@naih.hu</a>
+              &ensp;·&ensp;
+              📞 +36 1 391 1400<br />
+              📍 1055 Budapest, Falk Miksa utca 9–11.
+            </p>
+          </div>
+          <p style="margin-top:12px;">
+            A hatósági panasz benyújtása előtt javasoljuk, hogy először keresse meg
+            közvetlenül az adatkezelőt – legtöbb esetben gyorsabban megoldható.
+          </p>
+        </section>
+
+        <!-- 8. Tájékoztató módosítása -->
+        <section class="gdpr-section" aria-labelledby="s8">
+          <h2 id="s8"><span class="section-num">8</span> A tájékoztató módosítása</h2>
+          <p>
+            Fenntartjuk a jogot, hogy ezt a tájékoztatót módosítsuk – például jogszabályi
+            változás vagy az adatkezelési gyakorlatunk módosulása esetén.
+            A módosítások ezen az oldalon kerülnek közzétételre a hatályba lépés előtt.
+          </p>
+          <p>
+            A tájékoztató jelenlegi verziója <strong>2026. március</strong> óta hatályos.
+          </p>
+        </section>
+
+      </div><!-- /.doc-body -->
+
+      <!-- Dokumentum lábléc -->
+      <footer class="doc-footer">
+        <p>© 2026 LeanBrothers (Tóth Zoltán Márton és Kiss Gábor Balázs) · Minden jog fenntartva</p>
+        <a href="/index.html">← Vissza a főoldalra</a>
+      </footer>
+
+    </article>
+  </main>
+
+</body>
+</html>

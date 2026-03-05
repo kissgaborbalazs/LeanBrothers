@@ -315,6 +315,13 @@ function applyTranslations() {
   navbar.querySelector('.hamburger')?.setAttribute(
     'aria-label', currentLang === 'hu' ? 'Menü' : 'Menu'
   );
+
+  // // GDPR panel feliratok frissítése
+  document.querySelectorAll('.gdpr-toggle-btn, .gdpr-full-link, .gdpr-consent-text, .gdpr-detail-label, .gdpr-detail-value').forEach(el => {
+    const text = el.getAttribute('data-' + currentLang);
+    if (text) el.textContent = text;
+  });
+
 }
 
 // Fallback: régi data-hu / data-en attribútumok (ha JSON nem elérhető)
@@ -338,6 +345,28 @@ function updateLangUI() {
 // Segédfüggvény: "nav.cta" → translations.nav.cta
 function getNestedKey(obj, keyPath) {
   return keyPath.split('.').reduce((acc, k) => acc?.[k], obj);
+}
+
+// ==============================================
+// GDPR EXPAND TOGGLE
+// ==============================================
+function toggleGdpr(e) {
+  e.preventDefault();
+  e.stopPropagation(); // ne triggerelődjön a label checkbox-a
+  const details = document.getElementById('gdprDetails');
+  const btn     = e.currentTarget;
+  const open    = details.hidden;
+  const lang    = currentLang || 'hu';
+
+  details.hidden = !open;
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+  // Gomb szöveg frissítés
+  if (open) {
+    btn.textContent = lang === 'hu' ? 'Részletek ▲' : 'Details ▲';
+  } else {
+    btn.textContent = lang === 'hu' ? 'Részletek ▼' : 'Details ▼';
+  }
 }
 
 // ==============================================

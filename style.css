@@ -1265,6 +1265,88 @@ ul { list-style: none; }
   text-decoration: underline;
 }
 
+/* ── GDPR inline expand panel ── */
+.gdpr-consent-text {
+  display: block;
+  margin-bottom: 5px;
+}
+.gdpr-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.gdpr-toggle-btn {
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  background: var(--accent);
+  border: none;
+  border-radius: 6px;
+  padding: 3px 9px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.gdpr-toggle-btn:hover {
+  background: var(--primary-light);
+  color: var(--white);
+}
+.gdpr-full-link {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  text-decoration: underline;
+  white-space: nowrap;
+}
+.gdpr-full-link:hover { color: var(--primary); }
+
+/* Expand panel */
+.gdpr-details {
+  margin-top: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1.5px solid var(--accent-mid);
+  /* Animáció */
+  animation: gdprSlideDown 0.22s ease forwards;
+}
+@keyframes gdprSlideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.gdpr-details-inner {
+  background: var(--gray-light);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.gdpr-detail-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 6px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+.gdpr-detail-label {
+  font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap;
+}
+.gdpr-detail-value {
+  color: var(--gray-text);
+}
+.gdpr-detail-value a {
+  color: var(--primary-light);
+}
+@media (max-width: 400px) {
+  .gdpr-detail-row { grid-template-columns: 1fr; gap: 1px; }
+  .gdpr-detail-label { font-size: 0.7rem; }
+}
+
 /* Submit gomb */
 .modal-submit {
   display: flex;

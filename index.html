@@ -485,8 +485,6 @@
               <span class="team-role" data-i18n="team.members.0.role" data-hu="Lean Six Sigma Expert & IT Business Analyst" data-en="Lean Six Sigma Expert & IT Business Analyst">Lean Six Sigma Expert & IT Business Analyst</span>
               <p data-i18n="team.members.0.bio" data-hu="20+ éves tapasztalat logisztikai és folyamatoptimalizálási területen. Magyar Postánál vezette a Lean transzformációt, jelenleg MVM-nél IT Business Analyst és Lean Six Sigma folyamatszakértő. Szakterülete az értékáram-elemzés és a döntéstámogatási rendszerek generatív mesterséges intelligenciával történő támogatása és automatizálása. A 2024-es „Business Analyst of the Year: BA team methodological development categorty" díj nyertese." data-en="20+ years of experience in logistics and process optimization. Led the Lean transformation at Magyar Posta, currently IT Business Analyst and Lean Six Sigma process expert at MVM. Specializes in value stream analysis and supporting decision systems with generative AI. Winner of the 2024 'Business Analyst of the Year: BA team methodological development category' award.">20+ éves tapasztalat logisztikai és folyamatoptimalizálási területen. Magyar Postánál vezette a Lean transzformációt, jelenleg MVM-nél IT Business Analyst és Lean Six Sigma folyamatszakértő. Szakterülete az értékáram-elemzés és a döntéstámogatási rendszerek generatív mesterséges intelligenciával történő támogatása és automatizálása. A 2024-es „Business Analyst of the Year: BA team methodological development categorty" díj nyertese.</p>
               <div class="team-links">
-                <a href="/cdn-cgi/l/email-protection#2c58435844564340584d42414d5e5843426c40494d424e5e435844495e5f024459" class="team-link">📧 <span class="__cf_email__" data-cfemail="176378637f6d787b6376797a7665637879577b727679756578637f726564397f62">[email&#160;protected]</span></a>
-                <a href="tel:+36704104959" class="team-link">📞 +36 70 410 4959</a>
                 <a href="https://www.linkedin.com/in/tothzoltanmarton/" target="_blank" rel="noopener" class="team-link">🔗 LinkedIn</a>
               </div>
             </div>
@@ -498,8 +496,6 @@
               <span class="team-role" data-i18n="team.members.1.role" data-hu="RPA Solution Architect | UiPath & C# Expert" data-en="RPA Solution Architect | UiPath & C# Expert">RPA Solution Architect | UiPath & C# Expert</span>
               <p data-i18n="team.members.1.bio" data-hu="&bdquo;Ha valamit négyszer kell csinálni, automatizálom.&rdquo; – Magyar Postánál 20 éve dolgozik, ebből 4 éve vezető RPA architektként. Alulról építkezett: operátorból lett vállalati szintű automatizálási szakértő. UiPath, C# és AI-integráció terén skálázható, hosszú távon karbantartható megoldásokat tervez." data-en="&ldquo;If something has to be done four times, I automate it.&rdquo; – Has worked at Magyar Posta for 20 years, 4 of which as a lead RPA architect. Built from the ground up: from operator to enterprise-level automation expert. Designs scalable, long-term maintainable solutions in UiPath, C# and AI integration.">„Ha valamit négyszer kell csinálni, automatizálom." – Magyar Postánál 20 éve dolgozik, ebből 4 éve vezető RPA architektként. Alulról építkezett: operátorból lett vállalati szintű automatizálási szakértő. UiPath, C# és AI-integráció terén skálázható, hosszú távon karbantartható megoldásokat tervez.</p>
               <div class="team-links">
-                <a href="/cdn-cgi/l/email-protection#c2a9abb1b1a5a3a0adb0a0a3aea3b8b182aea7a3aca0b0adb6aaa7b0b1ecaab7" class="team-link">📧 <span class="__cf_email__" data-cfemail="aec5c7ddddc9cfccc1dccccfc2cfd4ddeec2cbcfc0ccdcc1dac6cbdcdd80c6db">[email&#160;protected]</span></a>
-                <a href="tel:+36304923837" class="team-link">📞 +36 30 492 3837</a>
                 <a href="https://www.linkedin.com/in/gabor-balazs-kiss/" target="_blank" rel="noopener" class="team-link">🔗 LinkedIn</a>
               </div>
             </div>
@@ -766,16 +762,117 @@
 
         <div class="form-consent">
           <input type="checkbox" id="fieldConsent" name="gdpr_consent" required />
-          <label for="fieldConsent" data-i18n="modal.consent"
-            data-hu="Elfogadom, hogy a LeanBrothers az uzeneteme a kapcsolatfelvetel celja cljából tárolja. Adatokat harmadik félnek nem adjuk át."
-            data-en="I agree that LeanBrothers stores my message for contact purposes. Data will not be shared with third parties.">
-            Elfogadom, hogy a LeanBrothers az uzeneteme a kapcsolatfelvetel celjabol tarolja. Adatokat harmadik felnek nem adjuk at.
+          <label for="fieldConsent">
+            <!-- Fő consent szöveg – bilinguális -->
+            <span class="gdpr-consent-text"
+              data-hu="Elfogadom, hogy Tóth Zoltán Márton és Kiss Gábor Balázs (info@leanbrothers.hu) az itt megadott adataimat kizárólag kapcsolatfelvétel céljából, legfeljebb 1 évig kezeli. Adatfeldolgozó: Formspree Inc. (USA)."
+              data-en="I agree that Tóth Zoltán Márton and Kiss Gábor Balázs (info@leanbrothers.hu) process my submitted data solely for contact purposes, for a maximum of 1 year. Data processor: Formspree Inc. (USA).">
+              Elfogadom, hogy Tóth Zoltán Márton és Kiss Gábor Balázs (info@leanbrothers.hu) az itt megadott adataimat kizárólag kapcsolatfelvétel céljából, legfeljebb 1 évig kezeli. Adatfeldolgozó: Formspree Inc. (USA).
+            </span>
+            <!-- Gombok: inline expand + külső oldal -->
+            <span class="gdpr-links" aria-label="Adatvédelmi linkek">
+              <button type="button"
+                class="gdpr-toggle-btn"
+                aria-expanded="false"
+                aria-controls="gdprDetails"
+                onclick="toggleGdpr(event)"
+                data-hu="Részletek ▼"
+                data-en="Details ▼">Részletek ▼</button>
+              <span aria-hidden="true">·</span>
+              <a href="adatvedelem.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="gdpr-full-link"
+                data-hu="Teljes tájékoztató →"
+                data-en="Full policy →">Teljes tájékoztató →</a>
+            </span>
           </label>
         </div>
 
+        <div id="gdprDetails"
+          class="gdpr-details"
+          hidden
+          role="region"
+          aria-label="Adatkezelési összefoglaló">
+
+          <div class="gdpr-details-inner">
+
+            <div class="gdpr-detail-row">
+              <span class="gdpr-detail-label"
+                data-hu="Adatkezelők" data-en="Controllers">Adatkezelők</span>
+              <span class="gdpr-detail-value"
+                data-hu="Tóth Zoltán Márton és Kiss Gábor Balázs"
+                data-en="Tóth Zoltán Márton and Kiss Gábor Balázs">
+                Tóth Zoltán Márton és Kiss Gábor Balázs
+              </span>
+            </div>
+
+            <div class="gdpr-detail-row">
+              <span class="gdpr-detail-label"
+                data-hu="Cél" data-en="Purpose">Cél</span>
+              <span class="gdpr-detail-value"
+                data-hu="Kapcsolatfelvétel megválaszolása, konzultáció egyeztetése"
+                data-en="Responding to enquiries, scheduling consultation">
+                Kapcsolatfelvétel megválaszolása, konzultáció egyeztetése
+              </span>
+            </div>
+
+            <div class="gdpr-detail-row">
+              <span class="gdpr-detail-label"
+                data-hu="Jogalap" data-en="Legal basis">Jogalap</span>
+              <span class="gdpr-detail-value"
+                data-hu="Önkéntes hozzájárulás (GDPR 6. cikk (1) a))"
+                data-en="Voluntary consent (GDPR Art. 6(1)(a))">
+                Önkéntes hozzájárulás (GDPR 6. cikk (1) a))
+              </span>
+            </div>
+
+            <div class="gdpr-detail-row">
+              <span class="gdpr-detail-label"
+                data-hu="Megőrzés" data-en="Retention">Megőrzés</span>
+              <span class="gdpr-detail-value"
+                data-hu="Legfeljebb 1 év, majd végleges törlés"
+                data-en="Maximum 1 year, then permanent deletion">
+                Legfeljebb 1 év, majd végleges törlés
+              </span>
+            </div>
+
+            <div class="gdpr-detail-row">
+              <span class="gdpr-detail-label"
+                data-hu="Adatfeldolgozó" data-en="Processor">Adatfeldolgozó</span>
+              <span class="gdpr-detail-value"
+                data-hu="Formspree Inc. (USA) – SCC alapján továbbítva"
+                data-en="Formspree Inc. (USA) – transferred under SCC">
+                Formspree Inc. (USA) – SCC alapján továbbítva
+              </span>
+            </div>
+
+            <div class="gdpr-detail-row">
+              <span class="gdpr-detail-label"
+                data-hu="Jogaid" data-en="Your rights">Jogaid</span>
+              <span class="gdpr-detail-value"
+                data-hu="Hozzáférés, helyesbítés, törlés, korlátozás, hordozhatóság, tiltakozás – kérelem: info@leanbrothers.hu"
+                data-en="Access, rectification, erasure, restriction, portability, objection – request: info@leanbrothers.hu">
+                Hozzáférés, helyesbítés, törlés, korlátozás, hordozhatóság, tiltakozás –
+                kérelem: <a href="mailto:info@leanbrothers.hu">info@leanbrothers.hu</a>
+              </span>
+            </div>
+
+            <div class="gdpr-detail-row">
+              <span class="gdpr-detail-label"
+                data-hu="Panasztétel" data-en="Complaints">Panasztétel</span>
+              <span class="gdpr-detail-value">
+                NAIH – <a href="https://www.naih.hu" target="_blank" rel="noopener">www.naih.hu</a>
+              </span>
+            </div>
+
+          </div><!-- /.gdpr-details-inner -->
+        </div><!-- /#gdprDetails -->
+
+
         <button type="submit" class="modal-submit" id="modalSubmitBtn">
           <span class="spinner"></span>
-          <span class="btn-label" data-i18n="modal.submitBtn" data-hu="Uzenet elkuldes →" data-en="Send message →">Uzenet elkuldes →</span>
+          <span class="btn-label" data-i18n="modal.submitBtn" data-hu="Üzenet elküldése →" data-en="Send message →">Uzenet elkuldes →</span>
         </button>
       </form>
     </div>
