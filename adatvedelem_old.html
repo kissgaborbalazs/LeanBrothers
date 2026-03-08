@@ -1,55 +1,55 @@
 <!DOCTYPE html>
 <html lang="hu">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adatkezelési Tájékoztató – LeanBrothers</title>
   <meta name="description" content="LeanBrothers adatkezelési tájékoztató – kapcsolatfelvételi űrlap adatkezelése." />
+  <!-- Keresőknek nem kell indexelni ezt az oldalt -->
   <meta name="robots" content="noindex, follow" />
   <link rel="canonical" href="https://www.leanbrothers.hu/adatvedelem.html" />
-
-  <!-- CSS változók, reset, betűtípus – ugyanaz mint a főoldalon -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     /* =====================================================
        LeanBrothers – adatvedelem.html
-       Csak az oldalspecifikus stílusok vannak itt.
-       Az összes CSS változó a style.css :root blokkjából jön.
+       Önálló oldal, style.css nélkül (portábilis)
        ===================================================== */
 
-    /* Főoldal scroll-wrapper logikáját kikapcsoljuk */
-    html,
-    body {
-      height: auto !important;
-      overflow: auto !important;
+    :root {
+      --primary:       #1F4E79;
+      --primary-dark:  #163857;
+      --primary-light: #2E6DA4;
+      --accent:        #D6E4F0;
+      --accent-mid:    #A8CBEA;
+      --white:         #FFFFFF;
+      --gray-light:    #F7F9FC;
+      --gray-mid:      #E2EAF4;
+      --gray-text:     #4A5568;
+      --dark:          #1A202C;
+      --font:          'Inter', sans-serif;
+      --radius:        12px;
+      --max-w:         780px;
     }
 
-    #scroll-wrapper {
-      display: none !important;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
+      font-family: var(--font);
+      color: var(--dark);
       background: var(--gray-light);
       line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
     }
-
-    a {
-      color: var(--primary-light);
-      text-decoration: underline;
-    }
-
-    a:hover {
-      color: var(--primary);
-    }
+    a { color: var(--primary-light); text-decoration: underline; }
+    a:hover { color: var(--primary); }
 
     /* ── Fejléc sáv ── */
     .site-header {
       background: var(--primary);
       padding: 0;
     }
-
     .header-inner {
       max-width: var(--max-w);
       margin: 0 auto;
@@ -59,39 +59,30 @@
       justify-content: space-between;
       gap: 16px;
     }
-
     .logo-wrap {
       display: flex;
       align-items: center;
       gap: 10px;
       text-decoration: none;
     }
-
     .logo-text {
       font-size: 1.1rem;
       font-weight: 800;
       color: var(--white);
       letter-spacing: -0.02em;
     }
-
-    .logo-text span {
-      color: var(--accent-mid);
-    }
-
+    .logo-text span { color: var(--accent-mid); }
     .back-link {
       font-size: 0.82rem;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.75);
+      color: rgba(255,255,255,0.75);
       text-decoration: none;
       display: flex;
       align-items: center;
       gap: 6px;
       transition: color 0.2s;
     }
-
-    .back-link:hover {
-      color: var(--white);
-    }
+    .back-link:hover { color: var(--white); }
 
     /* ── Tartalom kártya ── */
     .page-wrap {
@@ -99,11 +90,10 @@
       margin: 40px auto 64px;
       padding: 0 24px;
     }
-
     .doc-card {
       background: var(--white);
       border-radius: 16px;
-      box-shadow: 0 4px 32px rgba(31, 78, 121, 0.08);
+      box-shadow: 0 4px 32px rgba(31,78,121,0.08);
       overflow: hidden;
     }
 
@@ -113,7 +103,6 @@
       padding: 36px 44px 32px;
       color: var(--white);
     }
-
     .doc-badge {
       display: inline-block;
       font-size: 0.68rem;
@@ -121,28 +110,23 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--accent-mid);
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
       padding: 4px 12px;
       border-radius: 99px;
       margin-bottom: 14px;
     }
-
     .doc-title {
       font-size: 1.6rem;
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 10px;
     }
-
     .doc-meta {
       font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(255,255,255,0.6);
     }
-
-    .doc-meta span {
-      margin-right: 16px;
-    }
+    .doc-meta span { margin-right: 16px; }
 
     /* ── Dokumentum törzs ── */
     .doc-body {
@@ -155,7 +139,6 @@
       padding-bottom: 36px;
       border-bottom: 1px solid var(--gray-mid);
     }
-
     .gdpr-section:last-child {
       margin-bottom: 0;
       padding-bottom: 0;
@@ -171,7 +154,6 @@
       align-items: center;
       gap: 10px;
     }
-
     .section-num {
       display: inline-flex;
       align-items: center;
@@ -185,21 +167,13 @@
       border-radius: 50%;
       flex-shrink: 0;
     }
-
     .gdpr-section p {
       font-size: 0.9rem;
       color: var(--gray-text);
       margin-bottom: 10px;
     }
-
-    .gdpr-section p:last-child {
-      margin-bottom: 0;
-    }
-
-    .gdpr-section strong {
-      color: var(--dark);
-      font-weight: 700;
-    }
+    .gdpr-section p:last-child { margin-bottom: 0; }
+    .gdpr-section strong { color: var(--dark); font-weight: 700; }
 
     /* Jogok lista */
     .rights-list {
@@ -209,7 +183,6 @@
       gap: 8px;
       margin-top: 10px;
     }
-
     .rights-list li {
       font-size: 0.87rem;
       color: var(--gray-text);
@@ -221,7 +194,6 @@
       align-items: flex-start;
       gap: 8px;
     }
-
     .rights-list li::before {
       content: '✓';
       color: var(--primary-light);
@@ -238,7 +210,6 @@
       padding: 18px 20px;
       margin-top: 12px;
     }
-
     .processor-box h3 {
       font-size: 0.82rem;
       font-weight: 800;
@@ -247,23 +218,18 @@
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
-
     .processor-box dl {
       display: grid;
       grid-template-columns: auto 1fr;
       gap: 4px 12px;
       font-size: 0.84rem;
     }
-
     .processor-box dt {
       color: var(--gray-text);
       font-weight: 600;
       white-space: nowrap;
     }
-
-    .processor-box dd {
-      color: var(--dark);
-    }
+    .processor-box dd { color: var(--dark); }
 
     /* Kiemelő doboz (NAIH) */
     .info-box {
@@ -273,7 +239,6 @@
       padding: 14px 18px;
       margin-top: 12px;
     }
-
     .info-box p {
       font-size: 0.85rem;
       color: var(--primary-dark);
@@ -291,12 +256,10 @@
       flex-wrap: wrap;
       gap: 10px;
     }
-
     .doc-footer p {
       font-size: 0.76rem;
       color: var(--gray-text);
     }
-
     .doc-footer a {
       font-size: 0.76rem;
       font-weight: 600;
@@ -304,39 +267,16 @@
 
     /* ── Reszponzív ── */
     @media (max-width: 600px) {
-      .header-inner {
-        padding: 14px 18px;
-      }
-
-      .doc-header {
-        padding: 26px 22px 22px;
-      }
-
-      .doc-body {
-        padding: 28px 22px 36px;
-      }
-
-      .doc-footer {
-        padding: 16px 22px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .doc-title {
-        font-size: 1.25rem;
-      }
-
-      .rights-list {
-        grid-template-columns: 1fr;
-      }
-
-      .page-wrap {
-        margin: 20px auto 40px;
-      }
+      .header-inner { padding: 14px 18px; }
+      .doc-header   { padding: 26px 22px 22px; }
+      .doc-body     { padding: 28px 22px 36px; }
+      .doc-footer   { padding: 16px 22px; flex-direction: column; align-items: flex-start; }
+      .doc-title    { font-size: 1.25rem; }
+      .rights-list  { grid-template-columns: 1fr; }
+      .page-wrap    { margin: 20px auto 40px; }
     }
   </style>
 </head>
-
 <body>
 
   <!-- ── Fejléc navigáció ── -->
@@ -344,14 +284,13 @@
     <div class="header-inner">
       <a href="index.html" class="logo-wrap" aria-label="LeanBrothers – Főoldal">
         <!-- LB logó (inline SVG, nem kell külső fájl) -->
-        <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true">
-          <rect width="36" height="36" rx="8" fill="#2E6DA4" />
-          <rect x="6" y="10" width="3.5" height="16" rx="1.5" fill="white" />
-          <rect x="6" y="22.5" width="10" height="3.5" rx="1.5" fill="white" />
-          <rect x="19" y="10" width="3.5" height="16" rx="1.5" fill="#A8CBEA" />
-          <path d="M23.5 10 H26 Q30 10 30 14 Q30 18 26 18 H23.5 Z" fill="#A8CBEA" />
-          <path d="M23.5 18 H26.5 Q31 18 31 22 Q31 26 26.5 26 H23.5 Z" fill="#A8CBEA" />
+        <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="36" height="36" rx="8" fill="#2E6DA4"/>
+          <rect x="6" y="10" width="3.5" height="16" rx="1.5" fill="white"/>
+          <rect x="6" y="22.5" width="10" height="3.5" rx="1.5" fill="white"/>
+          <rect x="19" y="10" width="3.5" height="16" rx="1.5" fill="#A8CBEA"/>
+          <path d="M23.5 10 H26 Q30 10 30 14 Q30 18 26 18 H23.5 Z" fill="#A8CBEA"/>
+          <path d="M23.5 18 H26.5 Q31 18 31 22 Q31 26 26.5 26 H23.5 Z" fill="#A8CBEA"/>
         </svg>
         <span class="logo-text">Lean<span>Brothers</span></span>
       </a>
@@ -368,8 +307,8 @@
         <div class="doc-badge">Jogi dokumentum</div>
         <h1 class="doc-title" id="docTitle">Adatkezelési Tájékoztató</h1>
         <div class="doc-meta">
-          <span>📅 Hatályos: 2026. március 8-tól</span>
-          <span>🔄 Utolsó módosítás: 2026. március 08.</span>
+          <span>📅 Hatályos: 2026. március 05-től</span>
+          <span>🔄 Utolsó módosítás: 2026. március 05.</span>
         </div>
       </div>
 
@@ -405,18 +344,12 @@
           <div class="processor-box" style="margin-top:14px;">
             <h3>Kezelt adatok</h3>
             <dl>
-              <dt>Teljes név *</dt>
-              <dd>Személyazonosítás, megszólítás</dd>
-              <dt>Email-cím *</dt>
-              <dd>Visszajelzés küldése</dd>
-              <dt>Cégnév</dt>
-              <dd>Az érdeklődő vállalkozásának azonosítása</dd>
-              <dt>Létszám-kategória</dt>
-              <dd>Megfelelő szolgáltatás ajánlása</dd>
-              <dt>Érdeklődési terület</dt>
-              <dd>Releváns válasz előkészítése</dd>
-              <dt>Szöveges üzenet</dt>
-              <dd>Az igény pontosabb megértése</dd>
+              <dt>Teljes név *</dt>         <dd>Személyazonosítás, megszólítás</dd>
+              <dt>Email-cím *</dt>           <dd>Visszajelzés küldése</dd>
+              <dt>Cégnév</dt>               <dd>Az érdeklődő vállalkozásának azonosítása</dd>
+              <dt>Létszám-kategória</dt>     <dd>Megfelelő szolgáltatás ajánlása</dd>
+              <dt>Érdeklődési terület</dt>   <dd>Releváns válasz előkészítése</dd>
+              <dt>Szöveges üzenet</dt>       <dd>Az igény pontosabb megértése</dd>
             </dl>
           </div>
 
@@ -478,18 +411,13 @@
           <div class="processor-box">
             <h3>Formspree Inc.</h3>
             <dl>
-              <dt>Székhely:</dt>
-              <dd>555 Mission St, San Francisco, CA 94105, USA</dd>
-              <dt>Cél:</dt>
-              <dd>Kapcsolatfelvételi űrlap üzeneteinek továbbítása az adatkezelők email-fiókjába</dd>
-              <dt>Adattárolás:</dt>
-              <dd>A Formspree <strong>nem tárolja</strong> az elküldött adatokat (Submission Archive letiltva) – az
-                üzenet kézbesítése után az adatok kizárólag az adatkezelők email-fiókjában maradnak</dd>
+              <dt>Székhely:</dt>    <dd>555 Mission St, San Francisco, CA 94105, USA</dd>
+              <dt>Cél:</dt>         <dd>Kapcsolatfelvételi űrlap üzeneteinek továbbítása az adatkezelők email-fiókjába</dd>
+              <dt>Adattárolás:</dt> <dd>A Formspree <strong>nem tárolja</strong> az elküldött adatokat (Submission Archive letiltva) – az üzenet kézbesítése után az adatok kizárólag az adatkezelők email-fiókjában maradnak</dd>
               <dt>Továbbítás jogalapja:</dt>
-              <dd>EU–USA Standard Szerződéses Záradékok (SCC, GDPR 46. cikk (2) c) pont)</dd>
+                                    <dd>EU–USA Standard Szerződéses Záradékok (SCC, GDPR 46. cikk (2) c) pont)</dd>
               <dt>Adatvédelmi szabályzat:</dt>
-              <dd><a href="https://formspree.io/legal/privacy-policy" target="_blank"
-                  rel="noopener">formspree.io/legal/privacy-policy</a></dd>
+                                    <dd><a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a></dd>
             </dl>
           </div>
 
@@ -551,7 +479,7 @@
             A módosítások ezen az oldalon kerülnek közzétételre a hatályba lépés előtt.
           </p>
           <p>
-            A tájékoztató jelenlegi verziója <strong>2026. március 08.</strong> óta hatályos.
+            A tájékoztató jelenlegi verziója <strong>2026. március 05.</strong> óta hatályos.
           </p>
         </section>
 
@@ -567,5 +495,4 @@
   </main>
 
 </body>
-
 </html>

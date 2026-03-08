@@ -47,8 +47,8 @@
       },
       {
         "icon": "🎯",
-        "title": "A vendor mindig megoldást lát",
-        "text": "A vendorok megoldást akarnak eladni – nem a ti problémátokat megoldani. Ebből érdekeik vannak."
+        "title": "A termék nem azonos a megoldással",
+        "text": "A vendorok a saját eszközeikben látják a választ mindenre. Mi abban segítünk, hogy a technológia valóban az Önöket szolgálja."
       },
       {
         "icon": "📈",
@@ -98,7 +98,7 @@
         "name": "Folyamatoptimalizálási Sprint",
         "duration": "⏱ 5 nap · Teljes audit",
         "price": "Egyedi ajánlat",
-        "desc": "ROI kalkuláció, értékáram-térkép, folyamattérkép, vendor shortlist – minden amit a döntéshez kell.",
+        "desc": "ROI kalkuláció, értékáram-térkép, folyamattérkép, vendor shortlist – minden ami a döntéshez kell.",
         "note": "✓ Előzetes diagnózis nélkül is indítható",
         "featured": true,
         "badge": "⭐ Ajánlott"
