@@ -143,9 +143,14 @@ const popupImg = document.createElement('img');
 popup.appendChild(popupImg);
 document.body.appendChild(popup);
 
+// Csak valodi hover-kepes eszkozon (eger/trackpad). Erintokepernyon a
+// mouseenter koppintasra is elsul, a mouseleave viszont gyakran nem, igy a
+// nagyitott kep beragadt es lelogott a kepernyorol.
+const canHoverAvatar = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
 document.querySelectorAll('.team-avatar').forEach(avatar => {
   const src = avatar.querySelector('img')?.src;
-  if (!src) return;
+  if (!src || !canHoverAvatar) return;
   avatar.addEventListener('mouseenter', (e) => {
     popupImg.src = src;
     popup.classList.add('show');
@@ -156,11 +161,18 @@ document.querySelectorAll('.team-avatar').forEach(avatar => {
 });
 
 function positionPopup(e) {
-  // pw/ph a CSS-ben lévő .avatar-popup img mérettel kell egyezzen
-  const margin = 16, pw = 320, ph = 320;
+  // A meretet a rendered elembol olvassuk, nem hardcode-olva: a CSS mostmar
+  // szuk viewporton lekicsinyiti a kepet, egy fix 320-as ertek elcsuszna.
+  const margin = 16;
+  const rect = popupImg.getBoundingClientRect();
+  const pw = rect.width || 320, ph = rect.height || 320;
   let x = e.clientX + margin;
   let y = e.clientY - ph / 2;
   if (x + pw > window.innerWidth - margin) x = e.clientX - pw - margin;
+  // A tukrozott ag korabban NEM volt clamp-elve (csak az y): keskeny kijelzon
+  // x negativba ment (pl. 60 - 320 - 16 = -276), es a kep majdnem teljesen
+  // lelogott a bal oldalon.
+  x = Math.max(margin, Math.min(x, window.innerWidth - pw - margin));
   y = Math.max(margin, Math.min(y, window.innerHeight - ph - margin));
   popup.style.left = x + 'px';
   popup.style.top  = y + 'px';

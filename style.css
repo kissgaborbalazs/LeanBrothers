@@ -771,8 +771,10 @@ ul { list-style: none; }
   transform: scale(1);
 }
 .avatar-popup img {
-  width: 320px;
-  height: 320px;
+  /* Keskeny viewporton sosem lohet ki a kepernyobol. */
+  width: min(320px, calc(100vw - 32px));
+  height: auto;
+  aspect-ratio: 1;
   object-fit: cover;
   object-position: center top;
   border-radius: 16px;
