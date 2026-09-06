@@ -1,8 +1,8 @@
 {
   "_comment": "LeanBrothers – Magyar tartalom. Szerkeszd szabadon, nem kell kódhoz nyúlni.",
   "meta": {
-    "title": "LeanBrothers – Lean & AI Tanácsadás KKV-knak | Folyamatoptimalizálás, RPA, Automatizáció",
-    "description": "Magyar KKV-knak nyújtunk független Lean és AI tanácsadást. Feltárjuk a folyamatveszteségeket, ROI kalkulációt készítünk, és a megfelelő automatizációs megoldást hozzuk be – vendor-semleges alapon."
+    "title": "LeanBrothers – Folyamatfejlesztés és Automatizáció Képzés | RPA, AI, Lean",
+    "description": "Ne automatizáljuk a veszteséget. Előbb tegyük rendbe a folyamatot, aztán jöhet az automatizáció – ha megéri. Megtanítjuk a csapatodnak, hol nyílik a kapu az RPA és az AI között."
   },
   "nav": {
     "problem": "A probléma",
@@ -10,105 +10,115 @@
     "services": "Szolgáltatások",
     "whyUs": "Miért mi",
     "team": "Csapat",
+    "background": "Háttér",
     "faq": "GYIK",
     "cta": "Vegyük fel a kapcsolatot"
   },
   "hero": {
-    "badge": "✶ Digitális Lean & Automatizáció",
-    "title": "Folyamat alapú működés, <em>mérhető</em> eredmények",
-    "subtitle": "Nem technológiát adunk el. Rendet teszünk a folyamatokban – aztán bemutatjuk a megfelelő megoldást.",
+    "badge": "✦ Folyamatfejlesztés és automatizáció",
+    "title": "Ne automatizáljuk a veszteséget.",
+    "subtitle": "Előbb tegyük rendbe a folyamatot – aztán jöhet az automatizáció, ha megéri. Megtanítjuk a csapatodnak, hogyan lássa meg a különbséget.",
     "ctaPrimary": "Vegyük fel a kapcsolatot",
-    "ctaSecondary": "Hogyan dolgozunk →",
-    "note": "✓ Ingyenes első konzultáció · ✓ Független, vendor-semleges tanácsadás",
+    "ctaPrimaryFree": "Ingyenes konzultáció",
+    "ctaSecondary": "Hogyan tanítunk →",
+    "note": "✓ Ingyenes első konzultáció · ✓ Vendor-semleges tanácsadás",
     "cards": [
       {
-        "label": "Lean Diagnózis",
-        "value": "Folyamatveszteség azonosítva"
+        "label": "Helyszíni felmérés",
+        "value": "Ott, ahol a munka történik"
       },
       {
-        "label": "ROI Kalkuláció",
-        "value": "Megtérülés dokumentálva"
+        "label": "Dokumentálás",
+        "value": "VSM, SIPOC, Swimlane"
       },
       {
-        "label": "AI Bevezetés",
-        "value": "A megfelelő vendor kiválasztva"
+        "label": "Végrehajtás",
+        "value": "Csak, ami megéri"
       }
     ]
   },
   "problem": {
     "label": "Az igazság",
-    "title": "Amit a legtöbb AI-tanácsadó nem mond el",
-    "subtitle": "Mielőtt technológiát vezetnénk be, meg kell érteni, mi az igazi probléma.",
+    "title": "Miért buknak el az automatizálási projektek?",
+    "subtitle": "Három csendes hiba, amit szinte senki nem mond ki.",
     "cards": [
       {
         "icon": "💸",
-        "title": "A rossz alap kétszeres ár",
-        "text": "Rossz folyamatra épített automatizáció kétszer annyiba kerül – egyszer a bevezetésnél, egyszer a kidobásnál."
+        "title": "Rossz folyamatra ültetett automatizáció",
+        "text": "Rossz folyamatra ültetett automatizáció kétszer annyiba kerül – és nem térül meg."
       },
       {
         "icon": "🎯",
-        "title": "A termék nem azonos a megoldással",
-        "text": "A vendorok a saját eszközeikben látják a választ mindenre. Mi abban segítünk, hogy a technológia valóban az Önöket szolgálja."
+        "title": "Mindenki a legújabb megoldást akarja",
+        "text": "Mindenki a legújabb megoldást akarja. Pedig sokszor egy egyszerű robot vagy egy jobb Excel a válasz."
       },
       {
-        "icon": "📈",
-        "title": "Valós megtérülés = rendezett folyamat",
-        "text": "A megtérülés csak akkor valós, ha a folyamat előbb rendben van. Az automatizáció nem tud csodát tenni."
+        "icon": "🧭",
+        "title": "Nincs eszköz a döntéshez",
+        "text": "A csapatnak nincs eszköze eldönteni, mikor melyik technológia való."
       }
     ]
   },
   "method": {
     "label": "A mi megközelítésünk",
-    "title": "A mi módszerünk: Lean → Dokumentáció → Vendor",
-    "subtitle": "Háromlépéses, bizonyított keretrendszer – amellyel tényleg megtérül a befektetés.",
+    "title": "Nem az eszköz. A módszer.",
+    "subtitle": "DMAIC – bevált Six Sigma keretrendszer.",
     "steps": [
       {
-        "tag": "Lean Diagnózis",
-        "title": "Feltárjuk a valódi veszteségeket",
-        "text": "Helyszíni felmérés, adatgyűjtés, interjúk. Megmutatjuk, hol folyik el az idő és a pénz."
+        "tag": "Define",
+        "text": "Probléma azonosítása"
       },
       {
-        "tag": "Dokumentáció",
-        "title": "Dokumentálunk és priorizálunk",
-        "text": "Folyamattérkép, értékáram-térkép, ROI kalkuláció, technológiai javaslat – minden feketén-fehéren."
+        "tag": "Measure",
+        "text": "Felmérés és vizualizáció"
       },
       {
-        "tag": "Vendor Kiválasztás",
-        "title": "A megfelelő partnert hozzuk be",
-        "text": "Független vendor ajánlás, megvalósítás felügyelet. Mi az ön érdekét képviseljük."
+        "tag": "Analyze",
+        "text": "Gyökérok és szűk keresztmetszet"
+      },
+      {
+        "tag": "Improve",
+        "text": "Fejlesztési javaslat"
+      },
+      {
+        "tag": "Control",
+        "text": "Fenntartás és visszamérés"
       }
-    ]
+    ],
+    "closing": "Így dolgozunk. Ezt tanítjuk."
   },
   "services": {
-    "label": "Belépési pontok",
-    "title": "Három belépési pont – az ön igényei szerint",
-    "subtitle": "Válassza azt, amely illik a vállalata jelenlegi helyzetéhez és igényeihez.",
-    "ctaBtn": "Ingyenes 30 perces konzultáció",
+    "label": "Termékek",
+    "title": "A képzés a belépő – a tanácsadás a ráépülés",
+    "subtitle": "Válaszd, ami a csapatodnak most kell.",
+    "ctaBtn": "Ingyenes konzultáció",
+    "addon": "Kiegészítő: AI jogi megfelelőség (GDPR, AI Act) – igény szerint.",
     "cards": [
       {
-        "level": "Alap",
-        "name": "Digitális Veszteségfeltárás",
-        "duration": "⏱ 2 nap · Helyszíni + online",
-        "price": "Egyedi ajánlat",
-        "desc": "Független helyzetfelmérés – tudja meg hol tart, milyen veszteségei vannak most.",
+        "level": "Belépő",
+        "name": "Folyamatfelmérés",
+        "duration": "⏱ ~2 nap · Helyszíni + online",
+        "price": "Fix csomagár",
+        "desc": "Hol tartotok, miben van potenciál – és mennyire vagytok készen egy AI vagy RPA bevezetésre. Mint egy szűrővizsgálat – akkor is hasznos, ha semmi baj.",
         "featured": false
       },
       {
-        "level": "Ajánlott",
-        "name": "Folyamatoptimalizálási Sprint",
-        "duration": "⏱ 5 nap · Teljes audit",
-        "price": "Egyedi ajánlat",
-        "desc": "ROI kalkuláció, értékáram-térkép, folyamattérkép, vendor shortlist – minden ami a döntéshez kell.",
-        "note": "✓ Előzetes diagnózis nélkül is indítható",
+        "level": "Képzés",
+        "name": "VDPE Workshop",
+        "subtitle": "Lean módszertan + AI/RPA döntéskeret",
+        "duration": "⏱ 2 nap · Zárt, céges · 6–8 fő",
+        "price": "Csoportos – 6-8 fő",
+        "desc": "Megtanítjuk a módszertant a csapatodnak – valós folyamatokon gyakorolva. Végigvesszük, mikor éri meg RPA-val vagy AI-val megoldani – és mikor nem. Nem tananyagot visznek haza, hanem képességet.",
+        "note": "✓ A csapat önállóan viszi tovább",
         "featured": true,
-        "badge": "⭐ Ajánlott"
+        "badge": "⭐ Zászlóshajó"
       },
       {
-        "level": "Haladó",
-        "name": "Folyamatos Fejlesztési Keret",
-        "duration": "🔄 Havi előfizetés · Folyamatos",
-        "price": "Egyedi ajánlat",
-        "desc": "Vendor felügyelet, visszamérés, kompetencia on-demand – hosszú távú partner.",
+        "level": "Ráépülés",
+        "name": "Mentorált sprint + retainer",
+        "duration": "🔄 Projekt vagy havi keret",
+        "price": "Havi vagy projekt alapon",
+        "desc": "A képzés után: az első éles RPA vagy AI projekt kísérése, vendor-felügyelet, visszamérés.",
         "featured": false
       }
     ]
@@ -116,34 +126,36 @@
   "whyUs": {
     "label": "Versenyelőnyünk",
     "title": "Amit mások nem tudnak adni",
-    "subtitle": "Nem vagyunk resellers, nem vagyunk integrátorok. Független tanácsadók vagyunk – az ön oldalán.",
+    "subtitle": "Nem eladunk – megtanítunk. Ez négy dologban látszik.",
     "cards": [
       {
-        "icon": "🛡️",
-        "title": "100% független tanácsadás",
-        "text": "Nem vagyunk érdekeltek egyetlen vendor sikerében sem – függetlenek maradunk, az ön érdekét képviseljük."
+        "icon": "🎓",
+        "title": "Nem eladunk – megtanítunk",
+        "text": "A tudás a csapatodban marad, nem nálunk. Nem függtök tőlünk hosszú távon."
       },
       {
         "icon": "🏢",
-        "title": "Nagyvállalati tudás, KKV áron",
-        "text": "Nagyvállalati RPA és AI tapasztalat – megfizethető, KKV-ra szabott keretrendszerben."
+        "title": "Nagyvállalati RPA és AI tapasztalat",
+        "text": "Nagyvállalati RPA és AI tapasztalat – tudjuk, mikor NEM az AI a válasz."
       },
       {
-        "icon": "💡",
-        "title": "A Lean önmagában is nyereség",
-        "text": "A folyamatfejlesztés önmagában is nyereség – az automatizáció csak hab a tortán."
+        "icon": "🛡️",
+        "title": "Vendor-semleges",
+        "text": "Vendor-semleges. Egyik technológiában sem vagyunk érdekeltek."
       },
       {
         "icon": "⚖️",
-        "title": "AI jogi megfelelőség",
-        "text": "GDPR, AI Act megfelelőség igény szerint – jogszabályi háttér beépítve a javaslatokba."
+        "title": "AI jogi háttér",
+        "text": "AI jogi háttér: GDPR, AI Act megfelelőség dedikált ügyvédi partnerrel."
       }
     ]
   },
   "team": {
     "label": "A csapat",
     "title": "Akik mögötte állnak",
-    "subtitle": "Tapasztalt szakemberek, akik nagyvállalatoknál tanulták a mesterséget – és most KKV-knak adják tovább.",
+    "subtitle": "Tapasztalt szakemberek, akik nagyvállalatoknál tanulták a mesterséget – és most a csapatodnak adják tovább. Rendezvények, piackövetés és éles vendor-felügyeleti munkák tartanak minket naprakészen.",
+    "legalPartnerTitle": "AI jogi partner",
+    "legalPartnerText": "Dedikált ügyvédi iroda, igény szerint bevonva – GDPR, AI Act, szerződéses háttér.",
     "members": [
       {
         "name": "Tóth Zoltán Márton",
@@ -161,50 +173,73 @@
       }
     ]
   },
+  "partner": {
+    "label": "Cégjogi és üzleti háttér",
+    "title": "Nemzetközi partnerünk az üzleti hátterért",
+    "subtitle": "Nem egyedül csináljuk. Cégjogi és nemzetközi üzleti hátterünket a 2002 óta működő KD Consulting biztosítja – így a szakmai munkánk mögött stabil szervezeti keret áll.",
+    "brandTagline": "CEE ↔ USA üzleti tanácsadás · 2002 óta",
+    "desc": "A KD Consulting nemzetközi üzleti tanácsadó cég, amely 2002 óta segít vállalatoknak Közép-Kelet-Európa és az Egyesült Államok között kapcsolatokat építeni. Ügyfeleik között Fortune 500-as cégek, KKV-k és kormányzati intézmények is szerepelnek. A LeanBrothers stratégiai partnereként adja meg számunkra azt a szervezeti és cégjogi keretet, amelyre egy induló szakmai csapatnak szüksége van.",
+    "link": "Tovább a KD Consulting oldalára →",
+    "highlights": [
+      {
+        "title": "Cégjogi keret",
+        "text": "Szerződéskötés és számlázás bejegyzett cégen keresztül."
+      },
+      {
+        "title": "Nemzetközi hozzáférés",
+        "text": "Multinacionális cégek CEE operációihoz tudunk így hozzáférni."
+      },
+      {
+        "title": "Több mint 20 éves múlt",
+        "text": "A KDC 2002 óta működik – nem egy tegnap alakult vállalkozás."
+      }
+    ]
+  },
   "faq": {
     "label": "Gyakori kérdések",
     "title": "Amit a legtöbben kérdeznek",
-    "subtitle": "Rövid, őszinte válaszok – mielőtt felvesszük a kapcsolatot.",
+    "subtitle": "Kattints egy kérdésre a válaszért.",
     "items": [
       {
-        "q": "Mikor érdemes Lean tanácsadót bevonni az automatizáció előtt?",
-        "a": "Akkor, ha az automatizálni kívánt folyamat még nem optimalizált. Rossz folyamatra épített RPA vagy AI kétszer annyiba kerül – egyszer a bevezetésnél, egyszer amikor ki kell dobni. A Lean diagnosztika elvégzése előfeltétele a fenntartható megtérülésnek."
+        "q": "Ti csináljátok meg helyettünk?",
+        "a": "Nem. Megtanítjuk a csapatotokat, és igény szerint mentoráljuk az első éles projektet. A tudás nálatok marad."
       },
       {
-        "q": "Mennyibe kerül egy RPA bevezetés KKV-knak Magyarországon?",
-        "a": "A bevezetés költsége a folyamat komplexitásától és az automatizálandó lépések számától függ. Előzetes Lean diagnosztika és ROI kalkuláció elvégzése után pontosan megtudható, hogy megtérül-e a befektetés. LeanBrothers egyedi ajánlatot ad minden ügyfélnek – az első konzultáció ingyenes."
+        "q": "Mennyibe kerül a workshop?",
+        "a": "Egyedi ajánlat, csoportméret és iparág szerint. Egy nagyvállalati belső képzési naphoz képest kedvező."
       },
       {
-        "q": "Mi a különbség a Lean tanácsadó és egy RPA/AI vendor között?",
-        "a": "Egy vendor technológiát akar eladni – ebből van érdekeltségük. Egy független Lean tanácsadó, mint a LeanBrothers, nem kötődik egyetlen szállítóhoz sem: először a folyamatot rendezi, ROI-t számol, majd a legmegfelelőbb megoldást ajánlja – amely akár egyáltalán nem igényel szoftvert."
+        "q": "Miből tudom, hogy RPA vagy AI kell nekünk?",
+        "a": "Ezt nem kell előre eldöntened – pont ezért létezik a módszer. A folyamatfelmérés után dől el, és néha kiderül, hogy egyik sem: elég egy jobb Excel."
       },
       {
-        "q": "Milyen méretű vállalkozásnak ajánlott a folyamatoptimalizálás?",
-        "a": "LeanBrothers elsősorban 50 főnél nagyobb KKV-knak dolgozik, ahol már vannak ismétlődő, kézzel végzett folyamatok (pl. adatrögzítés, riportolás, számlázás), de a cégméret még nem indokol nagy szoftverlicenc-kiadást."
+        "q": "Kell előzetes felmérés a workshophoz?",
+        "a": "Nem kötelező. A workshop tartalmaz egy szűkített helyzetfelmérést a valós folyamatotokon."
       },
       {
-        "q": "Mennyi idő alatt látszanak az első eredmények?",
-        "a": "A Lean diagnózis önmagában – automatizáció nélkül – már az első 2 napban kézzel fogható megtakarításokat azonosít. Az automatizációs projektek általában 6–12 héten belül éles üzembe kerülnek, és a ROI jellemzően 6–18 hónapon belül realizálódik."
+        "q": "Mit viszünk haza a workshopról?",
+        "a": "Nem kész, auditált folyamatot – hanem a módszer tudását egy valós példán végigvezetve, és a képességet a folytatáshoz."
       },
       {
-        "q": "GDPR és EU AI Act: hogyan érint ez minket a bevezetésnél?",
-        "a": "Az EU AI Act 2024-ben lépett hatályba, és fokozatosan élesedik. Ha személyes adatot érintő vagy döntéstámogató folyamatot automatizálnak, kötelező a megfelelőségi vizsgálat. LeanBrothers az AI jogi megfelelőséget beépíti a vendor-kiválasztási szempontok közé."
+        "q": "És ha kiderül, hogy nem is kell automatizáció?",
+        "a": "Az is eredmény. A folyamatfejlesztés önmagában is nyereség. Nem toljuk az automatizációt, ha nem éri meg."
       }
     ]
   },
   "cta": {
     "label": "Első lépés",
-    "title": "Az első lépés ingyenes –<br>megmutatjuk hol állnak a folyamataik.",
-    "subtitle": "Nincs elkötelezettség, nincs nyomás. Egy 30 perces konzultáció után pontosan tudni fogja, hol tart és mit érdemes tennie.",
-    "btn": "Vegyük fel a kapcsolatot →",
+    "title": "Nézzük meg együtt, hol tartotok –<br>és mit érdemes tanulni.",
+    "subtitle": "Nincs elkötelezettség, nincs nyomás. Egy konzultáció után pontosan tudni fogod, hol tartotok és mit érdemes tenni.",
+    "btn": "Ingyenes konzultáció →",
     "guarantee": "✓ Ingyenes · ✓ Kötelezettség nélkül · ✓ 48 órán belül visszajelzünk"
   },
   "footer": {
-    "tagline": "Nem technológiát adunk el. Rendet teszünk a folyamatokban – aztán bemutatjuk a megfelelő megoldást.",
+    "tagline": "Ne automatizáljuk a veszteséget. Előbb a folyamat, aztán az automatizáció – ha megéri.",
+    "partnerLabel": "Ernyőpartnerünk:",
     "contactHead": "Kapcsolat",
     "navHead": "Navigáció",
     "copyright": "© 2026 LeanBrothers | Minden jog fenntartva",
-    "subline": "Digitális Lean & Automatizáció"
+    "subline": "Folyamatfejlesztés & Automatizáció"
   },
   "modal": {
     "label": "Ingyenes konzultáció",

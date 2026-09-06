@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" role="img" aria-label="LeanBrothers logó">
+  <!-- Sötét kék háttér (navbar-hoz) -->
+  <rect width="36" height="36" rx="8" fill="#1F4E79"/>
+  <!-- L betű – szár -->
+  <rect x="6" y="10" width="3.5" height="16" rx="1.5" fill="white"/>
+  <!-- L betű – alsó talp -->
+  <rect x="6" y="22.5" width="10" height="3.5" rx="1.5" fill="white"/>
+  <!-- B betű – szár (balra tolva, hogy kompaktabb legyen a monogram) -->
+  <rect x="17" y="10" width="3.5" height="16" rx="1.5" fill="#A8CBEA"/>
+  <!-- B betű – felső ív (a szárhoz zárva, nincs rés) -->
+  <path d="M20.5 10 H24 Q28 10 28 14 Q28 18 24 18 H20.5 Z" fill="#A8CBEA"/>
+  <!-- B betű – alsó ív (kicsit szélesebb, klasszikus B forma) -->
+  <path d="M20.5 18 H24.5 Q29 18 29 22 Q29 26 24.5 26 H20.5 Z" fill="#A8CBEA"/>
+</svg>
