@@ -111,7 +111,7 @@
         "desc": "We teach your team the method – practising on your real processes. We walk through when RPA or AI is worth it – and when it's not. They take home a skill, not a handout.",
         "note": "✓ Your team continues on its own",
         "featured": true,
-        "badge": "⭐ Flagship"
+        "badge": "⭐ Recommended"
       },
       {
         "level": "Add-on",
@@ -239,7 +239,7 @@
   },
   "footer": {
     "tagline": "Let's not automate the waste. Process first, then automation – if it's worth it.",
-    "partnerLabel": "Umbrella partner:",
+    "partnerLabel": "Strategic partner:",
     "contactHead": "Contact",
     "navHead": "Navigation",
     "copyright": "© 2026 LeanBrothers | All rights reserved",

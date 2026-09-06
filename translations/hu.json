@@ -111,7 +111,7 @@
         "desc": "Megtanítjuk a módszertant a csapatodnak – valós folyamatokon gyakorolva. Végigvesszük, mikor éri meg RPA-val vagy AI-val megoldani – és mikor nem. Nem tananyagot visznek haza, hanem képességet.",
         "note": "✓ A csapat önállóan viszi tovább",
         "featured": true,
-        "badge": "⭐ Zászlóshajó"
+        "badge": "⭐ Ajánlott"
       },
       {
         "level": "Ráépülés",
@@ -235,7 +235,7 @@
   },
   "footer": {
     "tagline": "Ne automatizáljuk a veszteséget. Előbb a folyamat, aztán az automatizáció – ha megéri.",
-    "partnerLabel": "Ernyőpartnerünk:",
+    "partnerLabel": "Stratégiai partnerünk:",
     "contactHead": "Kapcsolat",
     "navHead": "Navigáció",
     "copyright": "© 2026 LeanBrothers | Minden jog fenntartva",
