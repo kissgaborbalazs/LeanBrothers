@@ -106,11 +106,13 @@
         "badge": "⭐ Recommended"
       },
       {
-        "level": "Add-on",
-        "name": "Mentored sprint + retainer",
+        "level": "Advisory",
+        "name": "Expert Mentoring",
+        "subtitle": "Process-expert guidance",
         "duration": "🔄 Project or monthly retainer",
         "price": "Monthly or project-based",
-        "desc": "After training: guiding the first real RPA or AI project, vendor oversight, follow-up.",
+        "desc": "Your team works on its own processes while we frame the decisions as experts: we help spot the bottlenecks and validate the direction. It accompanies the first live project after the training – but works on its own too, once the team is experienced.",
+        "note": "✓ After the training, or on its own",
         "featured": false
       }
     ]

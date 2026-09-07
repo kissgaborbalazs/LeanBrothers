@@ -106,11 +106,13 @@
         "badge": "⭐ Ajánlott"
       },
       {
-        "level": "Ráépülés",
-        "name": "Mentorált sprint + retainer",
+        "level": "Tanácsadás",
+        "name": "Szakértői mentorálás",
+        "subtitle": "Folyamatszakértői iránymutatás",
         "duration": "🔄 Projekt vagy havi keret",
         "price": "Havi vagy projekt alapon",
-        "desc": "A képzés után: az első éles RPA vagy AI projekt kísérése, vendor-felügyelet, visszamérés.",
+        "desc": "A csapatod a saját folyamatain dolgozik, mi pedig szakértőként keretezzük a döntéseket: segítünk felismerni a szűk keresztmetszeteket és validálni az irányt. Elkíséri a képzés utáni első éles projektet – de önállóan is működik, ha a csapat már gyakorlott.",
+        "note": "✓ A képzés után vagy önállóan is",
         "featured": false
       }
     ]
