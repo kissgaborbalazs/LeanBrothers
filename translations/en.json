@@ -96,12 +96,10 @@
     "cards": [
       {
         "level": "Training",
-        "name": "VDPE Workshop",
+        "name": "Process Improvement Workshop",
         "subtitle": "Lean methodology + AI/RPA decision framework",
-        "duration": "⏱ 2 days · Closed, in-house · 6–8 people",
-        "price": "Group format – 6-8 people",
-        "desc": "We teach your team the method – practising on your real processes. We walk through when RPA or AI is worth it – and when it's not. They take home a skill, not a handout.",
-        "note": "✓ Your team continues on its own",
+        "desc": "We teach your team the methodology, practising on real processes. We work through when it pays to solve something with RPA or AI, and when it does not. They take home capability, not course material.",
+        "note": "✓ Usable capability, not course material",
         "featured": true,
         "badge": "⭐ Recommended"
       },
@@ -109,10 +107,8 @@
         "level": "Advisory",
         "name": "Expert Mentoring",
         "subtitle": "Process-expert guidance",
-        "duration": "🔄 Project or monthly retainer",
-        "price": "Monthly or project-based",
-        "desc": "Your team works on its own processes while we frame the decisions as experts: we help spot the bottlenecks and validate the direction. It accompanies the first live project after the training – but works on its own too, once the team is experienced.",
-        "note": "✓ After the training, or on its own",
+        "desc": "Your team works on its own processes while we help as experts to frame the decisions, spot the bottlenecks and validate the direction. It accompanies the first live project after the training, or works on its own if the team is already experienced.",
+        "note": "✓ Guidance",
         "featured": false
       }
     ]

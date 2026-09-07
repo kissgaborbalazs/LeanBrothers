@@ -96,12 +96,10 @@
     "cards": [
       {
         "level": "Képzés",
-        "name": "VDPE Workshop",
+        "name": "Folyamatfejlesztési Workshop",
         "subtitle": "Lean módszertan + AI/RPA döntéskeret",
-        "duration": "⏱ 2 nap · Zárt, céges · 6–8 fő",
-        "price": "Csoportos – 6-8 fő",
-        "desc": "Megtanítjuk a módszertant a csapatodnak – valós folyamatokon gyakorolva. Végigvesszük, mikor éri meg RPA-val vagy AI-val megoldani – és mikor nem. Nem tananyagot visznek haza, hanem képességet.",
-        "note": "✓ A csapat önállóan viszi tovább",
+        "desc": "Megtanítjuk a csapatodnak a módszertant valós folyamatokon gyakorolva. Végigvesszük, mikor éri meg RPA-val vagy AI-val megoldani, és mikor nem. Nem tananyagot visznek haza, hanem képességet.",
+        "note": "✓ Alkalmazható tudás, nem tananyag",
         "featured": true,
         "badge": "⭐ Ajánlott"
       },
@@ -109,10 +107,8 @@
         "level": "Tanácsadás",
         "name": "Szakértői mentorálás",
         "subtitle": "Folyamatszakértői iránymutatás",
-        "duration": "🔄 Projekt vagy havi keret",
-        "price": "Havi vagy projekt alapon",
-        "desc": "A csapatod a saját folyamatain dolgozik, mi pedig szakértőként keretezzük a döntéseket: segítünk felismerni a szűk keresztmetszeteket és validálni az irányt. Elkíséri a képzés utáni első éles projektet – de önállóan is működik, ha a csapat már gyakorlott.",
-        "note": "✓ A képzés után vagy önállóan is",
+        "desc": "A csapatod dolgozik a saját folyamataival, mi pedig szakértőként segítünk keretezni a döntéseket, felismerni a szűk keresztmetszeteket, validálni az irányt. Elkíséri a képzés utáni első éles projektet, vagy önállóan is működik, ha a csapat már gyakorlott.",
+        "note": "✓ Iránymutatás",
         "featured": false
       }
     ]
