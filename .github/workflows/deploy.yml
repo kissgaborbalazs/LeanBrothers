@@ -1,8 +1,23 @@
 name: Deploy to FTP
 
+# MIERT NEM FUTOTT SOHA (merve 2026-09-06): a trigger `branches: [ live ]` volt,
+# a valodi ag viszont `Live` (nagy L). A GitHub branch-szurot kis-nagybetu
+# erzekenyen illeszti, igy nulla futas lett belole -- a workflow letezett, zold
+# volt a repoban, es kozben egyetlen sort sem deployolt. A `Live` ag azota
+# torolve; az eles tartalom forrasa a `master`.
+
 on:
   push:
-    branches: [ live ]
+    branches: [ master ]
+  # Kezi inditas, alapertelmezetten SZARAZ probaval: az eles oldalt egy rossz
+  # server-dir vagy egy elgepelt exclude azonnal elrontja, ezert a proba az
+  # alapertelmezes, es a valodi feltoltes tudatos valasztas.
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Szaraz proba: kiirja mit tenne, de nem tolt fel semmit'
+        type: boolean
+        default: true
 
 jobs:
   deploy:
@@ -17,4 +32,15 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: /web/leanbrothers.hu/    # ← ezt módosítsd a tárhelyed mappájára
+          server-dir: /web/leanbrothers.hu/
+          # Push eseten mindig eles; kezi inditasnal a kapcsolo dont.
+          dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || false }}
+          log-level: standard
+          # FIGYELEM: ha ez a lista meg van adva, TELJESEN felulirja az action
+          # sajat alapertelmezeset -- ezert a harom gyari mintat is fel kell
+          # sorolni, kulonben a .git es a .github felkerulne a webszerverre.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            README.md
