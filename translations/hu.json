@@ -99,7 +99,7 @@
         "name": "Folyamatfejlesztési Workshop",
         "subtitle": "Lean módszertan + AI/RPA döntéskeret",
         "desc": "Megtanítjuk a csapatodnak a módszertant valós folyamatokon gyakorolva. Végigvesszük, mikor éri meg RPA-val vagy AI-val megoldani, és mikor nem. Nem tananyagot visznek haza, hanem képességet.",
-        "note": "✓ Alkalmazható tudás, nem tananyag",
+        "note": "✓ 6–8 fős zárt csoport",
         "featured": true,
         "badge": "⭐ Ajánlott"
       },
@@ -108,7 +108,7 @@
         "name": "Szakértői mentorálás",
         "subtitle": "Folyamatszakértői iránymutatás",
         "desc": "A csapatod dolgozik a saját folyamataival, mi pedig szakértőként segítünk keretezni a döntéseket, felismerni a szűk keresztmetszeteket, validálni az irányt. Elkíséri a képzés utáni első éles projektet, vagy önállóan is működik, ha a csapat már gyakorlott.",
-        "note": "✓ Iránymutatás",
+        "note": "✓ Képzés nélkül is indítható",
         "featured": false
       }
     ]
