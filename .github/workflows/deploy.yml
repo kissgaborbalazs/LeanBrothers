@@ -32,7 +32,16 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: /web/leanbrothers.hu/
+          # MERVE 2026-09-07, eles futasbol: az FTP-felhasznalo belepesi
+          # konyvtara MAR a dokumentumgyoker. Az abszolut `/web/leanbrothers.hu/`
+          # ezert NEM oda mutatott, hanem letrehozott egy ugyanilyen nevu
+          # alkonyvtart a gyokeren belul, es az egesz oldal oda kerult
+          # (<docroot>/web/leanbrothers.hu/index.html = bajtra a mi index.html-unk,
+          # mikozben a valodi kezdolap valtozatlan maradt). A workflow "success"-t
+          # jelentett, mert az FTP-oldalrol minden rendben ment -- a hiba csak az
+          # eles URL-t lekerve latszott. EZERT: a feltoltes utan MINDIG az eles
+          # oldalt kell megmerni, nem a workflow zold pipajat.
+          server-dir: ./
           # Push eseten mindig eles; kezi inditasnal a kapcsolo dont.
           dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || false }}
           log-level: standard
