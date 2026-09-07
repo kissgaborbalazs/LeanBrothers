@@ -89,19 +89,11 @@
   },
   "services": {
     "label": "Termékek",
-    "title": "A képzés a belépő – a tanácsadás a ráépülés",
+    "title": "Amit tanítunk, amivel támogatunk",
     "subtitle": "Válaszd, ami a csapatodnak most kell.",
     "ctaBtn": "Ingyenes konzultáció",
     "addon": "Kiegészítő: AI jogi megfelelőség (GDPR, AI Act) – igény szerint.",
     "cards": [
-      {
-        "level": "Belépő",
-        "name": "Folyamatfelmérés",
-        "duration": "⏱ ~2 nap · Helyszíni + online",
-        "price": "Fix csomagár",
-        "desc": "Hol tartotok, miben van potenciál – és mennyire vagytok készen egy AI vagy RPA bevezetésre. Mint egy szűrővizsgálat – akkor is hasznos, ha semmi baj.",
-        "featured": false
-      },
       {
         "level": "Képzés",
         "name": "VDPE Workshop",

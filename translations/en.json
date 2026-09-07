@@ -89,19 +89,11 @@
   },
   "services": {
     "label": "Offering",
-    "title": "Training is the entry – advisory builds on top",
+    "title": "What we teach, how we support you",
     "subtitle": "Pick what your team needs now.",
     "ctaBtn": "Free Consultation",
     "addon": "Add-on: AI legal compliance (GDPR, AI Act) – on request.",
     "cards": [
-      {
-        "level": "Entry",
-        "name": "Process Assessment",
-        "duration": "⏱ ~2 days · On-site + online",
-        "price": "Fixed package",
-        "desc": "Where you stand, what has potential – and how ready you are for an AI or RPA rollout. Like a health check – useful even if nothing's wrong.",
-        "featured": false
-      },
       {
         "level": "Training",
         "name": "VDPE Workshop",

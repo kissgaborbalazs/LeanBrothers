@@ -589,6 +589,12 @@ ul { list-style: none; }
   gap: 18px;
   align-items: stretch;
 }
+/* Ket kartyas valtozat: a harmas racs valtozatlan marad, ez csak felulirja. */
+.pricing-grid.two-up {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 760px;
+  margin-inline: auto;
+}
 .pricing-card {
   border: 2px solid var(--gray-mid);
   border-radius: var(--radius);
@@ -1271,6 +1277,7 @@ ul { list-style: none; }
   .problem-grid,
   .steps-grid,
   .pricing-grid,
+  .pricing-grid.two-up,
   .why-grid,
   .team-grid { grid-template-columns: 1fr; gap: 14px; }
 
